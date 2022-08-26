@@ -1,0 +1,17 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
+
+pre-commit:
+  commands:
+    format:
+      glob: '*.{js,ts,tsx,yml}'
+      run: yarn format {staged_files}
+    lint:
+      glob: '*.{js,ts,tsx}'
+      run: yarn lint:fix {staged_files}
+commit-msg:
+  commands:
+    commit-lint:
+      run: yarn commitlint --edit $1

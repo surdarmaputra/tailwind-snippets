@@ -1,0 +1,5 @@
+@import './base.css';
+@import '../components/atoms/Button/Button.css';
+@import '../components/atoms/Heading/Heading.css';
+@import '../components/atoms/Link/Link.css';
+@import '../components/atoms/Paragraph/Paragraph.css';
