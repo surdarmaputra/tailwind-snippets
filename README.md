@@ -1,36 +1,14 @@
-# Next.js TS Tailwind Starter
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and packed with useful stuff to support your development workflow.
-
-**Features**
-
-- TypeScript
-- Tailwind CSS with pre-configured colors
-- Basic components following [atomic design](https://bradfrost.com/blog/post/atomic-web-design/) concept
-- Storybook
-- Access thousands of icons using [unplugin-icons](https://github.com/antfu/unplugin-icons)
-- Make sure commit messages meet [conventional commit](https://www.conventionalcommits.org/) format using [commitlint](https://github.com/conventional-changelog/commitlint)
-- Run formatters and linters within Git hooks using [lefthook](https://github.com/evilmartians/lefthook)
-- Manage release using [standard-version](https://github.com/conventional-changelog/standard-version)
+# Tailwind Snippets
 
 ## Getting Started
 
-Bootstrap the project using `create-next-app`:
+Clone the repo:
 
 ```bash
-# Use yarn because the starter kit already has yarn.lock
-yarn create next-app -e https://github.com/surdarmaputra/next-ts-tailwind-starter
-```
+git clone https://github.com/surdarmaputra/tailwind-snippets
 
-or use [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-# Clone the repo
-npx degit https://github.com/surdarmaputra/next-ts-tailwind-starter project_dir_name
-
-# then install dependencies
-cd project_dir_name
-yarn
+# Install dependencies
+yarn install
 ```
 
 Run the development server:
@@ -48,12 +26,6 @@ Open [http://localhost:3000](http://localhost:3000) to see the result.
 Open [http://localhost:6006](http://localhost:6006) to explore the storybook.
 
 The page and storybook auto-update as you edit the file.
-
-## API Routes
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Project Convention
 
