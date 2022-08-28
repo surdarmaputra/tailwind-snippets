@@ -1,5 +1,8 @@
-import SideNavigation from 'components/molecules/SideNavigation';
+import VerticalNavigation from 'components/molecules/VerticalNavigation';
+import Footer from 'components/organisms/Footer/Footer';
+import Header from 'components/organisms/Header';
 import { SnippetCategory } from 'core/type';
+import useCurrentPath from 'hooks/useCurrentPath';
 
 export interface SnippetsExplorerLayoutProps
   extends React.HTMLProps<HTMLDivElement> {
@@ -11,10 +14,20 @@ export default function SnippetsExplorerLayout({
   className = '',
   snippets,
 }: SnippetsExplorerLayoutProps) {
+  const currentPath = useCurrentPath();
+
   return (
-    <div className="flex">
-      <SideNavigation className="ml-2 mr-4 w-1/4" snippets={snippets} />{' '}
-      <div className={`w-full ${className}`}>{children}</div>
-    </div>
+    <>
+      <Header />
+      <div className="container mx-auto flex min-h-fit py-12">
+        <VerticalNavigation
+          className="ml-1 mr-4 w-1/4"
+          currentPath={currentPath}
+          snippets={snippets}
+        />{' '}
+        <div className={`w-full pl-4 pr-8 ${className}`}>{children}</div>
+      </div>
+      <Footer />
+    </>
   );
 }

@@ -1,14 +1,16 @@
+import NavItem from 'components/atoms/NavItem';
 import { SnippetCategory } from 'core/type';
-import Link from 'next/link';
 
-export interface SideNavigationProps extends React.HTMLProps<HTMLElement> {
+export interface VerticalNavigationProps extends React.HTMLProps<HTMLElement> {
+  currentPath?: string;
   snippets: SnippetCategory[];
 }
 
-export default function SideNavigation({
+export default function VerticalNavigation({
   className,
   snippets,
-}: SideNavigationProps) {
+  currentPath,
+}: VerticalNavigationProps) {
   return (
     <nav className={className}>
       {snippets.map((category) => (
@@ -17,14 +19,13 @@ export default function SideNavigation({
             {category.title}
           </div>
           {category.subCategories.map((subCategory) => (
-            <Link
+            <NavItem
+              currentPath={currentPath}
               href={`/snippets/${category.slug}/${subCategory.slug}`}
               key={subCategory.slug}
             >
-              <a className="rounded-md px-3 py-2 font-light text-dark-800 no-underline hover:bg-dark-50 hover:text-dark-900">
-                {subCategory.title}
-              </a>
-            </Link>
+              {subCategory.title}
+            </NavItem>
           ))}
         </div>
       ))}

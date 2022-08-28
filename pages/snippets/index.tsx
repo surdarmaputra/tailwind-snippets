@@ -13,11 +13,11 @@ export default function Snippets({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <SnippetsExplorerLayout
-      className="flex  flex-col items-center py-44 text-center"
+      className="flex flex-col items-center py-20 text-center"
       snippets={snippets}
     >
       <ListSearchIcon className="mb-12 h-32 w-32 text-dark-200" />
-      <h2>No item selected</h2>
+      <h2>Select any snippet</h2>
       <p>Please select any snippet from the navigation on the left.</p>
     </SnippetsExplorerLayout>
   );

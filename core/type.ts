@@ -1,3 +1,7 @@
+export interface NavItem {
+  title: string;
+  href: string;
+}
 export interface Variant {
   title: string;
   path: string;

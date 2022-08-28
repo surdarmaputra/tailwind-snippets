@@ -27,7 +27,7 @@ export function SnippetPreview({
   const [activeTab, setActiveTab] = useState(Tab.preview);
 
   const renderedTitle = title || 'Snippet Preview';
-  const wrapperClassName = `w-full rounded shadow ${className}`;
+  const wrapperClassName = `w-full rounded shadow bg-white ${className}`;
 
   return (
     <div className={wrapperClassName}>
