@@ -36,7 +36,7 @@ const backgroundClassNames = {
     [ButtonVariation.success]: 'bg-success-500 hover:bg-success-600',
     [ButtonVariation.danger]: 'bg-danger-500 hover:bg-danger-600',
     [ButtonVariation.warning]: 'bg-warning-500 hover:bg-warning-600',
-    [ButtonVariation.light]: 'bg-dark-100 hover:bg-dark-200',
+    [ButtonVariation.light]: 'bg-dark-50 hover:bg-dark-100 text-dark-900',
     [ButtonVariation.dark]: 'bg-dark-800 hover:bg-dark-900',
   },
   disabled: {
@@ -54,7 +54,7 @@ const borderClassNames = {
     [ButtonVariation.success]: 'border-success-500 hover:border-success-600',
     [ButtonVariation.danger]: 'border-danger-500 hover:border-danger-600',
     [ButtonVariation.warning]: 'border-warning-500 hover:border-warning-600',
-    [ButtonVariation.light]: 'border-dark-100 hover:border-dark-200',
+    [ButtonVariation.light]: 'border-dark-50 hover:border-dark-100',
     [ButtonVariation.dark]: 'border-dark-800 hover:border-dark-900',
   },
   disabled: {
@@ -62,7 +62,7 @@ const borderClassNames = {
     [ButtonVariation.success]: 'border-success-400',
     [ButtonVariation.danger]: 'border-danger-400',
     [ButtonVariation.warning]: 'border-warning-400',
-    [ButtonVariation.light]: 'border-dark-50',
+    [ButtonVariation.light]: 'border-dark-50 text-dark-300',
     [ButtonVariation.dark]: 'border-dark-500',
   },
 };
@@ -72,7 +72,7 @@ const outlineClassNames = {
     [ButtonVariation.success]: 'text-success-500 hover:bg-success-600',
     [ButtonVariation.danger]: 'text-danger-500 hover:bg-danger-600',
     [ButtonVariation.warning]: 'text-warning-500 hover:bg-warning-600',
-    [ButtonVariation.light]: 'text-dark-500 hover:bg-dark-200',
+    [ButtonVariation.light]: 'text-dark-900 hover:bg-dark-100',
     [ButtonVariation.dark]: 'text-dark-800 hover:bg-dark-900',
   },
   disabled: {
@@ -80,7 +80,7 @@ const outlineClassNames = {
     [ButtonVariation.success]: 'text-success-400',
     [ButtonVariation.danger]: 'text-danger-400',
     [ButtonVariation.warning]: 'text-warning-400',
-    [ButtonVariation.light]: 'text-dark-50',
+    [ButtonVariation.light]: 'text-dark-300',
     [ButtonVariation.dark]: 'text-dark-500',
   },
 };
