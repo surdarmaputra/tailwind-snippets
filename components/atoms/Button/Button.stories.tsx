@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import ArrowDownCircleIcon from '~icons/tabler/arrow-down-circle';
 import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
 
-import { Button, ButtonSize, ButtonVariation } from './Button';
+import Button, { ButtonSize, ButtonVariation } from './Button';
 
 export default {
   title: 'Atoms/Button',

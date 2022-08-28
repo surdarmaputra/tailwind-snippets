@@ -1,11 +1,14 @@
 import Head from 'next/head';
 
 export interface HeadContentProps {
-  title: string;
+  title?: string;
   description?: string;
 }
 
-export default function HeadContent({ title, description }: HeadContentProps) {
+export default function HeadContent({
+  title = 'Tailwind Snippets',
+  description = 'Starter kit for Next.js project using Typescript and Tailwind CSS',
+}: HeadContentProps) {
   return (
     <Head>
       <title>{title}</title>

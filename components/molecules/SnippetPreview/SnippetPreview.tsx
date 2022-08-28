@@ -1,4 +1,4 @@
-import { Button } from 'components/atoms/Button';
+import Button from 'components/atoms/Button';
 import { useState } from 'react';
 
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right';
@@ -11,13 +11,14 @@ enum Tab {
   preview,
 }
 
-interface SnippetPreviewProps extends React.HTMLProps<HTMLIFrameElement> {
+export interface SnippetPreviewProps
+  extends React.HTMLProps<HTMLIFrameElement> {
   code?: string;
   title: string;
   secondaryTitle?: string;
 }
 
-export function SnippetPreview({
+export default function SnippetPreview({
   className = '',
   code,
   secondaryTitle,

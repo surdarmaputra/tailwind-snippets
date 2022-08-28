@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-interface NavItemProps extends React.HTMLProps<HTMLLinkElement> {
+export interface NavItemProps extends React.HTMLProps<HTMLLinkElement> {
   currentPath?: string;
 }
 

@@ -1,4 +1,5 @@
-import { SnippetPreview } from 'components/molecules/SnippetPreview';
+import HeadContent from 'components/molecules/HeadContent';
+import SnippetPreview from 'components/molecules/SnippetPreview';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
 import { SnippetCategory, Variant } from 'core/type';
 import fs from 'fs/promises';
@@ -51,16 +52,20 @@ export default function SubCategory({
   variants,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <SnippetsExplorerLayout snippets={snippets}>
-      {variants.map((snippet) => (
-        <SnippetPreview
-          className="mb-12"
-          code={snippet.code}
-          key={snippet.previewUrl}
-          src={snippet.previewUrl}
-          title={snippet.title}
-        />
-      ))}
-    </SnippetsExplorerLayout>
+    <>
+      <HeadContent />
+
+      <SnippetsExplorerLayout snippets={snippets}>
+        {variants.map((snippet) => (
+          <SnippetPreview
+            className="mb-12"
+            code={snippet.code}
+            key={snippet.previewUrl}
+            src={snippet.previewUrl}
+            title={snippet.title}
+          />
+        ))}
+      </SnippetsExplorerLayout>
+    </>
   );
 }

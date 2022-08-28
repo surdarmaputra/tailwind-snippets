@@ -1,1 +1,1 @@
-export { SnippetPreview } from './SnippetPreview';
+export { default } from './SnippetPreview';

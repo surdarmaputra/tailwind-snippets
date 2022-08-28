@@ -3,7 +3,7 @@ import CopyToClipboard from 'react-copy-to-clipboard';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-interface CodeSnippetProps {
+export interface CodeSnippetProps {
   code?: string;
 }
 

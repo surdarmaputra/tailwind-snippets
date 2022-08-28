@@ -1,16 +1,13 @@
-import { Button } from 'components/atoms/Button';
+import Button from 'components/atoms/Button';
+import HeadContent from 'components/molecules/HeadContent';
 import type { NextPage } from 'next';
-import Head from 'next/head';
 
 import HomeIcon from '~icons/tabler/home';
 
 const ServerError: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>500 | Sorry, we have a problem :(</title>
-        <link href="/favicon.ico" rel="icon" />
-      </Head>
+      <HeadContent title="500 | Sorry, we have a problem :(" />
 
       <div className="absolute left-0 top-24 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
       <div className="absolute right-0 top-4 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>

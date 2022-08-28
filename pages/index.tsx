@@ -1,5 +1,6 @@
-import { Button } from 'components/atoms/Button';
+import Button from 'components/atoms/Button';
 import HeadContent from 'components/molecules/HeadContent';
+import Footer from 'components/organisms/Footer/Footer';
 import type { NextPage } from 'next';
 
 import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
@@ -10,10 +11,7 @@ const features = ['Live preview', 'Code snippet', 'Written in TypeScript'];
 const Home: NextPage = () => {
   return (
     <>
-      <HeadContent
-        description="Starter kit for Next.js project using Typescript and Tailwind CSS"
-        title="Tailwind Snippets"
-      />
+      <HeadContent />
 
       <div className="absolute left-0 top-64 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
@@ -39,10 +37,7 @@ const Home: NextPage = () => {
         </Button>
       </section>
 
-      <footer className="container mx-auto py-8 text-center">
-        &copy; 2022 | Created by{' '}
-        <a href="https://github.com/surdarmaputra/">Surya Darma Putra</a>
-      </footer>
+      <Footer />
     </>
   );
 };

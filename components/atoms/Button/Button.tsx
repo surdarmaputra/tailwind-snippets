@@ -85,7 +85,7 @@ const outlineClassNames = {
   },
 };
 
-export function Button({
+export default function Button({
   children,
   className = '',
   disabled,

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { SnippetPreview } from './SnippetPreview';
+import SnippetPreview from './SnippetPreview';
 
 export default {
   title: 'Molecules/SnippetPreview',
