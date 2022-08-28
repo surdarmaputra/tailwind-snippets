@@ -1,96 +1,32 @@
 import { Button } from 'components/atoms/Button';
+import HeadContent from 'components/molecules/HeadContent';
 import type { NextPage } from 'next';
-import Head from 'next/head';
 
 import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
 import CheckIcon from '~icons/tabler/check';
 
-const features = [
-  'TypeScript',
-  'Tailwind CSS with pre-configured colors',
-  <span key="atomic-design">
-    Basic components following{' '}
-    <a
-      href="https://bradfrost.com/blog/post/atomic-web-design/"
-      rel="noreferrer"
-      target="_blank"
-    >
-      atomic design
-    </a>{' '}
-    concept
-  </span>,
-  'Storybook',
-  <span key="unplugin-icons">
-    Access thousands of icons using{' '}
-    <a
-      href="https://github.com/antfu/unplugin-icons"
-      rel="noreferrer"
-      target="_blank"
-    >
-      unplugin-icons
-    </a>
-  </span>,
-  <span key="commitlint">
-    Make sure commit messages meet{' '}
-    <a
-      href="https://www.conventionalcommits.org"
-      rel="noreferrer"
-      target="_blank"
-    >
-      conventional commit
-    </a>{' '}
-    format using{' '}
-    <a
-      href="https://github.com/conventional-changelog/commitlint"
-      rel="noreferrer"
-      target="_blank"
-    >
-      commitlint
-    </a>
-  </span>,
-  <span key="lefthook">
-    Run formatters and linters within Git hooks using{' '}
-    <a
-      href="https://github.com/evilmartians/lefthook"
-      rel="noreferrer"
-      target="_blank"
-    >
-      lefthook
-    </a>
-  </span>,
-  <span key="standard-version">
-    Manage release using{' '}
-    <a
-      href="https://github.com/conventional-changelog/standard-version"
-      rel="noreferrer"
-      target="_blank"
-    >
-      standard-version
-    </a>
-  </span>,
-];
+const features = ['Live preview', 'Code snippet', 'Written in TypeScript'];
 
 const Home: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>Next.js TS Tailwind Starter</title>
-        <meta
-          content="Starter kit for Next.js project using Typescript and Tailwind CSS"
-          name="description"
-        />
-        <link href="/favicon.ico" rel="icon" />
-      </Head>
+      <HeadContent
+        description="Starter kit for Next.js project using Typescript and Tailwind CSS"
+        title="Tailwind Snippets"
+      />
 
-      <div className="absolute left-0 top-24 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
-      <div className="absolute right-0 top-4 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
+      <div className="absolute left-0 top-64 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
+      <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
 
-      <section className="container mx-auto py-40">
-        <h1 className="mb-4">Next.js TS Tailwind Starter</h1>
+      <section className="container mx-auto py-40 text-center">
+        <h1 className="mx-auto mb-12 w-3/4 text-5xl">
+          Tailwind Snippets for React Applications
+        </h1>
         <p className="text-dark-600">
-          Starter kit to speed up the development of Next.js project.
+          Collection of UI patterns built using Tailwind CSS for React
+          applications.
         </p>
-        <ul className="mb-12">
+        <ul className="mx-auto mb-24 flex w-fit space-x-4">
           {features.map((feature, index) => (
             <li className="flex items-end" key={index}>
               <CheckIcon className="mr-2 text-success-500" />
@@ -98,17 +34,12 @@ const Home: NextPage = () => {
             </li>
           ))}
         </ul>
-        <Button
-          external
-          href={process.env.NEXT_PUBLIC_DEMO_STORYBOOK_URL}
-          link
-          variation="dark"
-        >
-          Explore The Storybook <ArrowNarrowRightIcon className="ml-2" />
+        <Button href="/snippets" link size="large" variation="dark">
+          Explore snippets <ArrowNarrowRightIcon className="ml-2" />
         </Button>
       </section>
 
-      <footer className="container mx-auto py-8">
+      <footer className="container mx-auto py-8 text-center">
         &copy; 2022 | Created by{' '}
         <a href="https://github.com/surdarmaputra/">Surya Darma Putra</a>
       </footer>
