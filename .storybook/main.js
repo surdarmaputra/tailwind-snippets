@@ -9,6 +9,7 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    'storybook-addon-next',
     'storybook-tailwind-dark-mode',
   ],
   framework: '@storybook/react',
@@ -30,6 +31,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       components: path.resolve(__dirname, '../components'),
+      hooks: path.resolve(__dirname, '../hooks'),
     };
 
     return config;
