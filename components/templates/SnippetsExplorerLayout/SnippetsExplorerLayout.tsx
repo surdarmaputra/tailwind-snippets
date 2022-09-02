@@ -63,7 +63,7 @@ export default function SnippetsExplorerLayout({
           className={backdropClassName}
           onClick={toggleMobileNavigation}
         ></div>
-        <div className={`w-full pl-4 pr-4 sm:pr-8 ${className}`}>
+        <div className={`pl-4 pr-4 sm:w-3/4 sm:pr-8 ${className}`}>
           {children}
         </div>
       </div>
