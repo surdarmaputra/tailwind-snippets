@@ -16,15 +16,15 @@ const Home: NextPage = () => {
       <div className="absolute left-0 top-64 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
 
-      <section className="container mx-auto py-40 text-center">
-        <h1 className="mx-auto mb-12 w-3/4 text-5xl">
+      <section className="container mx-auto py-16 px-6 text-center sm:py-40">
+        <h1 className="mx-auto mb-12 w-3/4 text-4xl sm:text-5xl">
           Tailwind Snippets for React Applications
         </h1>
         <p className="text-dark-600">
           Collection of UI patterns built using Tailwind CSS for React
           applications.
         </p>
-        <ul className="mx-auto mb-24 flex w-fit space-x-4">
+        <ul className="mx-auto mb-12 flex w-fit flex-col items-center sm:mb-24 sm:flex-row sm:space-x-4">
           {features.map((feature, index) => (
             <li className="flex items-end" key={index}>
               <CheckIcon className="mr-2 text-success-500" />

@@ -1,8 +1,9 @@
 import HorizontalNavigation from 'components/molecules/HorizontalNavigation';
 import { NavItem } from 'core/type';
 import useCurrentPath from 'hooks/useCurrentPath';
+import Link from 'next/link';
 
-const navigations: NavItem[] = [
+export const navigationItems: NavItem[] = [
   {
     title: 'Home',
     href: '/',
@@ -17,12 +18,20 @@ export default function Header() {
   const currentPath = useCurrentPath();
 
   return (
-    <header className="container mx-auto flex w-full items-center justify-between p-4">
-      <div className="text-lg font-bold">
-        <span className="text-primary-500">Tailwind</span> <span>Snippets</span>
+    <header className="container mx-auto flex w-full items-center justify-between p-4 px-6">
+      <div className="w-full text-center text-lg font-bold sm:w-fit sm:text-left">
+        <Link href="/">
+          <a className="no-underline">
+            <span className="text-primary-500">Tailwind</span>{' '}
+            <span>Snippets</span>
+          </a>
+        </Link>
       </div>
-      <nav className="text-base">
-        <HorizontalNavigation currentPath={currentPath} items={navigations} />
+      <nav className="hidden text-base sm:block">
+        <HorizontalNavigation
+          currentPath={currentPath}
+          items={navigationItems}
+        />
       </nav>
     </header>
   );

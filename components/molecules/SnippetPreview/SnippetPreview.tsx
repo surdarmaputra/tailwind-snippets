@@ -32,14 +32,14 @@ export default function SnippetPreview({
 
   return (
     <div className={wrapperClassName}>
-      <div className="flex w-full items-center justify-between border-b border-b-dark-100 p-4">
-        <div>
+      <div className="flex w-full flex-col items-center justify-between border-b border-b-dark-100 p-4 sm:flex-row">
+        <div className="mb-4 w-full sm:mb-0 sm:w-fit">
           <h6 className="mb-0 mr-4">{renderedTitle}</h6>
           {secondaryTitle && (
             <div className="text-xs text-dark-400">{secondaryTitle}</div>
           )}
         </div>
-        <div className="flex items-center justify-end space-x-2">
+        <div className="flex w-full items-center justify-start space-x-2 sm:w-fit sm:justify-end">
           <Button
             onClick={() => setActiveTab(Tab.preview)}
             size="small"
