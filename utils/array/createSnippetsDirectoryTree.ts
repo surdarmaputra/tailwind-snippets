@@ -46,6 +46,7 @@ export default function createSnippetsDirectoryTree(
     tree[categoryIndex].subCategories[subCategoryIndex].variants.push({
       title: startCase(title),
       path: filePath,
+      previewUrl: `/snippets-preview/${tree[categoryIndex].slug}/${tree[categoryIndex].subCategories[subCategoryIndex].slug}/${title}`,
     });
   });
 

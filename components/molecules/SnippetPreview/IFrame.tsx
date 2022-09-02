@@ -1,16 +1,22 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function IFrame({ src }: React.HTMLProps<HTMLIFrameElement>) {
   const frameRef = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState<number | undefined>(undefined);
 
-  const handleFrameLoad = () => {
-    setTimeout(() => {
-      if (frameRef.current?.contentWindow?.document.body.offsetHeight) {
-        setHeight(frameRef.current.contentWindow.document.body.offsetHeight);
-      }
-    }, 500);
+  const adjustHeight = () => {
+    if (frameRef.current?.contentWindow?.document.body.offsetHeight) {
+      setHeight(frameRef.current.contentWindow.document.body.offsetHeight);
+    }
   };
+
+  const handleFrameLoad = () => {
+    setTimeout(adjustHeight, 500);
+  };
+
+  useEffect(() => {
+    setTimeout(adjustHeight, 500);
+  }, []);
 
   return (
     <iframe

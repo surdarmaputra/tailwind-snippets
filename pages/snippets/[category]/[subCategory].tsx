@@ -28,7 +28,6 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
       return {
         ...variant,
         code,
-        previewUrl: `/snippets-preview/${selectedCategory?.slug}/${selectedSubCategory.slug}/${variant.title}`,
       };
     }) || [],
   );
