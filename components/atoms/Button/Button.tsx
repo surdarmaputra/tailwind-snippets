@@ -25,6 +25,7 @@ export interface ButtonProps
   link?: boolean;
   loading?: boolean;
   outline?: boolean;
+  rounded?: boolean;
   size?: `${ButtonSize}`;
   target?: string;
   variation?: `${ButtonVariation}`;
@@ -95,6 +96,7 @@ export default function Button({
   loading = false,
   onClick,
   outline = false,
+  rounded = false,
   size = ButtonSize.default,
   target,
   title,
@@ -110,10 +112,17 @@ export default function Button({
     ? outlineClassNames.disabled[variation]
     : outlineClassNames.normal[variation];
   const sizeClassName = classNames({
-    'px-4 py-2 text-xs rounded': size === ButtonSize.small,
-    'px-6 py-3 text-sm rounded-md': size === ButtonSize.default,
-    'px-10 py-4 text-base rounded-lg': size === ButtonSize.large,
+    'px-4 py-2 text-xs': size === ButtonSize.small,
+    'px-6 py-3 text-sm': size === ButtonSize.default,
+    'px-10 py-4 text-base': size === ButtonSize.large,
   });
+  const roundedClassName = rounded
+    ? 'rounded-full'
+    : classNames({
+        rounded: size === ButtonSize.small,
+        'rounded-md': size === ButtonSize.default,
+        'rounded-lg': size === ButtonSize.large,
+      });
   const finalClassName = `
     ${classNames({
       'button transition': true,
@@ -127,6 +136,7 @@ export default function Button({
     ${borderClassName}
     ${sizeClassName}
     ${outline ? outlineClassName : backgroundClassName}
+    ${roundedClassName}
     ${className}
   `;
 

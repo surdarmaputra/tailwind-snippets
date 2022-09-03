@@ -29,6 +29,33 @@ export const Variations = (args) => (
 );
 
 // @ts-expect-error unused args for native HTML element playground
+export const Rounded = (args) => (
+  <>
+    <div className="mb-4 flex flex-wrap items-end space-x-2 space-y-2">
+      {Object.values(ButtonVariation).map((variation, index) => (
+        <Button key={index} rounded variation={variation}>
+          {variation}
+        </Button>
+      ))}
+    </div>
+    <div className="mb-4 flex flex-wrap items-end space-x-2 space-y-2">
+      {Object.values(ButtonVariation).map((variation, index) => (
+        <Button key={index} outline rounded variation={variation}>
+          {variation}
+        </Button>
+      ))}
+    </div>
+    <div className="flex flex-wrap items-center space-x-2 space-y-2">
+      {Object.values(ButtonSize).map((size, index) => (
+        <Button key={index} rounded size={size}>
+          {size}
+        </Button>
+      ))}
+    </div>
+  </>
+);
+
+// @ts-expect-error unused args for native HTML element playground
 export const Sizes = (args) => (
   <>
     {Object.values(ButtonVariation).map((variation, variationIndex) => (

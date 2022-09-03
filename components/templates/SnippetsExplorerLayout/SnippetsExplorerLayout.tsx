@@ -24,7 +24,7 @@ export default function SnippetsExplorerLayout({
   const currentPath = useCurrentPath();
 
   const navigationClassName = classNames({
-    'transition-all fixed top-0 bottom-0 z-20 w-3/4 bg-white py-6 pr-4 pl-4 sm:relative sm:w-1/5 sm:py-0 sm:pl-1':
+    'transition-all fixed overflow-y-auto top-0 bottom-0 z-20 w-3/4 bg-white py-6 pr-4 pl-4 sm:relative sm:w-1/5 sm:py-0 sm:pl-1':
       true,
     '-left-3/4 sm:left-0': !mobileNavigationOpened,
     'left-0': mobileNavigationOpened,
@@ -45,8 +45,9 @@ export default function SnippetsExplorerLayout({
       <div className="mx-auto flex min-h-fit px-2 py-12 lg:container">
         <div className="sm:hidden">
           <Button
-            className="fixed bottom-4 left-1/2 -translate-x-1/2"
+            className="fixed bottom-4 left-1/2 w-24 -translate-x-1/2 rounded-full shadow-2xl"
             onClick={toggleMobileNavigation}
+            rounded
             size="small"
             variation="dark"
           >
@@ -63,7 +64,7 @@ export default function SnippetsExplorerLayout({
           className={backdropClassName}
           onClick={toggleMobileNavigation}
         ></div>
-        <div className={`px-4 sm:w-4/5 ${className}`}>{children}</div>
+        <div className={`w-full px-4 sm:w-4/5 ${className}`}>{children}</div>
       </div>
       <Footer />
     </>
