@@ -1,7 +1,11 @@
+import classNames from 'classnames';
 import Button from 'components/atoms/Button';
-import { useState } from 'react';
+import { identity } from 'lodash-es';
+import { useEffect, useState } from 'react';
 
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right';
+import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize';
+import ArrowsMinimizeIcon from '~icons/tabler/arrows-minimize';
 
 import CodeSnippet from './CodeSnippet';
 import IFrame from './IFrame';
@@ -14,21 +18,39 @@ enum Tab {
 export interface SnippetPreviewProps
   extends React.HTMLProps<HTMLIFrameElement> {
   code?: string;
-  title: string;
+  onMaximized?: (maximized: boolean) => void;
   secondaryTitle?: string;
+  title: string;
 }
 
 export default function SnippetPreview({
   className = '',
   code,
+  onMaximized = identity,
   secondaryTitle,
   src,
   title,
 }: SnippetPreviewProps) {
   const [activeTab, setActiveTab] = useState(Tab.preview);
+  const [maximized, setMaximized] = useState(false);
 
   const renderedTitle = title || 'Snippet Preview';
-  const wrapperClassName = `w-full rounded shadow bg-white ${className}`;
+  const wrapperClassName = `${classNames({
+    'w-full rounded shadow bg-white flex flex-col': true,
+    'fixed top-0 left-0 h-full z-20': maximized,
+  })} ${className}`;
+
+  const toggleMaximize = () => {
+    const newValue = !maximized;
+    setMaximized(newValue);
+    onMaximized(newValue);
+  };
+
+  useEffect(() => {
+    document.body.className = maximized
+      ? `${document.body.className} overflow-hidden`
+      : document.body.className.replace('overflow-hidden', '');
+  }, [maximized]);
 
   return (
     <div className={wrapperClassName}>
@@ -55,6 +77,14 @@ export default function SnippetPreview({
             Code
           </Button>
           <Button
+            onClick={toggleMaximize}
+            size="small"
+            title={maximized ? 'Minimize' : 'Maximize'}
+            variation="light"
+          >
+            {maximized ? <ArrowsMinimizeIcon /> : <ArrowsMaximizeIcon />}
+          </Button>
+          <Button
             external
             href={src}
             link
@@ -68,13 +98,21 @@ export default function SnippetPreview({
         </div>
       </div>
 
-      <div
-        className={activeTab === Tab.preview ? 'block' : 'h-0 overflow-hidden'}
-      >
-        <IFrame src={src} />
-      </div>
-      <div className={activeTab === Tab.code ? 'block' : 'h-0 overflow-hidden'}>
-        <CodeSnippet code={code} />
+      <div className="overflow-auto">
+        <div
+          className={
+            activeTab === Tab.preview ? 'block h-full' : 'h-0 overflow-hidden'
+          }
+        >
+          <IFrame src={src} />
+        </div>
+        <div
+          className={
+            activeTab === Tab.code ? 'block h-fit' : 'h-0 overflow-hidden'
+          }
+        >
+          <CodeSnippet code={code} />
+        </div>
       </div>
     </div>
   );

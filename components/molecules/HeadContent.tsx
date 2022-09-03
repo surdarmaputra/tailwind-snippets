@@ -13,6 +13,7 @@ export default function HeadContent({
     <Head>
       <title>{title}</title>
       <meta content={description} name="description" />
+      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
       <link href="/favicon.ico" rel="icon" />
     </Head>
   );

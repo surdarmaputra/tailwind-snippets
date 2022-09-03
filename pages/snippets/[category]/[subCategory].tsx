@@ -4,6 +4,7 @@ import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout'
 import { SnippetCategory, Variant } from 'core/type';
 import fs from 'fs/promises';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import { useState } from 'react';
 import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
 import getSnippets from 'utils/getStaticProps/getSnippets';
 
@@ -50,16 +51,25 @@ export default function SubCategory({
   snippets,
   variants,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [snippetPreviewMaximized, setSnippetPreviewMaximized] = useState(false);
+
+  const handleMaximized = (maximized: boolean) => {
+    setSnippetPreviewMaximized(maximized);
+  };
+
   return (
     <>
       <HeadContent />
 
-      <SnippetsExplorerLayout snippets={snippets}>
+      <SnippetsExplorerLayout
+        className={snippetPreviewMaximized ? '' : 'space-y-12'}
+        snippets={snippets}
+      >
         {variants.map((snippet) => (
           <SnippetPreview
-            className="mb-12"
             code={snippet.code}
             key={snippet.previewUrl}
+            onMaximized={handleMaximized}
             src={snippet.previewUrl}
             title={snippet.title}
           />

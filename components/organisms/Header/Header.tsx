@@ -18,7 +18,7 @@ export default function Header() {
   const currentPath = useCurrentPath();
 
   return (
-    <header className="container mx-auto flex w-full items-center justify-between p-4 px-6">
+    <header className="mx-auto flex w-full items-center justify-between p-4 px-6 lg:container">
       <div className="w-full text-center text-lg font-bold sm:w-fit sm:text-left">
         <Link href="/">
           <a className="no-underline">

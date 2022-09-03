@@ -23,6 +23,7 @@ export default function IFrame({ src }: React.HTMLProps<HTMLIFrameElement>) {
       className="w-full"
       frameBorder="0"
       height={height}
+      loading="lazy"
       onLoad={handleFrameLoad}
       ref={frameRef}
       src={src}
