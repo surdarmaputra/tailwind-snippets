@@ -37,9 +37,14 @@ const Home: NextPage = () => {
             </li>
           ))}
         </ul>
-        <Button href="/snippets" link size="large" variation="dark">
-          Explore snippets <ArrowNarrowRightIcon className="ml-2" />
-        </Button>
+        <div className="flex flex-col justify-center space-y-4 space-x-0 sm:flex-row sm:space-x-4 sm:space-y-0">
+          <Button href="/snippets" link size="large" variation="dark">
+            Explore snippets <ArrowNarrowRightIcon className="ml-2" />
+          </Button>
+          <Button href="/credits" link outline size="large" variation="dark">
+            Credits <ArrowNarrowRightIcon className="ml-2" />
+          </Button>
+        </div>
       </section>
 
       <Footer />

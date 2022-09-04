@@ -9,8 +9,8 @@ export const navigationItems: NavItem[] = [
     href: '/',
   },
   {
-    title: 'Snippets',
-    href: '/snippets',
+    title: 'Credits',
+    href: '/credits',
   },
 ];
 
