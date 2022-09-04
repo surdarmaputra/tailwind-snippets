@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../styles/app.css';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -10,3 +10,11 @@ export const parameters = {
   },
   viewMode: 'docs',
 };
+
+export const decorators = [
+  (Story) => (
+    <div className="app">
+      <Story />
+    </div>
+  ),
+];

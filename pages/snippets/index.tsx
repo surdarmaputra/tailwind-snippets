@@ -1,12 +1,14 @@
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
+import { merge } from 'lodash-es';
 import { InferGetStaticPropsType } from 'next';
 import getSnippets from 'utils/getStaticProps/getSnippets';
+import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
 import ListSearchIcon from '~icons/tabler/list-search';
 
 export async function getStaticProps() {
-  return getSnippets();
+  return merge(await getSnippets(), await setAsMainApp());
 }
 
 export default function Snippets({

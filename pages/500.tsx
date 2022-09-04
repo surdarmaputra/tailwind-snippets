@@ -1,8 +1,13 @@
 import Button from 'components/atoms/Button';
 import HeadContent from 'components/molecules/HeadContent';
 import type { NextPage } from 'next';
+import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
 import HomeIcon from '~icons/tabler/home';
+
+export async function getStaticProps() {
+  return setAsMainApp();
+}
 
 const ServerError: NextPage = () => {
   return (

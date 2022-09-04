@@ -7,6 +7,7 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useState } from 'react';
 import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
 import getSnippets from 'utils/getStaticProps/getSnippets';
+import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
 interface StaticProps {
   snippets: SnippetCategory[];
@@ -15,6 +16,7 @@ interface StaticProps {
 
 export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
   const { props } = await getSnippets();
+  const { props: mainAppProps } = await setAsMainApp();
   const { snippets } = props;
 
   const selectedCategory = snippets.find(
@@ -36,6 +38,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
   return {
     props: {
       ...props,
+      ...mainAppProps,
       variants,
     },
   };

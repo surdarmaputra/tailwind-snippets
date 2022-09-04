@@ -1,3 +1,5 @@
-a {
-  @apply font-semibold text-black underline decoration-primary-500 decoration-2 underline-offset-2 transition hover:decoration-danger-500;
+.app {
+  a.link {
+    @apply font-semibold text-black underline decoration-primary-500 decoration-2 underline-offset-2 transition hover:decoration-danger-500;
+  }
 }

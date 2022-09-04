@@ -2,11 +2,16 @@ import Button from 'components/atoms/Button';
 import HeadContent from 'components/molecules/HeadContent';
 import Footer from 'components/organisms/Footer/Footer';
 import type { NextPage } from 'next';
+import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
 import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
 import CheckIcon from '~icons/tabler/check';
 
 const features = ['Live preview', 'Code snippet', 'Written in TypeScript'];
+
+export async function getStaticProps() {
+  return setAsMainApp();
+}
 
 const Home: NextPage = () => {
   return (
