@@ -41,7 +41,7 @@ export default function Header({ navigationHidden }: HeaderProps) {
 
   useEffect(() => {
     const isCurrentlyDark = !window.localStorage.theme
-      ? true
+      ? false
       : window.localStorage.theme === 'dark';
     setDark(isCurrentlyDark);
     setDarkClassName(isCurrentlyDark);
