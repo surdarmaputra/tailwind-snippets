@@ -35,6 +35,7 @@ export default function SnippetPreview({
 }: SnippetPreviewProps) {
   const [activeTab, setActiveTab] = useState(Tab.preview);
   const [maximized, setMaximized] = useState(false);
+  const [iframeShownInDev, setIframeShownInDev] = useState(false);
 
   const renderedTitle = title || 'Snippet Preview';
   const wrapperClassName = `${classNames({
@@ -109,7 +110,7 @@ export default function SnippetPreview({
             activeTab === Tab.preview ? 'block h-full' : 'h-0 overflow-hidden'
           }
         >
-          {!isDevelopment ? (
+          {!isDevelopment || iframeShownInDev ? (
             <IFrame src={src} />
           ) : (
             <div className="py-16 px-4 text-center">
@@ -119,6 +120,14 @@ export default function SnippetPreview({
               <p className="text-dark-400">
                 To prevent webpack HMR issue, preview is disabled
               </p>
+              <Button
+                className="mx-auto mt-8"
+                onClick={() => setIframeShownInDev(true)}
+                size="small"
+                variation="dark"
+              >
+                Load iframe anyway
+              </Button>
             </div>
           )}
         </div>

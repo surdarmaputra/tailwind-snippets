@@ -47,7 +47,8 @@ const links: NavLink[] = [
 function Logo() {
   return (
     <div className="w-full text-center text-lg font-bold sm:w-fit sm:text-left">
-      <span className="text-primary-500">Tailwind</span> <span>Snippets</span>
+      <span className="text-primary-500">Tailwind</span>{' '}
+      <span className="dark:text-slate-100">Snippets</span>
     </div>
   );
 }
@@ -61,8 +62,12 @@ function NavLink({ children, className, currentPath, href }: NavLinkProps) {
   return (
     <a
       className={`
-        block whitespace-nowrap px-3 py-2 text-sm font-semibold no-underline transition hover:text-slate-900
-        ${currentPath === href ? 'text-slate-900' : 'text-slate-400'}
+        block whitespace-nowrap px-3 py-2 text-sm font-semibold no-underline transition hover:text-slate-900 dark:hover:text-slate-50
+        ${
+          currentPath === href
+            ? 'text-slate-900 dark:text-slate-50'
+            : 'text-slate-400'
+        }
         ${className}
       `}
       href={href}
@@ -82,10 +87,10 @@ function Navigation({ mobile = false, navLinks = [] }: NavigationProps) {
   const [mobileNavigationOpened, setMobileNavigationOpened] = useState(false);
 
   const navClassName = `
-    bg-white text-base
+    bg-white text-base dark:bg-slate-900
     ${
       mobile
-        ? `transition transform -right-1/3 fixed top-0 z-20 h-full w-1/3 overflow-y-auto py-4 sm:hidden ${
+        ? `transition transform -right-1/2 fixed top-0 z-20 h-full w-1/2 overflow-y-auto py-4 sm:hidden ${
             mobileNavigationOpened ? '-translate-x-full shadow-2xl' : ''
           }`
         : 'hidden sm:block'
@@ -104,8 +109,8 @@ function Navigation({ mobile = false, navLinks = [] }: NavigationProps) {
     delay-75 ease-in-out space-y-2 
     ${
       mobile
-        ? 'h-0 overflow-y-hidden bg-slate-50 px-4 py-0 transition-all group-hover:h-full group-hover:py-4'
-        : 'invisible absolute z-30 rounded-lg border border-slate-50 bg-white p-4 opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100'
+        ? 'h-0 overflow-y-hidden bg-slate-50 px-4 py-0 transition-all group-hover:h-full group-hover:py-4 dark:bg-slate-800'
+        : 'invisible absolute z-30 rounded-lg border border-slate-50 bg-white p-4 opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-slate-900 dark:border-slate-800'
     }
   `;
 
@@ -115,7 +120,7 @@ function Navigation({ mobile = false, navLinks = [] }: NavigationProps) {
     <>
       {mobile && (
         <button
-          className="block text-slate-400 hover:text-slate-900 sm:hidden"
+          className="block text-slate-400 hover:text-slate-900 dark:hover:text-slate-50 sm:hidden"
           onClick={() => setMobileNavigationOpened(true)}
           title="Open navigation menu"
         >
@@ -125,7 +130,7 @@ function Navigation({ mobile = false, navLinks = [] }: NavigationProps) {
 
       {mobile && mobileNavigationOpened && (
         <div
-          className="fixed top-0 right-0 z-10 h-full w-full bg-slate-900 opacity-70 sm:hidden"
+          className="fixed top-0 right-0 z-10 h-full w-full bg-slate-900 opacity-70 dark:opacity-90 sm:hidden"
           onClick={closeMobileNavigation}
         ></div>
       )}
@@ -135,7 +140,7 @@ function Navigation({ mobile = false, navLinks = [] }: NavigationProps) {
           {mobile && (
             <li className="text-right">
               <button
-                className="px-6 py-2 text-slate-400 hover:text-slate-900"
+                className="px-6 py-2 text-slate-400 hover:text-slate-900 dark:hover:text-slate-50"
                 onClick={closeMobileNavigation}
               >
                 <ArrowNarrowRightIcon />
@@ -175,7 +180,7 @@ interface HeaderProps {
 
 function Header({ navLinks = [] }: HeaderProps) {
   return (
-    <header className="container mx-auto flex w-full items-center justify-between py-4 px-6 sm:px-0">
+    <header className="container mx-auto flex w-full items-center justify-between py-4 px-6  sm:px-0">
       <a href="#">
         <Logo />
       </a>
@@ -188,7 +193,7 @@ function Header({ navLinks = [] }: HeaderProps) {
 /** Page */
 export default function RightNavigation() {
   return (
-    <div className="h-64">
+    <div className="h-64 dark:text-slate-200">
       <Header navLinks={links} />
       <p className="container mx-auto px-6 py-8 sm:px-0">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id varius

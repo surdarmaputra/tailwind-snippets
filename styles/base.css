@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+.app {
   @apply text-dark-800 dark:bg-dark-900 dark:text-dark-300;
 }

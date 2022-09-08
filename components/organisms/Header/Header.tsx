@@ -1,9 +1,9 @@
 import ColorModeToggle from 'components/atoms/ColorModeToggle';
 import HorizontalNavigation from 'components/molecules/HorizontalNavigation';
 import { NavItem } from 'core/type';
+import useColorMode from 'hooks/useColorMode';
 import useCurrentPath from 'hooks/useCurrentPath';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 export const navigationItems: NavItem[] = [
   {
@@ -21,31 +21,8 @@ export interface HeaderProps {
 }
 
 export default function Header({ navigationHidden }: HeaderProps) {
-  const [dark, setDark] = useState(false);
-
   const currentPath = useCurrentPath();
-
-  const setDarkClassName = (becomeDark: boolean) => {
-    if (becomeDark) {
-      global.document.documentElement.classList.add('dark');
-    } else {
-      global.document.documentElement.classList.remove('dark');
-    }
-  };
-
-  const toggleColorMode = (becomeDark: boolean) => {
-    setDark(becomeDark);
-    setDarkClassName(becomeDark);
-    global.localStorage.theme = becomeDark ? 'dark' : 'light';
-  };
-
-  useEffect(() => {
-    const isCurrentlyDark = !window.localStorage.theme
-      ? false
-      : window.localStorage.theme === 'dark';
-    setDark(isCurrentlyDark);
-    setDarkClassName(isCurrentlyDark);
-  }, [setDark]);
+  const { dark, toggleColorMode } = useColorMode();
 
   return (
     <header className="mx-auto flex w-full items-center justify-between p-6 lg:container">
