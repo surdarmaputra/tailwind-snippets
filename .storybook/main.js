@@ -10,7 +10,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-addon-next',
-    'storybook-tailwind-dark-mode',
+    'storybook-dark-mode',
   ],
   framework: '@storybook/react',
   core: {

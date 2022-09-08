@@ -33,21 +33,21 @@ export const Rounded = (args) => (
   <>
     <div className="mb-4 flex flex-wrap items-end space-x-2 space-y-2">
       {Object.values(ButtonVariation).map((variation, index) => (
-        <Button key={index} rounded variation={variation}>
+        <Button key={variation + index} rounded variation={variation}>
           {variation}
         </Button>
       ))}
     </div>
     <div className="mb-4 flex flex-wrap items-end space-x-2 space-y-2">
       {Object.values(ButtonVariation).map((variation, index) => (
-        <Button key={index} outline rounded variation={variation}>
+        <Button key={variation + index} outline rounded variation={variation}>
           {variation}
         </Button>
       ))}
     </div>
     <div className="flex flex-wrap items-center space-x-2 space-y-2">
       {Object.values(ButtonSize).map((size, index) => (
-        <Button key={index} rounded size={size}>
+        <Button key={size + index} rounded size={size}>
           {size}
         </Button>
       ))}
@@ -64,7 +64,7 @@ export const Sizes = (args) => (
         key={variationIndex}
       >
         {Object.values(ButtonSize).map((size, sizeIndex) => (
-          <Button key={sizeIndex} size={size} variation={variation}>
+          <Button key={variation + sizeIndex} size={size} variation={variation}>
             {size}
           </Button>
         ))}
@@ -76,23 +76,21 @@ export const Sizes = (args) => (
 // @ts-expect-error unused args for native HTML element playground
 export const Outline = (args) => (
   <>
-    {Object.values(ButtonVariation).map((variation, variationIndex) => (
-      <div
-        className="mb-4 flex flex-wrap items-center space-x-2 space-y-2"
-        key={variationIndex}
-      >
-        {Object.values(ButtonSize).map((size, sizeIndex) => (
-          <>
-            <Button key={sizeIndex} size={size} variation={variation}>
-              {size}
-            </Button>
-            <Button key={sizeIndex} outline size={size} variation={variation}>
-              {size}
-            </Button>
-          </>
-        ))}
-      </div>
-    ))}
+    {Object.values(ButtonVariation).map((variation, variationIndex) =>
+      Object.values(ButtonSize).map((size, sizeIndex) => (
+        <div
+          className="mb-4 flex flex-wrap items-center space-x-2 space-y-2"
+          key={variation + sizeIndex}
+        >
+          <Button size={size} variation={variation}>
+            {size}
+          </Button>
+          <Button outline size={size} variation={variation}>
+            {size}
+          </Button>
+        </div>
+      )),
+    )}
   </>
 );
 
@@ -101,14 +99,14 @@ export const Disabled = (args) => (
   <>
     <div className="mb-4 flex flex-wrap items-end space-x-2 space-y-2">
       {Object.values(ButtonVariation).map((variation, index) => (
-        <Button disabled key={index} variation={variation}>
+        <Button disabled key={variation + index} variation={variation}>
           {variation}
         </Button>
       ))}
     </div>
     <div className="flex flex-wrap items-end space-x-2 space-y-2">
       {Object.values(ButtonVariation).map((variation, index) => (
-        <Button disabled key={index} outline variation={variation}>
+        <Button disabled key={variation + index} outline variation={variation}>
           {variation}
         </Button>
       ))}

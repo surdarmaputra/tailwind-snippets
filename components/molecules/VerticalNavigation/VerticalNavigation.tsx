@@ -29,7 +29,7 @@ export default function VerticalNavigation({
       </div>
       {snippets.map((category) => (
         <div className="mb-6 flex flex-col text-sm" key={category.slug}>
-          <div className="my-2 px-3 font-bold uppercase text-dark-900">
+          <div className="my-2 px-3 font-bold uppercase text-dark-900 dark:text-dark-50">
             {category.title}
           </div>
           {category.subCategories.map((subCategory) => (

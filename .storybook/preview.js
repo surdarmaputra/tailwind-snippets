@@ -1,5 +1,9 @@
 import '../styles/app.css';
 
+import React from 'react';
+
+import { DocsContainer } from './DocsContainer';
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -7,6 +11,12 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  darkMode: {
+    stylePreview: true,
+  },
+  docs: {
+    container: DocsContainer,
   },
   viewMode: 'docs',
 };

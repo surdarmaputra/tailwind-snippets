@@ -36,7 +36,7 @@ export default function SnippetPreview({
 
   const renderedTitle = title || 'Snippet Preview';
   const wrapperClassName = `${classNames({
-    'w-full rounded shadow bg-white flex flex-col': true,
+    'w-full rounded shadow bg-white flex flex-col dark:bg-dark-900': true,
     'fixed top-0 left-0 h-full z-20': maximized,
   })} ${className}`;
 
@@ -54,7 +54,7 @@ export default function SnippetPreview({
 
   return (
     <div className={wrapperClassName}>
-      <div className="flex w-full flex-col items-center justify-between border-b border-b-dark-100 p-4 sm:flex-row">
+      <div className="flex w-full flex-col items-center justify-between border-b border-b-dark-100 p-4 dark:border-b-black sm:flex-row">
         <div className="mb-4 w-full sm:mb-0 sm:w-fit">
           <h6 className="mb-0 mr-4">{renderedTitle}</h6>
           {secondaryTitle && (
