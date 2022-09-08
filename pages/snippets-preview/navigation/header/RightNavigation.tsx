@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
-import MenuIcon from '~icons/tabler/menu-2';
+import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';
+import MenuIcon from '~icons/tabler/menu-2.tsx';
 
 /** Links */
 interface NavLink {

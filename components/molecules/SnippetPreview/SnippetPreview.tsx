@@ -3,9 +3,9 @@ import Button from 'components/atoms/Button';
 import { identity } from 'lodash-es';
 import { useEffect, useState } from 'react';
 
-import ArrowUpRightIcon from '~icons/tabler/arrow-up-right';
-import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize';
-import ArrowsMinimizeIcon from '~icons/tabler/arrows-minimize';
+import ArrowUpRightIcon from '~icons/tabler/arrow-up-right.tsx';
+import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize.tsx';
+import ArrowsMinimizeIcon from '~icons/tabler/arrows-minimize.tsx';
 
 import CodeSnippet from './CodeSnippet';
 import IFrame from './IFrame';
@@ -18,6 +18,7 @@ enum Tab {
 export interface SnippetPreviewProps
   extends React.HTMLProps<HTMLIFrameElement> {
   code?: string;
+  isDevelopment?: boolean;
   onMaximized?: (maximized: boolean) => void;
   secondaryTitle?: string;
   title: string;
@@ -26,6 +27,7 @@ export interface SnippetPreviewProps
 export default function SnippetPreview({
   className = '',
   code,
+  isDevelopment,
   onMaximized = identity,
   secondaryTitle,
   src,
@@ -36,7 +38,8 @@ export default function SnippetPreview({
 
   const renderedTitle = title || 'Snippet Preview';
   const wrapperClassName = `${classNames({
-    'w-full rounded shadow bg-white flex flex-col dark:bg-dark-900': true,
+    'w-full rounded shadow bg-white flex flex-col border border-dark-100 dark:bg-dark-900 dark:border-dark-800':
+      true,
     'fixed top-0 left-0 h-full z-20': maximized,
   })} ${className}`;
 
@@ -54,9 +57,11 @@ export default function SnippetPreview({
 
   return (
     <div className={wrapperClassName}>
-      <div className="flex w-full flex-col items-center justify-between border-b border-b-dark-100 p-4 dark:border-b-black sm:flex-row">
+      <div className="flex w-full flex-col items-center justify-between border-b border-b-dark-200 p-4 dark:border-b-dark-800 sm:flex-row">
         <div className="mb-4 w-full sm:mb-0 sm:w-fit">
-          <h6 className="mb-0 mr-4">{renderedTitle}</h6>
+          <div className="mb-0 mr-4 font-bold leading-loose text-dark-900 dark:text-dark-50">
+            {renderedTitle}
+          </div>
           {secondaryTitle && (
             <div className="text-xs text-dark-400">{secondaryTitle}</div>
           )}
@@ -104,7 +109,18 @@ export default function SnippetPreview({
             activeTab === Tab.preview ? 'block h-full' : 'h-0 overflow-hidden'
           }
         >
-          <IFrame src={src} />
+          {!isDevelopment ? (
+            <IFrame src={src} />
+          ) : (
+            <div className="py-16 px-4 text-center">
+              <div className="mb-2 text-2xl font-bold text-dark-300">
+                Development mode
+              </div>
+              <p className="text-dark-400">
+                To prevent webpack HMR issue, preview is disabled
+              </p>
+            </div>
+          )}
         </div>
         <div
           className={

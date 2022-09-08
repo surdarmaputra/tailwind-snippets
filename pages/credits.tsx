@@ -1,10 +1,11 @@
 import Button from 'components/atoms/Button';
 import HeadContent from 'components/molecules/HeadContent';
 import Footer from 'components/organisms/Footer/Footer';
+import Header from 'components/organisms/Header';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
-import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
-import CheckIcon from '~icons/tabler/check';
+import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';
+import CheckIcon from '~icons/tabler/check.tsx';
 
 export async function getStaticProps() {
   return setAsMainApp();
@@ -15,12 +16,14 @@ export default function Credits() {
     <>
       <HeadContent />
 
+      <Header navigationHidden />
+
       <div className="absolute left-0 top-64 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
 
       <section className="container mx-auto py-16 px-6 text-center sm:py-40">
         <h1 className="mx-auto mb-12 w-3/4 text-4xl sm:text-5xl">Credits</h1>
-        <p className="pb-10 text-dark-600">
+        <p className="pb-10">
           Kudos to the following parties for providing useful resources for this
           project:
         </p>

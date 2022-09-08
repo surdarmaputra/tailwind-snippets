@@ -10,7 +10,9 @@ export default {
 
 const Template: ComponentStory<typeof SnippetsExplorerLayout> = (args) => (
   <SnippetsExplorerLayout {...args}>
-    <div className="h-full w-full bg-dark-50 p-24 text-center">Content</div>
+    <div className="h-full w-full bg-dark-50 p-24 text-center dark:bg-dark-900">
+      Content
+    </div>
   </SnippetsExplorerLayout>
 );
 

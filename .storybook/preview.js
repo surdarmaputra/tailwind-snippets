@@ -2,6 +2,7 @@ import '../styles/app.css';
 
 import React from 'react';
 
+import { darkTheme } from './constants';
 import { DocsContainer } from './DocsContainer';
 
 export const parameters = {
@@ -13,6 +14,8 @@ export const parameters = {
     },
   },
   darkMode: {
+    classTarget: 'html',
+    dark: darkTheme,
     stylePreview: true,
   },
   docs: {

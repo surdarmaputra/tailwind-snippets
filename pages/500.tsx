@@ -3,7 +3,7 @@ import HeadContent from 'components/molecules/HeadContent';
 import type { NextPage } from 'next';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
-import HomeIcon from '~icons/tabler/home';
+import HomeIcon from '~icons/tabler/home.tsx';
 
 export async function getStaticProps() {
   return setAsMainApp();

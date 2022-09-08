@@ -8,7 +8,7 @@ import { SnippetCategory } from 'core/type';
 import useCurrentPath from 'hooks/useCurrentPath';
 import { useState } from 'react';
 
-import MenuIcon from '~icons/tabler/menu-2';
+import MenuIcon from '~icons/tabler/menu-2.tsx';
 
 export interface SnippetsExplorerLayoutProps
   extends React.HTMLProps<HTMLDivElement> {
@@ -24,14 +24,14 @@ export default function SnippetsExplorerLayout({
   const currentPath = useCurrentPath();
 
   const navigationClassName = classNames({
-    'transition-all fixed overflow-y-auto top-0 bottom-0 z-20 w-3/4 bg-white py-6 pr-4 pl-4 sm:relative sm:w-1/5 sm:py-0 sm:pl-1':
+    'transition-all fixed overflow-y-auto top-0 bottom-0 z-20 w-3/4 bg-white py-6 pr-4 pl-4 sm:relative sm:w-1/5 sm:py-0 sm:pl-1 dark:bg-dark-900':
       true,
     '-left-3/4 sm:left-0': !mobileNavigationOpened,
     'left-0': mobileNavigationOpened,
   });
 
   const backdropClassName = classNames({
-    'transition-all fixed top-0 bottom-0 right-0 z-10 bg-dark-900 opacity-75 sm:hidden':
+    'transition-all fixed top-0 bottom-0 right-0 z-10 bg-dark-900 opacity-75 dark:bg-black sm:hidden':
       true,
     'w-full': mobileNavigationOpened,
   });

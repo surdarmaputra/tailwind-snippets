@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import NextLink from 'next/link';
 
-import LoaderIcon from '~icons/tabler/loader-2';
+import LoaderIcon from '~icons/tabler/loader-2.tsx';
 
 export enum ButtonVariation {
   primary = 'primary',
@@ -38,17 +38,17 @@ const backgroundClassNames = {
     [ButtonVariation.danger]: 'bg-danger-500 hover:bg-danger-600',
     [ButtonVariation.warning]: 'bg-warning-500 hover:bg-warning-600',
     [ButtonVariation.light]:
-      'bg-dark-50 hover:bg-dark-100 text-dark-900 dark:bg-dark-800 dark:text-dark-100 dark:hover:bg-dark-900',
+      'bg-dark-50 hover:bg-dark-100 text-dark-900 dark:bg-dark-700 dark:text-dark-100 dark:hover:bg-dark-800',
     [ButtonVariation.dark]:
-      'bg-dark-800 hover:bg-dark-900 dark:bg-dark-100 dark:hover:bg-dark-50',
+      'bg-dark-800 hover:bg-dark-900 dark:bg-dark-200 dark:hover:bg-white dark:text-black',
   },
   disabled: {
     [ButtonVariation.primary]: 'bg-primary-400',
     [ButtonVariation.success]: 'bg-success-400',
     [ButtonVariation.danger]: 'bg-danger-400',
     [ButtonVariation.warning]: 'bg-warning-400',
-    [ButtonVariation.light]: 'bg-dark-50 dark:bg-dark-700',
-    [ButtonVariation.dark]: 'bg-dark-500 dark:bg-dark-200',
+    [ButtonVariation.light]: 'bg-dark-50 dark:bg-dark-700 dark:text-dark-400',
+    [ButtonVariation.dark]: 'bg-dark-500 dark:bg-dark-300 dark:text-dark-600',
   },
 };
 const borderClassNames = {
@@ -58,9 +58,9 @@ const borderClassNames = {
     [ButtonVariation.danger]: 'border-danger-500 hover:border-danger-600',
     [ButtonVariation.warning]: 'border-warning-500 hover:border-warning-600',
     [ButtonVariation.light]:
-      'border-dark-50 hover:border-dark-100 dark:border-dark-800 dark:hover:border-dark-900',
+      'border-dark-50 hover:border-dark-100 dark:border-dark-700 dark:hover:border-dark-800',
     [ButtonVariation.dark]:
-      'border-dark-800 hover:border-dark-900 dark:border-dark-100 dark:hover:border-dark-50',
+      'border-dark-800 hover:border-dark-900 dark:border-dark-200 dark:hover:border-white',
   },
   disabled: {
     [ButtonVariation.primary]: 'border-primary-400',
@@ -69,7 +69,7 @@ const borderClassNames = {
     [ButtonVariation.warning]: 'border-warning-400',
     [ButtonVariation.light]:
       'border-dark-50 text-dark-300 dark:border-dark-700',
-    [ButtonVariation.dark]: 'border-dark-500 dark:border-dark-200',
+    [ButtonVariation.dark]: 'border-dark-500 dark:border-dark-400',
   },
 };
 const outlineClassNames = {
@@ -79,16 +79,16 @@ const outlineClassNames = {
     [ButtonVariation.danger]: 'text-danger-500 hover:bg-danger-600',
     [ButtonVariation.warning]: 'text-warning-500 hover:bg-warning-600',
     [ButtonVariation.light]:
-      'text-dark-900 dark:text-dark-50 dark:hover:text-dark-900 hover:bg-dark-100',
+      'text-dark-900 dark:text-dark-400 dark:hover:text-dark-100 hover:bg-dark-100 dark:hover:bg-dark-800',
     [ButtonVariation.dark]:
-      'text-dark-800 dark:border-dark-900 dark:text-dark-900 dark:hover:text-dark-50 hover:bg-dark-900',
+      'text-dark-800 dark:border-dark-200 dark:text-dark-100 hover:bg-dark-900 dark:hover:text-dark-900 dark:hover:bg-white',
   },
   disabled: {
     [ButtonVariation.primary]: 'text-primary-300',
     [ButtonVariation.success]: 'text-success-300',
     [ButtonVariation.danger]: 'text-danger-300',
     [ButtonVariation.warning]: 'text-warning-300',
-    [ButtonVariation.light]: 'text-dark-400',
+    [ButtonVariation.light]: 'text-dark-400 dark:text-dark-600',
     [ButtonVariation.dark]: 'text-dark-500',
   },
 };
@@ -133,10 +133,9 @@ export default function Button({
   const finalClassName = `
     ${classNames({
       'button transition': true,
-      'text-white dark:text-black':
-        !outline && variation !== ButtonVariation.light,
+      'text-white': !outline && variation !== ButtonVariation.light,
       'bg-transparent': outline,
-      'hover:text-white dark:hover:text-black':
+      'hover:text-white':
         outline && !disabled && variation !== ButtonVariation.light,
       'cursor-not-allowed': disabled,
       'cursor-pointer hover:shadow-lg': !disabled,

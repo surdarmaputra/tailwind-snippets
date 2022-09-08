@@ -5,7 +5,7 @@ import { InferGetStaticPropsType } from 'next';
 import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
-import ListSearchIcon from '~icons/tabler/list-search';
+import ListSearchIcon from '~icons/tabler/list-search.tsx';
 
 export async function getStaticProps() {
   return merge(await getSnippets(), await setAsMainApp());

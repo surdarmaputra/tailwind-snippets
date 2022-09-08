@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import ArrowDownCircleIcon from '~icons/tabler/arrow-down-circle';
-import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
+import ArrowDownCircleIcon from '~icons/tabler/arrow-down-circle.tsx';
+import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';
 
 import Button, { ButtonSize, ButtonVariation } from './Button';
 

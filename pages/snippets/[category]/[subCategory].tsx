@@ -10,6 +10,7 @@ import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
 interface StaticProps {
+  isDevelopment: boolean;
   snippets: SnippetCategory[];
   variants: Variant[];
 }
@@ -39,6 +40,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
     props: {
       ...props,
       ...mainAppProps,
+      isDevelopment: process.env.NODE_ENV === 'development',
       variants,
     },
   };
@@ -51,6 +53,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default function SubCategory({
+  isDevelopment,
   snippets,
   variants,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -71,6 +74,7 @@ export default function SubCategory({
         {variants.map((snippet) => (
           <SnippetPreview
             code={snippet.code}
+            isDevelopment={isDevelopment}
             key={snippet.previewUrl}
             onMaximized={handleMaximized}
             src={snippet.previewUrl}

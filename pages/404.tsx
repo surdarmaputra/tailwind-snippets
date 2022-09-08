@@ -3,7 +3,7 @@ import HeadContent from 'components/molecules/HeadContent';
 import type { NextPage } from 'next';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
-import ArrowNarrowLeftIcon from '~icons/tabler/arrow-narrow-left';
+import ArrowNarrowLeftIcon from '~icons/tabler/arrow-narrow-left.tsx';
 
 export async function getStaticProps() {
   return setAsMainApp();

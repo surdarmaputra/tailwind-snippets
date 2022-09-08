@@ -28,7 +28,7 @@ export default function CodeSnippet({ code }: CodeSnippetProps) {
   return (
     <div className="relative">
       <CopyToClipboard onCopy={() => setCopied(true)} text={code}>
-        <button className="absolute right-0 top-0 rounded-bl bg-dark-100 px-3 py-1 text-xs">
+        <button className="absolute right-0 top-0 rounded-bl bg-dark-100 px-3 py-1 text-xs dark:bg-dark-800 dark:text-dark-400">
           {copied ? 'Copied' : 'Copy'}
         </button>
       </CopyToClipboard>

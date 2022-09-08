@@ -1,4 +1,4 @@
-import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
+import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';
 
 interface Service {
   imageUrl: string;

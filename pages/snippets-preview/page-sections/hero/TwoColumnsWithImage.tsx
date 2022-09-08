@@ -1,4 +1,4 @@
-import CheckIcon from '~icons/tabler/check';
+import CheckIcon from '~icons/tabler/check.tsx';
 
 const benefits: string[] = [
   'Various types of coffee beans',

@@ -1,11 +1,12 @@
 import Button from 'components/atoms/Button';
 import HeadContent from 'components/molecules/HeadContent';
 import Footer from 'components/organisms/Footer/Footer';
+import Header from 'components/organisms/Header';
 import type { NextPage } from 'next';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
-import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right';
-import CheckIcon from '~icons/tabler/check';
+import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';
+import CheckIcon from '~icons/tabler/check.tsx';
 
 const features = ['Live preview', 'Code snippet', 'Written in TypeScript'];
 
@@ -18,14 +19,16 @@ const Home: NextPage = () => {
     <>
       <HeadContent />
 
+      <Header navigationHidden />
+
       <div className="absolute left-0 top-64 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
 
       <section className="container mx-auto py-16 px-6 text-center sm:py-40">
-        <h1 className="mx-auto mb-12 w-3/4 text-4xl sm:text-5xl">
+        <h1 className="mx-auto w-3/4 pb-10 text-4xl sm:text-5xl">
           Tailwind Snippets for React Applications
         </h1>
-        <p className="text-dark-600">
+        <p>
           Collection of UI patterns built using Tailwind CSS for React
           applications.
         </p>
