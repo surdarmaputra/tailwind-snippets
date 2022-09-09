@@ -18,15 +18,20 @@ export const navigationItems: NavItem[] = [
 ];
 
 export interface HeaderProps {
+  fixed?: boolean;
   navigationHidden?: boolean;
 }
 
-export default function Header({ navigationHidden }: HeaderProps) {
+export default function Header({ fixed, navigationHidden }: HeaderProps) {
   const currentPath = useCurrentPath();
   const { dark, toggleColorMode } = useContext(ColorModeContext);
 
   return (
-    <header className="mx-auto flex w-full items-center justify-between p-6 lg:container">
+    <header
+      className={`z-50 mx-auto flex w-full items-center justify-between p-6 lg:container ${
+        fixed ? 'fixed bg-white dark:bg-slate-900' : ''
+      }`}
+    >
       <div className="w-fit text-lg font-bold">
         <Link href="/">
           <a className="no-underline">

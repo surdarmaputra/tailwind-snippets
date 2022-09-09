@@ -34,7 +34,7 @@ export default function ThreeColumns() {
   return (
     <>
       <section className="container mx-auto px-12 py-28">
-        <h1 className="mb-24 w-full text-center text-4xl font-extrabold sm:mb-20 sm:w-4/5 sm:text-left">
+        <h1 className="mb-24 w-full text-center text-4xl font-extrabold dark:text-slate-50 sm:mb-20 sm:w-4/5 sm:text-left">
           <span className="text-violet-500">Best services</span> for business
           and personal usage
         </h1>
@@ -47,20 +47,20 @@ export default function ThreeColumns() {
               <div className="w-full text-center sm:text-left">
                 <img
                   alt={title}
-                  className="mx-auto mb-4 h-16 sm:mx-0"
+                  className="mx-auto mb-4 h-16 dark:contrast-200 dark:invert sm:mx-0"
                   src={imageUrl}
                 />
-                <h2 className="mb-2 text-xl font-bold leading-tight md:text-xl">
+                <h2 className="mb-2 text-xl font-bold leading-tight dark:text-slate-50 md:text-xl">
                   {title}
                 </h2>
-                <p className="mb-4 leading-relaxed text-slate-700">
+                <p className="mb-4 leading-relaxed text-slate-700 dark:text-slate-400">
                   {description}
                 </p>
               </div>
               {href && (
                 <div className="text-center sm:text-left">
                   <a
-                    className="group relative mx-auto inline-block text-sm font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-2 transition hover:decoration-slate-900 sm:m-0"
+                    className="group relative mx-auto inline-block text-sm font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-8 transition hover:decoration-slate-900 dark:text-slate-200 dark:hover:decoration-slate-200 sm:m-0"
                     href={href}
                   >
                     Read more{' '}

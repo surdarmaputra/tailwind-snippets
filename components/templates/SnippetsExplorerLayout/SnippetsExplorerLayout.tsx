@@ -41,8 +41,8 @@ export default function SnippetsExplorerLayout({
 
   return (
     <>
-      <Header />
-      <div className="mx-auto flex min-h-fit px-2 py-12 lg:container">
+      <Header fixed />
+      <div className="mx-auto flex min-h-fit px-2 pb-12 pt-32 lg:container">
         <div className="sm:hidden">
           <Button
             className="fixed bottom-4 left-1/2 z-10 w-24 -translate-x-1/2 rounded-full shadow-2xl"

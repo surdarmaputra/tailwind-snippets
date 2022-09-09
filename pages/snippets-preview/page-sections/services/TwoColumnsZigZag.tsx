@@ -46,19 +46,21 @@ export default function TwoColumnsZigZag() {
           >
             <img
               alt="Security"
-              className={`mb-10 h-24 w-full pr-16 pl-16 sm:mb-0 sm:h-fit sm:w-1/2 ${
+              className={`mb-10 h-24 w-full pr-16 pl-16 dark:contrast-200 dark:invert sm:mb-0 sm:h-fit sm:w-1/2 ${
                 index % 2 ? 'sm:pl-24 sm:pr-0' : 'sm:pr-24 sm:pl-0'
               }`}
               src={imageUrl}
             />
             <div className="mr-4 w-full text-center sm:w-1/2 sm:text-left">
-              <h2 className="mb-4 text-3xl font-bold leading-tight md:text-4xl">
+              <h2 className="mb-4 text-3xl font-bold leading-tight dark:text-slate-50 md:text-4xl">
                 {title}
               </h2>
-              <p className="leading-relaxed text-slate-700">{description}</p>
+              <p className="leading-relaxed text-slate-700 dark:text-slate-400">
+                {description}
+              </p>
               {href && (
                 <a
-                  className="group relative mx-auto mt-8 inline-block font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-2 transition hover:decoration-slate-900 sm:mx-0"
+                  className="group relative mx-auto mt-8 inline-block font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-8 transition hover:decoration-slate-900 dark:text-slate-200 dark:hover:decoration-slate-200 sm:mx-0"
                   href={href}
                 >
                   {actionText}{' '}
