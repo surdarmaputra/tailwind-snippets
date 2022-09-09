@@ -4,7 +4,8 @@ import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout'
 import { SnippetCategory, Variant } from 'core/type';
 import fs from 'fs/promises';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { useState } from 'react';
+import { ColorModeContext } from 'providers/ColorModeProvider';
+import { useContext, useState } from 'react';
 import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
 import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
@@ -58,6 +59,7 @@ export default function SubCategory({
   variants,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [snippetPreviewMaximized, setSnippetPreviewMaximized] = useState(false);
+  const { dark } = useContext(ColorModeContext);
 
   const handleMaximized = (maximized: boolean) => {
     setSnippetPreviewMaximized(maximized);
@@ -77,7 +79,7 @@ export default function SubCategory({
             isDevelopment={isDevelopment}
             key={snippet.previewUrl}
             onMaximized={handleMaximized}
-            src={snippet.previewUrl}
+            src={`${snippet.previewUrl}${dark ? '?theme=dark' : ''}`}
             title={snippet.title}
           />
         ))}

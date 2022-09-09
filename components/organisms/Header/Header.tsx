@@ -1,9 +1,10 @@
 import ColorModeToggle from 'components/atoms/ColorModeToggle';
 import HorizontalNavigation from 'components/molecules/HorizontalNavigation';
 import { NavItem } from 'core/type';
-import useColorMode from 'hooks/useColorMode';
 import useCurrentPath from 'hooks/useCurrentPath';
 import Link from 'next/link';
+import { ColorModeContext } from 'providers/ColorModeProvider';
+import { useContext } from 'react';
 
 export const navigationItems: NavItem[] = [
   {
@@ -22,7 +23,7 @@ export interface HeaderProps {
 
 export default function Header({ navigationHidden }: HeaderProps) {
   const currentPath = useCurrentPath();
-  const { dark, toggleColorMode } = useColorMode();
+  const { dark, toggleColorMode } = useContext(ColorModeContext);
 
   return (
     <header className="mx-auto flex w-full items-center justify-between p-6 lg:container">
