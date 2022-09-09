@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right.tsx';
 import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize.tsx';
 import ArrowsMinimizeIcon from '~icons/tabler/arrows-minimize.tsx';
-import DeviceDesktopIcon from '~icons/tabler/device-desktop';
-import DeviceMobileIcon from '~icons/tabler/device-mobile';
-import DeviceTabletIcon from '~icons/tabler/device-tablet';
+import DeviceDesktopIcon from '~icons/tabler/device-desktop.tsx';
+import DeviceMobileIcon from '~icons/tabler/device-mobile.tsx';
+import DeviceTabletIcon from '~icons/tabler/device-tablet.tsx';
 
 import CodeSnippet from './CodeSnippet';
 import IFrame from './IFrame';
