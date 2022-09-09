@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right.tsx';
 import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize.tsx';
 import ArrowsMinimizeIcon from '~icons/tabler/arrows-minimize.tsx';
+import DeviceDesktopIcon from '~icons/tabler/device-desktop';
+import DeviceMobileIcon from '~icons/tabler/device-mobile';
+import DeviceTabletIcon from '~icons/tabler/device-tablet';
 
 import CodeSnippet from './CodeSnippet';
 import IFrame from './IFrame';
@@ -13,6 +16,41 @@ import IFrame from './IFrame';
 enum Tab {
   code,
   preview,
+}
+
+enum ScreenWidth {
+  fit = 'fit',
+  xs = '360',
+  sm = '640',
+  md = '768',
+  lg = '1024',
+  xl = '1280',
+}
+
+interface ScreenIconProps {
+  width: ScreenWidth;
+  className?: string;
+}
+
+function ScreenIcon({ width, className }: ScreenIconProps) {
+  if ([ScreenWidth.xl, ScreenWidth.lg].includes(width)) {
+    return <DeviceDesktopIcon className={className} />;
+  }
+
+  if ([ScreenWidth.md, ScreenWidth.sm].includes(width)) {
+    return <DeviceTabletIcon className={className} />;
+  }
+
+  if (width === ScreenWidth.xs) {
+    return <DeviceMobileIcon className={className} />;
+  }
+
+  return (
+    <>
+      <DeviceDesktopIcon className={`hidden sm:block ${className}`} />
+      <DeviceMobileIcon className={`block sm:hidden ${className}`} />
+    </>
+  );
 }
 
 export interface SnippetPreviewProps
@@ -36,6 +74,7 @@ export default function SnippetPreview({
   const [activeTab, setActiveTab] = useState(Tab.preview);
   const [maximized, setMaximized] = useState(false);
   const [iframeShownInDev, setIframeShownInDev] = useState(false);
+  const [previewScreenWidth, setPreviewScreenWidth] = useState(ScreenWidth.fit);
 
   const renderedTitle = title || 'Snippet Preview';
   const wrapperClassName = `${classNames({
@@ -58,7 +97,7 @@ export default function SnippetPreview({
 
   return (
     <div className={wrapperClassName}>
-      <div className="flex w-full flex-col items-center justify-between border-b border-b-dark-200 p-4 dark:border-b-dark-800 sm:flex-row">
+      <div className="flex w-full flex-col items-start justify-between border-b border-b-dark-200 p-4 dark:border-b-dark-800 sm:flex-row">
         <div className="mb-4 w-full sm:mb-0 sm:w-fit">
           <div className="mb-0 mr-4 font-bold leading-loose text-dark-900 dark:text-dark-50">
             {renderedTitle}
@@ -68,6 +107,31 @@ export default function SnippetPreview({
           )}
         </div>
         <div className="flex w-full items-center justify-start space-x-2 sm:w-fit sm:justify-end">
+          <div
+            className={`group relative transition delay-100 ease-in-out ${
+              activeTab === Tab.preview ? 'w-fit' : 'w-0 overflow-hidden'
+            }`}
+          >
+            <Button size="small" variation="dark">
+              <ScreenIcon width={previewScreenWidth} />
+            </Button>
+            <ul className="absolute top-full z-30 mt-1 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
+              {Object.entries(ScreenWidth).map(([key, width]) => (
+                <button
+                  className={`flex w-full items-end p-2 text-dark-500 hover:text-dark-900 ${
+                    width === previewScreenWidth ? 'bg-dark-300' : ''
+                  }`}
+                  key={key}
+                  onClick={() => setPreviewScreenWidth(width)}
+                >
+                  <ScreenIcon className="w-8 text-left" width={width} />
+                  <span>{`${width}${
+                    width !== ScreenWidth.fit ? 'px' : ''
+                  }`}</span>
+                </button>
+              ))}
+            </ul>
+          </div>
           <Button
             onClick={() => setActiveTab(Tab.preview)}
             size="small"
@@ -107,11 +171,24 @@ export default function SnippetPreview({
       <div className="overflow-auto">
         <div
           className={
-            activeTab === Tab.preview ? 'block h-full' : 'h-0 overflow-hidden'
+            activeTab === Tab.preview
+              ? 'block h-full bg-dark-800'
+              : 'h-0 overflow-hidden'
           }
         >
           {!isDevelopment || iframeShownInDev ? (
-            <IFrame src={src} />
+            <IFrame
+              className={classNames({
+                'mx-auto': true,
+                'w-full': previewScreenWidth === ScreenWidth.fit,
+                'w-[360px]': previewScreenWidth === ScreenWidth.xs,
+                'w-[640px]': previewScreenWidth === ScreenWidth.sm,
+                'w-[768px]': previewScreenWidth === ScreenWidth.md,
+                'w-[1024px]': previewScreenWidth === ScreenWidth.lg,
+                'w-[1280px]': previewScreenWidth === ScreenWidth.xl,
+              })}
+              src={src}
+            />
           ) : (
             <div className="py-16 px-4 text-center">
               <div className="mb-2 text-2xl font-bold text-dark-300">

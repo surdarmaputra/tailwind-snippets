@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function IFrame({ src }: React.HTMLProps<HTMLIFrameElement>) {
+export default function IFrame({
+  className = '',
+  src,
+}: React.HTMLProps<HTMLIFrameElement>) {
   const frameRef = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState<number | undefined>(undefined);
 
@@ -18,9 +21,13 @@ export default function IFrame({ src }: React.HTMLProps<HTMLIFrameElement>) {
     setTimeout(adjustHeight, 500);
   }, []);
 
+  useEffect(() => {
+    setTimeout(adjustHeight, 500);
+  }, [className]);
+
   return (
     <iframe
-      className="w-full"
+      className={`w-full ${className}`}
       frameBorder="0"
       height={height}
       loading="lazy"
