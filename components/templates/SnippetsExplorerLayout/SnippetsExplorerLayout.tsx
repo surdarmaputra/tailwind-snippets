@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 import classNames from 'classnames';
+
 import Button from 'components/atoms/Button';
 import VerticalNavigation from 'components/molecules/VerticalNavigation';
 import Footer from 'components/organisms/Footer/Footer';
@@ -6,7 +9,6 @@ import Header from 'components/organisms/Header';
 import { navigationItems } from 'components/organisms/Header/Header';
 import { SnippetCategory } from 'core/type';
 import useCurrentPath from 'hooks/useCurrentPath';
-import { useState } from 'react';
 
 import MenuIcon from '~icons/tabler/menu-2.tsx';
 

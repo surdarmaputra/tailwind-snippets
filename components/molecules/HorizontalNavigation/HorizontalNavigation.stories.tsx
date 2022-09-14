@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import { NavItem } from 'core/type';
 
 import HorizontalNavigation from './HorizontalNavigation';

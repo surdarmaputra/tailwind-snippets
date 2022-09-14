@@ -1,5 +1,3 @@
-import { identity } from 'lodash-es';
-import { useRouter } from 'next/router';
 import {
   createContext,
   ReactNode,
@@ -7,6 +5,9 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { useRouter } from 'next/router';
+
+import { identity } from 'lodash-es';
 
 export interface ColorModeContextValue {
   dark: boolean;

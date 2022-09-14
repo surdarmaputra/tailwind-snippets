@@ -1,7 +1,9 @@
-import classNames from 'classnames';
-import Button from 'components/atoms/Button';
-import { identity } from 'lodash-es';
 import { useEffect, useState } from 'react';
+
+import classNames from 'classnames';
+import { identity } from 'lodash-es';
+
+import Button from 'components/atoms/Button';
 
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right.tsx';
 import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize.tsx';

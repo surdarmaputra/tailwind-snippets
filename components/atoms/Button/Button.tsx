@@ -1,5 +1,6 @@
-import classNames from 'classnames';
 import NextLink from 'next/link';
+
+import classNames from 'classnames';
 
 import LoaderIcon from '~icons/tabler/loader-2.tsx';
 

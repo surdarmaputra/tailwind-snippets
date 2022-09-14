@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import { snippets } from 'components/molecules/VerticalNavigation/sample';
 
 import SnippetsExplorerLayout from './SnippetsExplorerLayout';

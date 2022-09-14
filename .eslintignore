@@ -1,2 +1,3 @@
-!.*
+!.storybook
+.next
 node_modules

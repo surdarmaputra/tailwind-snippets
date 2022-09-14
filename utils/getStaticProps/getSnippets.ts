@@ -1,5 +1,6 @@
-import { SnippetCategory } from 'core/type';
 import readDir from 'recursive-readdir';
+
+import { SnippetCategory } from 'core/type';
 import createSnippetsDirectoryTree, {
   snippetsDirectory,
 } from 'utils/array/createSnippetsDirectoryTree';

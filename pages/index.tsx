@@ -1,8 +1,9 @@
+import type { NextPage } from 'next';
+
 import Button from 'components/atoms/Button';
 import HeadContent from 'components/molecules/HeadContent';
 import Footer from 'components/organisms/Footer/Footer';
 import Header from 'components/organisms/Header';
-import type { NextPage } from 'next';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
 import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';

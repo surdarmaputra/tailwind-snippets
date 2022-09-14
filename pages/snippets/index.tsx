@@ -1,7 +1,9 @@
+import { InferGetStaticPropsType } from 'next';
+
+import { merge } from 'lodash-es';
+
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
-import { merge } from 'lodash-es';
-import { InferGetStaticPropsType } from 'next';
 import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 

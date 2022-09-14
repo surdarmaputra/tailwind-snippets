@@ -1,6 +1,7 @@
-import { SnippetCategory } from 'core/type';
 import { findIndex, startCase } from 'lodash-es';
 import path from 'path';
+
+import { SnippetCategory } from 'core/type';
 
 export const snippetsDirectory = path.join(
   process.cwd(),

@@ -1,11 +1,13 @@
+import { useContext, useState } from 'react';
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+
+import fs from 'fs/promises';
+
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetPreview from 'components/molecules/SnippetPreview';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
 import { SnippetCategory, Variant } from 'core/type';
-import fs from 'fs/promises';
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ColorModeContext } from 'providers/ColorModeProvider';
-import { useContext, useState } from 'react';
 import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
 import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
