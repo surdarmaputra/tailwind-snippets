@@ -117,7 +117,7 @@ export default function SnippetPreview({
             <Button size="small" variation="dark">
               <ScreenIcon width={previewScreenWidth} />
             </Button>
-            <ul className="absolute top-full z-30 mt-1 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
+            <ul className="invisible absolute top-full z-30 mt-1 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
               {Object.entries(ScreenWidth).map(([key, width]) => (
                 <button
                   className={`flex w-full items-end p-2 text-dark-500 hover:text-dark-900 ${
