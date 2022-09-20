@@ -15,6 +15,7 @@ export async function getStaticProps() {
 
 export default function Snippets({
   snippets,
+  themes,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -23,6 +24,7 @@ export default function Snippets({
       <SnippetsExplorerLayout
         className="flex flex-col items-center py-10 text-center sm:py-20"
         snippets={snippets}
+        themes={themes}
       >
         <ListSearchIcon className="mb-12 h-32 w-32 text-dark-200" />
         <h2>Select any snippet</h2>

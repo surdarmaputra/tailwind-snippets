@@ -3,10 +3,7 @@ import path from 'path';
 
 import { SnippetCategory } from 'core/type';
 
-export const snippetsDirectory = path.join(
-  process.cwd(),
-  'pages/snippets-preview',
-);
+export const snippetsDirectory = path.join(process.cwd(), 'pages/preview');
 
 export default function createSnippetsDirectoryTree(
   snippetPaths: string[],
@@ -43,11 +40,15 @@ export default function createSnippetsDirectoryTree(
     subCategoryIndex = findIndex(tree[categoryIndex].subCategories, {
       slug: subCategory,
     });
-    const [title] = variant.split('.');
+    const [ignoredExt, title, theme] = variant.split('.').reverse();
     tree[categoryIndex].subCategories[subCategoryIndex].variants.push({
+      theme: theme || null,
+      themeTitle: theme ? startCase(theme) : null,
       title: startCase(title),
       path: filePath,
-      previewUrl: `/snippets-preview/${tree[categoryIndex].slug}/${tree[categoryIndex].subCategories[subCategoryIndex].slug}/${title}`,
+      previewUrl: `/preview/${tree[categoryIndex].slug}/${
+        tree[categoryIndex].subCategories[subCategoryIndex].slug
+      }/${theme ? `${theme}.` : ''}${title}`,
     });
   });
 

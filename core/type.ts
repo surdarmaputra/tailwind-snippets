@@ -2,7 +2,12 @@ export interface NavItem {
   title: string;
   href: string;
 }
-export interface Variant {
+
+export interface Theme {
+  theme: string | null;
+  themeTitle: string | null;
+}
+export interface Variant extends Theme {
   title: string;
   path: string;
   code?: string;
@@ -19,4 +24,9 @@ export interface SnippetCategory {
   slug: string;
   title: string;
   subCategories: SnippetSubCategory[];
+}
+
+export interface SelectOption {
+  label: string | null;
+  value: string | null;
 }

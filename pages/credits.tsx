@@ -52,6 +52,18 @@ export default function Credits() {
               Ketut Subiyanto on Pexel
             </a>
           </li>
+          <li className="flex items-end">
+            <CheckIcon className="mr-2 text-success-500" />
+            Inspired by&nbsp;
+            <a
+              className="link"
+              href="https://chakra-templates.dev/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Chakra Templates
+            </a>
+          </li>
         </ul>
 
         <div className="flex flex-col justify-center space-y-4 space-x-0 sm:flex-row sm:space-x-4 sm:space-y-0">

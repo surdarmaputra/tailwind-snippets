@@ -9,3 +9,50 @@ body {
 .app {
   @apply text-dark-800 dark:bg-dark-900 dark:text-dark-300;
 }
+
+.react-select {
+  &__value-container,
+  &__indicators {
+    @apply h-12 dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  &__control {
+    @apply border-slate-300 dark:border-slate-600 !important;
+
+    &:hover,
+    &--is-focused,
+    &--menu-is-open {
+      @apply border-slate-300 shadow-none dark:border-slate-600 !important;
+    }
+  }
+
+  &__menu {
+    @apply z-50;
+  }
+
+  &__menu-list {
+    @apply border border-slate-200 dark:border-slate-600 dark:bg-slate-800;
+  }
+
+  &__option {
+    &:hover,
+    &:focus,
+    &--is-focused,
+    &--is-selected {
+      @apply bg-slate-100 dark:bg-slate-900 !important;
+    }
+  }
+
+  &__multi-value {
+    @apply bg-slate-100 dark:bg-slate-800 !important;
+  }
+
+  &__multi-value__label,
+  &__multi-value__remove {
+    @apply text-slate-600 dark:text-slate-300 !important;
+  }
+
+  &__multi-value__remove:hover {
+    @apply bg-slate-200 dark:bg-slate-600 !important;
+  }
+}

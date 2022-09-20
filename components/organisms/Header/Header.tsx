@@ -29,7 +29,7 @@ export default function Header({ fixed, navigationHidden }: HeaderProps) {
 
   return (
     <header
-      className={`z-50 mx-auto flex w-full items-center justify-between p-6 lg:container ${
+      className={`z-30 mx-auto flex w-full items-center justify-between p-6 lg:container ${
         fixed ? 'fixed bg-white dark:bg-slate-900' : ''
       }`}
     >
