@@ -4,10 +4,14 @@ const variants: Variant[] = [
   {
     title: 'Variant 1',
     path: '/path-sample',
+    theme: null,
+    themeTitle: null,
   },
   {
     title: 'Variant 2',
     path: '/path-sample',
+    theme: null,
+    themeTitle: null,
   },
 ];
 

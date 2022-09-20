@@ -13,7 +13,7 @@ import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
 import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
-import MoodConfuzedIcon from '~icons/tabler/mood-confuzed';
+import MoodConfuzedIcon from '~icons/tabler/mood-confuzed.tsx';
 
 interface StaticProps {
   isDevelopment: boolean;
