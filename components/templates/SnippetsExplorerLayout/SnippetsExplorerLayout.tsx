@@ -100,7 +100,7 @@ export default function SnippetsExplorerLayout({
             isMulti
             onChange={handleThemeChange}
             options={themeOptions}
-            placeholder="Select theme(s) or keep it blank to show all"
+            placeholder="Theme filter"
             value={themesSelectValue}
           />
         )}

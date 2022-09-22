@@ -8,6 +8,7 @@ import Button from 'components/atoms/Button';
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right.tsx';
 import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize.tsx';
 import ArrowsMinimizeIcon from '~icons/tabler/arrows-minimize.tsx';
+import CodeIcon from '~icons/tabler/code.tsx';
 import DeviceDesktopIcon from '~icons/tabler/device-desktop.tsx';
 import DeviceMobileIcon from '~icons/tabler/device-mobile.tsx';
 import DeviceTabletIcon from '~icons/tabler/device-tablet.tsx';
@@ -108,45 +109,47 @@ export default function SnippetPreview({
             <div className="text-xs text-dark-400">{secondaryTitle}</div>
           )}
         </div>
-        <div className="flex w-full items-center justify-start space-x-2 sm:w-fit sm:justify-end">
-          <div
-            className={`group relative transition delay-100 ease-in-out ${
-              activeTab === Tab.preview ? 'w-fit' : 'w-0 overflow-hidden'
-            }`}
-          >
-            <Button size="small" variation="dark">
-              <ScreenIcon width={previewScreenWidth} />
+        <div className="flex w-full items-center justify-start space-x-1 sm:w-fit sm:justify-end">
+          <div className="flex items-center justify-start">
+            <div
+              className={`group relative transition delay-100 ease-in-out ${
+                activeTab === Tab.preview ? 'mr-1 w-fit' : 'w-0 overflow-hidden'
+              }`}
+            >
+              <Button size="small" variation="dark">
+                <ScreenIcon width={previewScreenWidth} />
+              </Button>
+              <ul className="invisible absolute top-full z-30 mt-1 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
+                {Object.entries(ScreenWidth).map(([key, width]) => (
+                  <button
+                    className={`flex w-full items-end p-2 text-dark-500 hover:text-dark-900 ${
+                      width === previewScreenWidth ? 'bg-dark-300' : ''
+                    }`}
+                    key={key}
+                    onClick={() => setPreviewScreenWidth(width)}
+                  >
+                    <ScreenIcon className="w-8 text-left" width={width} />
+                    <span>{`${width}${
+                      width !== ScreenWidth.fit ? 'px' : ''
+                    }`}</span>
+                  </button>
+                ))}
+              </ul>
+            </div>
+            <Button
+              onClick={() => setActiveTab(Tab.preview)}
+              size="small"
+              variation={activeTab === Tab.preview ? 'dark' : 'light'}
+            >
+              View
             </Button>
-            <ul className="invisible absolute top-full z-30 mt-1 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
-              {Object.entries(ScreenWidth).map(([key, width]) => (
-                <button
-                  className={`flex w-full items-end p-2 text-dark-500 hover:text-dark-900 ${
-                    width === previewScreenWidth ? 'bg-dark-300' : ''
-                  }`}
-                  key={key}
-                  onClick={() => setPreviewScreenWidth(width)}
-                >
-                  <ScreenIcon className="w-8 text-left" width={width} />
-                  <span>{`${width}${
-                    width !== ScreenWidth.fit ? 'px' : ''
-                  }`}</span>
-                </button>
-              ))}
-            </ul>
           </div>
-          <Button
-            onClick={() => setActiveTab(Tab.preview)}
-            size="small"
-            variation={activeTab === Tab.preview ? 'dark' : 'light'}
-          >
-            Preview
-          </Button>
           <Button
             onClick={() => setActiveTab(Tab.code)}
             size="small"
             variation={activeTab === Tab.code ? 'dark' : 'light'}
           >
-            Code
+            <CodeIcon />
           </Button>
           <Button
             onClick={toggleMaximize}
