@@ -30,7 +30,9 @@ export default function Header({ fixed, navigationHidden }: HeaderProps) {
   return (
     <header
       className={`z-30 mx-auto flex w-full items-center justify-between p-6 lg:container ${
-        fixed ? 'fixed bg-white dark:bg-slate-900' : ''
+        fixed
+          ? 'fixed left-1/2 -translate-x-1/2 bg-white dark:bg-slate-900'
+          : ''
       }`}
     >
       <div className="w-fit text-lg font-bold">

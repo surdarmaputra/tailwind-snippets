@@ -31,7 +31,7 @@ export default function Snippets({
                   href={subCategory.href || '/snippets'}
                   key={subCategory.slug}
                 >
-                  <a className="w-1/2 sm:w-1/3">
+                  <a className="w-1/2 sm:w-1/3 xl:w-1/5">
                     <Thumbnail
                       name={subCategory.slug}
                       title={subCategory.title}
