@@ -36,7 +36,7 @@ export default function VerticalNavigation({
             <NavItem
               className="mb-2"
               currentPath={currentPath}
-              href={`/snippets/${category.slug}/${subCategory.slug}`}
+              href={subCategory.href}
               key={subCategory.slug}
             >
               {subCategory.title}

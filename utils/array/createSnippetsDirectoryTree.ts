@@ -34,6 +34,7 @@ export default function createSnippetsDirectoryTree(
         slug: subCategory,
         title: startCase(subCategory),
         variants: [],
+        href: `/snippets/${tree[categoryIndex].slug}/${subCategory}`,
       });
     }
 

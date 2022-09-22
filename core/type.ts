@@ -18,6 +18,7 @@ export interface SnippetSubCategory {
   slug: string;
   title: string;
   variants: Variant[];
+  href?: string;
 }
 
 export interface SnippetCategory {
