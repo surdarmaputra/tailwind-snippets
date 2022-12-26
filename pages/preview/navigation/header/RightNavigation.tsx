@@ -180,7 +180,7 @@ interface HeaderProps {
 
 function Header({ navLinks = [] }: HeaderProps) {
   return (
-    <header className="container mx-auto flex w-full items-center justify-between py-4 px-6  sm:px-0">
+    <header className="container mx-auto flex w-full items-center justify-between py-4 px-6">
       <a href="#">
         <Logo />
       </a>
@@ -195,7 +195,7 @@ export default function RightNavigation() {
   return (
     <div className="h-64 dark:text-slate-200">
       <Header navLinks={links} />
-      <p className="container mx-auto px-6 py-8 sm:px-0">
+      <p className="container mx-auto px-6 py-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id varius
         turpis. Nullam ut tincidunt tellus. Nunc fermentum odio vitae turpis
         fermentum vulputate. Morbi vel malesuada felis. Fusce vestibulum nibh id

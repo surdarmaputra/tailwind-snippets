@@ -3,7 +3,7 @@ export default function TwoColumnsWithIllustration() {
     <section className="container mx-auto flex flex-col px-8 py-36 sm:flex-row-reverse sm:px-12">
       <img
         alt="Woman doing meditation"
-        className="mb-8 w-full sm:mb-0 sm:ml-4 sm:w-1/2"
+        className="mb-8 w-full sm:mb-0 sm:ml-4 sm:w-1/2 dark:contrast-200"
         src="/illustrations/undraw_meditation_re_gll0.svg"
       />
       <div className="mr-4 w-full text-center sm:w-1/2 sm:text-left">

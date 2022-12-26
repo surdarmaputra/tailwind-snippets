@@ -24,11 +24,34 @@ enum Tab {
 enum ScreenWidth {
   fit = 'fit',
   xs = '360',
+  phone1 = '480',
+  phone2 = '540',
+  phone3 = '600',
   sm = '640',
+  tablet1 = '720',
   md = '768',
+  tablet2 = '800',
   lg = '1024',
+  desktop1 = '1080',
   xl = '1280',
+  desktop2 = '1440',
+  desktop3 = '1536',
 }
+
+const desktopScreens = [
+  ScreenWidth.xl,
+  ScreenWidth.lg,
+  ScreenWidth.desktop1,
+  ScreenWidth.desktop2,
+  ScreenWidth.desktop3,
+];
+
+const tableScreens = [
+  ScreenWidth.md,
+  ScreenWidth.sm,
+  ScreenWidth.tablet1,
+  ScreenWidth.tablet2,
+];
 
 interface ScreenIconProps {
   width: ScreenWidth;
@@ -36,24 +59,24 @@ interface ScreenIconProps {
 }
 
 function ScreenIcon({ width, className }: ScreenIconProps) {
-  if ([ScreenWidth.xl, ScreenWidth.lg].includes(width)) {
+  if (width === ScreenWidth.fit) {
+    return (
+      <>
+        <DeviceDesktopIcon className={`hidden sm:block ${className}`} />
+        <DeviceMobileIcon className={`block sm:hidden ${className}`} />
+      </>
+    );
+  }
+
+  if (desktopScreens.includes(width)) {
     return <DeviceDesktopIcon className={className} />;
   }
 
-  if ([ScreenWidth.md, ScreenWidth.sm].includes(width)) {
+  if (tableScreens.includes(width)) {
     return <DeviceTabletIcon className={className} />;
   }
 
-  if (width === ScreenWidth.xs) {
-    return <DeviceMobileIcon className={className} />;
-  }
-
-  return (
-    <>
-      <DeviceDesktopIcon className={`hidden sm:block ${className}`} />
-      <DeviceMobileIcon className={`block sm:hidden ${className}`} />
-    </>
-  );
+  return <DeviceMobileIcon className={className} />;
 }
 
 export interface SnippetPreviewProps
@@ -119,7 +142,7 @@ export default function SnippetPreview({
               <Button size="small" variation="dark">
                 <ScreenIcon width={previewScreenWidth} />
               </Button>
-              <ul className="invisible absolute top-full z-30 mt-1 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
+              <ul className="invisible absolute top-full z-30 mt-0 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
                 {Object.entries(ScreenWidth).map(([key, width]) => (
                   <button
                     className={`flex w-full items-end p-2 text-dark-500 hover:text-dark-900 ${
@@ -187,10 +210,18 @@ export default function SnippetPreview({
                 'mx-auto': true,
                 'w-full': previewScreenWidth === ScreenWidth.fit,
                 'w-[360px]': previewScreenWidth === ScreenWidth.xs,
+                'w-[480px]': previewScreenWidth === ScreenWidth.phone1,
+                'w-[540px]': previewScreenWidth === ScreenWidth.phone2,
+                'w-[600px]': previewScreenWidth === ScreenWidth.phone3,
                 'w-[640px]': previewScreenWidth === ScreenWidth.sm,
+                'w-[720px]': previewScreenWidth === ScreenWidth.tablet1,
                 'w-[768px]': previewScreenWidth === ScreenWidth.md,
+                'w-[800px]': previewScreenWidth === ScreenWidth.tablet2,
                 'w-[1024px]': previewScreenWidth === ScreenWidth.lg,
+                'w-[1080px]': previewScreenWidth === ScreenWidth.desktop1,
                 'w-[1280px]': previewScreenWidth === ScreenWidth.xl,
+                'w-[1440px]': previewScreenWidth === ScreenWidth.desktop2,
+                'w-[1536px]': previewScreenWidth === ScreenWidth.desktop3,
               })}
               src={src}
             />
