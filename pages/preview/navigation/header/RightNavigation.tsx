@@ -178,7 +178,7 @@ interface HeaderProps {
   navLinks?: NavLink[];
 }
 
-function Header({ navLinks = [] }: HeaderProps) {
+export function Header({ navLinks = links }: HeaderProps) {
   return (
     <header className="container mx-auto flex w-full items-center justify-between py-4 px-6">
       <a href="#">
@@ -194,7 +194,7 @@ function Header({ navLinks = [] }: HeaderProps) {
 export default function RightNavigation() {
   return (
     <div className="h-64 dark:text-slate-200">
-      <Header navLinks={links} />
+      <Header />
       <p className="container mx-auto px-6 py-8">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis id varius
         turpis. Nullam ut tincidunt tellus. Nunc fermentum odio vitae turpis
