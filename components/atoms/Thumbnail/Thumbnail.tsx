@@ -7,7 +7,7 @@ import ServicesThumbnail from './ServicesThumbnail';
 export enum ThumbnailName {
   header = 'header',
   hero = 'hero',
-  services = 'services',
+  benefits = 'benefits',
 }
 
 export interface ThumbnailProps extends React.HTMLProps<HTMLDivElement> {
@@ -18,7 +18,7 @@ export interface ThumbnailProps extends React.HTMLProps<HTMLDivElement> {
 const thumbnailComponents: Record<string, ReactNode> = {
   header: <HeaderThumbnail />,
   hero: <HeroThumbnail />,
-  services: <ServicesThumbnail />,
+  benefits: <ServicesThumbnail />,
 };
 
 export default function Thumbnail({ className, name, title }: ThumbnailProps) {
