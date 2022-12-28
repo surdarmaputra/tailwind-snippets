@@ -16,20 +16,24 @@ const links: NavLink[] = [
     href: '/',
   },
   {
-    title: 'Services',
+    title: 'Solutions',
     href: '#',
     children: [
       {
-        title: 'Web development',
-        href: '/services/web-development',
+        title: 'Business Line of Credit',
+        href: '#',
       },
       {
-        title: 'Digital marketing',
-        href: '/services/digital-marketing',
+        title: 'SBA Loan',
+        href: '#',
       },
       {
-        title: 'Brand strategy',
-        href: '/services/brand-strategy',
+        title: 'Revenue Based Financing',
+        href: '#',
+      },
+      {
+        title: 'Invoice Factoring',
+        href: '#',
       },
     ],
   },
@@ -46,9 +50,9 @@ const links: NavLink[] = [
 /** Logo */
 function Logo() {
   return (
-    <div className="w-full text-center text-lg font-bold sm:w-fit sm:text-left">
-      <span className="text-cyan-500">Tailwind</span>{' '}
-      <span className="dark:text-slate-100">Snippets</span>
+    <div className="w-full text-center text-lg font-extrabold sm:w-fit sm:text-left">
+      <span className="text-violet-500">Unique</span>{' '}
+      <span className="dark:text-slate-400">Fund</span>
     </div>
   );
 }
@@ -62,7 +66,7 @@ function NavLink({ children, className, currentPath, href }: NavLinkProps) {
   return (
     <a
       className={`
-        block whitespace-nowrap px-3 py-2 text-sm font-semibold no-underline transition hover:text-slate-900 dark:hover:text-slate-50
+        block whitespace-nowrap px-2 py-2 text-sm no-underline transition hover:text-slate-900 dark:hover:text-slate-50
         ${
           currentPath === href
             ? 'text-slate-900 dark:text-slate-50'
@@ -90,7 +94,7 @@ function Navigation({ mobile = false, navLinks = [] }: NavigationProps) {
     bg-white text-base dark:bg-slate-900
     ${
       mobile
-        ? `transition transform -right-1/2 fixed top-0 z-20 h-full w-1/2 overflow-y-auto py-4 sm:hidden ${
+        ? `transition transform -right-2/3 fixed top-0 z-20 h-full w-2/3 overflow-y-auto py-4 sm:hidden ${
             mobileNavigationOpened ? '-translate-x-full shadow-2xl' : ''
           }`
         : 'hidden sm:block'

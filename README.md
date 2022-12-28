@@ -9,6 +9,12 @@ git clone https://github.com/surdarmaputra/tailwind-snippets
 
 # Install dependencies
 yarn install
+
+# Preparet Git hook
+npx lefthook install
+
+# Test lefthook
+npx lefthook run pre-commit
 ```
 
 Run the development server:
