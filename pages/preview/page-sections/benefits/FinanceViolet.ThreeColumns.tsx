@@ -35,8 +35,7 @@ export default function ThreeColumns() {
     <>
       <section className="container mx-auto px-12 py-28">
         <h1 className="mb-24 w-full text-center text-4xl font-extrabold dark:text-slate-50 sm:mb-20 sm:w-4/5 sm:text-left">
-          <span className="text-violet-500">Best services</span> for business
-          and personal usage
+          <span className="text-violet-500">Best services</span> for small and medium businesses
         </h1>
         <div className="flex flex-col space-y-24 sm:flex-row sm:space-y-0 sm:space-x-4 ">
           {services.map(({ imageUrl, title, description, href }, index) => (
