@@ -22,15 +22,15 @@ const testimony = [
 export default function ThreeColumnsUntitled() {
   return (
     <section className="container mx-auto px-12 py-28">
-      <h1 className="mb-24 w-full text-center text-4xl font-extrabold dark:text-slate-50 sm:mx-auto sm:mb-24 sm:w-4/5">
+      <h1 className="mb-24 w-full text-center text-4xl font-extrabold dark:text-slate-50 md:mx-auto md:mb-24 md:w-4/5">
         Our <span className="text-violet-500">happy customers</span>
       </h1>
-      <div className="flex flex-col space-y-24 sm:flex-row sm:space-y-0">
+      <div className="flex flex-col space-y-6 md:flex-row md:space-y-0">
         {testimony.map(({ name, company, message }, index) => (
           <div
             className={`
-              flex w-full flex-col justify-between rounded-lg bg-white py-8 px-6 text-center text-slate-800 shadow-lg shadow-slate-200 transition dark:shadow-slate-600
-              ${index === 1 ? 'z-10 scale-y-110 scale-x-110' : ''}
+              flex w-full flex-col justify-between rounded-lg bg-white py-8 px-6 text-center text-slate-800 shadow-lg shadow-slate-200 transition dark:bg-slate-800 dark:shadow-slate-800
+              ${index === 1 ? 'z-10 md:scale-y-110 md:scale-x-110' : ''}
             `}
             key={index}
           >

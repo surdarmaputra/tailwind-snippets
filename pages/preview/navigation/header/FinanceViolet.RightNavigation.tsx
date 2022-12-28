@@ -52,7 +52,7 @@ function Logo() {
   return (
     <div className="w-full text-center text-lg font-extrabold sm:w-fit sm:text-left">
       <span className="text-violet-500">Unique</span>{' '}
-      <span className="dark:text-slate-100">Fund</span>
+      <span className="dark:text-slate-400">Fund</span>
     </div>
   );
 }

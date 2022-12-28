@@ -41,11 +41,11 @@ function TabInfoItem({ active, icon, onClick, title }: TabInfoItemProps) {
   return (
     <div
       className={`
-        flex cursor-pointer flex-col items-center justify-start rounded-lg py-5 px-6 text-center text-slate-800 shadow-slate-200 transition dark:shadow-slate-600
+        flex cursor-pointer flex-col items-center justify-start rounded-lg py-5 px-6 text-center text-slate-800 shadow-slate-200 transition dark:text-slate-200 dark:shadow-slate-700
         ${
           active
-            ? 'bg-white shadow-lg'
-            : 'bg-slate-50 hover:bg-white hover:shadow-lg hover:shadow-slate-200'
+            ? 'bg-white shadow-lg dark:bg-slate-700'
+            : 'bg-slate-50 hover:bg-white hover:shadow-lg hover:shadow-slate-200 dark:bg-slate-800 dark:hover:shadow-slate-800'
         }
       `}
       onClick={onClick}
@@ -61,7 +61,7 @@ function TabInfoItem({ active, icon, onClick, title }: TabInfoItemProps) {
 function BusinessLineOfCreditInfo() {
   return (
     <>
-      <div>
+      <div className="text-center md:text-left">
         <div className="text-4xl font-extrabold text-white">
           Business Line
           <br />
@@ -70,18 +70,18 @@ function BusinessLineOfCreditInfo() {
         <div className="mt-2 text-sm text-violet-100">
           Pay interest only on what you use
         </div>
-        <ul className="mt-6 text-sm text-violet-100">
-          <li className="flex items-center">
+        <ul className="mt-6 mb-8 text-sm text-violet-100 md:mb-0">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             High credit limit
           </li>
-          <li className="flex items-center">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             Fast disbursement, anytime
           </li>
         </ul>
       </div>
-      <form className="ml-8 flex flex-col">
+      <form className="flex flex-col md:ml-8">
         <input
           className="mb-4 rounded-md px-4 py-3 font-light"
           min={0}
@@ -103,27 +103,27 @@ function BusinessLineOfCreditInfo() {
 function SBALoanInfo() {
   return (
     <>
-      <div>
+      <div className="text-center md:text-left">
         <div className="text-4xl font-extrabold text-white">SBA Loan</div>
         <div className="mt-2 text-sm text-violet-100">
           Find SBA-guaranteed loan near your business
         </div>
-        <ul className="mt-6 text-sm text-violet-100">
-          <li className="flex items-center">
+        <ul className="mt-6 mb-8 text-sm text-violet-100 md:mb-0">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             Competitive terms
           </li>
-          <li className="flex items-center">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             Counseling and education
           </li>
-          <li className="flex items-center">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             Unique benefits
           </li>
         </ul>
       </div>
-      <form className="ml-8 flex flex-col">
+      <form className="flex flex-col md:ml-8">
         <input
           className="mb-4 rounded-md px-4 py-3 font-light"
           placeholder="Your Zip Code"
@@ -144,7 +144,7 @@ function SBALoanInfo() {
 function RevenueBasedFinancingInfo() {
   return (
     <>
-      <div>
+      <div className="text-center md:text-left">
         <div className="text-4xl font-extrabold text-white">
           Revenue Based
           <br />
@@ -153,22 +153,22 @@ function RevenueBasedFinancingInfo() {
         <div className="mt-2 text-sm text-violet-100">
           Your sales is doing great? Use it to get more finance support
         </div>
-        <ul className="mt-6 text-sm text-violet-100">
-          <li className="flex items-center">
+        <ul className="mt-6 mb-8 text-sm text-violet-100 md:mb-0">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             No authority over use of capital
           </li>
-          <li className="flex items-center">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             No assets or collateral required
           </li>
-          <li className="flex items-center">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             Flexible repayment terms
           </li>
         </ul>
       </div>
-      <form className="ml-8 flex flex-col">
+      <form className="flex flex-col md:ml-8">
         <select className="mb-4 rounded-md bg-white px-4 py-3 font-light">
           <option disabled selected value="">
             Business operating time
@@ -202,25 +202,25 @@ function RevenueBasedFinancingInfo() {
 function InvoiceFactoringInfo() {
   return (
     <>
-      <div>
+      <div className="text-center md:text-left">
         <div className="text-4xl font-extrabold text-white">
           Invoice Factoring
         </div>
         <div className="mt-2 text-sm text-violet-100">
           Get early cash before your customer pay the bill
         </div>
-        <ul className="mt-6 text-sm text-violet-100">
-          <li className="flex items-center">
+        <ul className="mt-6 mb-8 text-sm text-violet-100 md:mb-0">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             Customized programs
           </li>
-          <li className="flex items-center">
+          <li className="flex items-center justify-center md:justify-start">
             <CheckIcon className="mr-3" />
             Fast disbursement
           </li>
         </ul>
       </div>
-      <form className="ml-8 flex flex-col">
+      <form className="flex flex-col md:ml-8">
         <select className="mb-4 rounded-md bg-white px-4 py-3 font-light">
           <option disabled selected value="">
             Monthly invoicing volume
@@ -257,7 +257,7 @@ export default function TabInfo() {
         We provide <span className="text-violet-500">variety of choices</span>{' '}
         for any kind of situations
       </h1>
-      <div className="grid gap-4 sm:grid-cols-4 ">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4 ">
         {products.map(({ icon, id, title }) => (
           <TabInfoItem
             active={id === selectedProductId}
@@ -268,7 +268,7 @@ export default function TabInfo() {
           />
         ))}
       </div>
-      <div className="mt-8 grid grid-cols-2 items-center gap-4 rounded-lg bg-violet-500 py-12 px-14">
+      <div className="mt-8 grid grid-cols-1 items-center gap-4 rounded-lg bg-violet-500 py-12 px-14 md:grid-cols-2">
         {infoSections[selectedProductId] || null}
       </div>
     </section>
