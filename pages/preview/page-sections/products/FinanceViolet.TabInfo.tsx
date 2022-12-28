@@ -30,19 +30,14 @@ const products = [
   },
 ];
 
-interface ProductGridItemProps {
+interface TabInfoItemProps {
   active?: boolean;
   icon: ReactElement;
   onClick?: () => void;
   title: string;
 }
 
-function ProductGridItem({
-  active,
-  icon,
-  onClick,
-  title,
-}: ProductGridItemProps) {
+function TabInfoItem({ active, icon, onClick, title }: TabInfoItemProps) {
   return (
     <div
       className={`
@@ -253,18 +248,18 @@ const infoSections = {
   [products[3].id]: <InvoiceFactoringInfo />,
 };
 
-export default function GridWithBadges() {
+export default function TabInfo() {
   const [selectedProductId, setSelectedProductId] = useState(products[0].id);
 
   return (
-    <section className="container mx-auto px-8 py-36 sm:px-12">
+    <section className="container mx-auto px-8 py-28 sm:px-12">
       <h1 className="sm:mb-18 mb-24 w-full text-center text-4xl font-extrabold dark:text-slate-50 sm:mx-auto sm:w-4/5">
         We provide <span className="text-violet-500">variety of choices</span>{' '}
         for any kind of situations
       </h1>
       <div className="grid gap-4 sm:grid-cols-4 ">
         {products.map(({ icon, id, title }) => (
-          <ProductGridItem
+          <TabInfoItem
             active={id === selectedProductId}
             icon={icon}
             key={id}
@@ -273,7 +268,7 @@ export default function GridWithBadges() {
           />
         ))}
       </div>
-      <div className="mt-5 grid grid-cols-2 items-center gap-4 rounded-lg bg-violet-500 py-12 px-14">
+      <div className="mt-8 grid grid-cols-2 items-center gap-4 rounded-lg bg-violet-500 py-12 px-14">
         {infoSections[selectedProductId] || null}
       </div>
     </section>

@@ -1,3 +1,4 @@
+import Footer from 'pages/preview/navigation/footer/FinanceViolet.MultiColumns';
 import { Header } from 'pages/preview/navigation/header/FinanceViolet.RightNavigation';
 import Benefits from 'pages/preview/page-sections/benefits/FinanceViolet.ThreeColumns';
 import Hero from 'pages/preview/page-sections/hero/FinanceViolet.SingleColumnWithBlurredColors';
@@ -12,6 +13,7 @@ export default function LandingV1() {
       <Products />
       <Benefits />
       <Testimony />
+      <Footer />
     </>
   );
 }

@@ -27,6 +27,7 @@ const services: Service[] = [
     title: 'Meaningful insight',
     description:
       'Visualize transactions with multiple chart option to get insight as you need.',
+    href: '#',
   },
 ];
 
@@ -37,13 +38,13 @@ export default function ThreeColumns() {
         <span className="text-violet-500">Best services</span> for small and
         medium businesses
       </h1>
-      <div className="flex flex-col space-y-24 sm:flex-row sm:space-y-0 sm:space-x-4 ">
+      <div className="flex flex-col space-y-24 sm:flex-row sm:space-y-0 sm:space-x-8 ">
         {services.map(({ imageUrl, title, description, href }, index) => (
           <div
             className="flex w-full flex-col justify-between sm:mb-0 sm:w-1/3"
             key={index}
           >
-            <div className="w-full text-center sm:text-left">
+            <div className="w-full text-center">
               <img
                 alt={title}
                 className="mx-auto mb-4 h-16 dark:contrast-200 dark:invert sm:mx-0"
@@ -57,7 +58,7 @@ export default function ThreeColumns() {
               </p>
             </div>
             {href && (
-              <div className="text-center sm:text-left">
+              <div className="text-center">
                 <a
                   className="group relative mx-auto inline-block text-sm font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-8 transition hover:decoration-slate-900 dark:text-slate-200 dark:hover:decoration-slate-200 sm:m-0"
                   href={href}
