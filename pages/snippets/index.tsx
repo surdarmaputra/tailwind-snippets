@@ -25,13 +25,13 @@ export default function Snippets({
         {snippets.map((category) => (
           <div className="mb-12" key={category.slug}>
             <h5>{category.title}</h5>
-            <div className="flex space-x-6">
+            <div className="grid grid-cols-3 gap-6">
               {category.subCategories.map((subCategory) => (
                 <Link
                   href={subCategory.href || '/snippets'}
                   key={subCategory.slug}
                 >
-                  <a className="w-1/2 sm:w-1/3 xl:w-1/5">
+                  <a>
                     <Thumbnail
                       name={subCategory.slug}
                       title={subCategory.title}

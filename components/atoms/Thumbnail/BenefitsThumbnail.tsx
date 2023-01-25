@@ -1,6 +1,6 @@
 import Placeholder from './Placeholder';
 
-export default function ServicesThumbnail() {
+export default function BenefitsThumbnail() {
   return (
     <div className="flex space-x-3">
       <div className="w-1/3">
