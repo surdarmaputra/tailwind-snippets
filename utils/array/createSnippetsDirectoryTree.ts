@@ -1,4 +1,4 @@
-import { findIndex, startCase } from 'lodash-es';
+import { findIndex, sortBy, startCase } from 'lodash-es';
 import path from 'path';
 
 import { SnippetCategory } from 'core/type';
@@ -53,5 +53,11 @@ export default function createSnippetsDirectoryTree(
     });
   });
 
-  return tree;
+  let sortedTree = tree.map((node) => ({
+    ...node,
+    subCategories: sortBy(node.subCategories, ['title']),
+  }));
+  sortedTree = sortBy(sortedTree, ['title']);
+
+  return sortedTree;
 }

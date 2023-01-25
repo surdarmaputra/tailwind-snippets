@@ -1,13 +1,19 @@
 import { ReactNode } from 'react';
 
+import ServicesThumbnail from './BenefitsThumbnail';
+import FooterThumbnail from './FooterThumbnail';
 import HeaderThumbnail from './HeaderThumbnail';
 import HeroThumbnail from './HeroThumbnail';
-import ServicesThumbnail from './ServicesThumbnail';
+import ProductsThumbnail from './ProductsThumbnail';
+import TestimonyThumbnail from './TestimonyThumbnail';
 
 export enum ThumbnailName {
   header = 'header',
+  footer = 'footer',
   hero = 'hero',
   benefits = 'benefits',
+  products = 'products',
+  testimony = 'testimony',
 }
 
 export interface ThumbnailProps extends React.HTMLProps<HTMLDivElement> {
@@ -17,8 +23,11 @@ export interface ThumbnailProps extends React.HTMLProps<HTMLDivElement> {
 
 const thumbnailComponents: Record<string, ReactNode> = {
   header: <HeaderThumbnail />,
+  footer: <FooterThumbnail />,
   hero: <HeroThumbnail />,
   benefits: <ServicesThumbnail />,
+  products: <ProductsThumbnail />,
+  testimony: <TestimonyThumbnail />,
 };
 
 export default function Thumbnail({ className, name, title }: ThumbnailProps) {

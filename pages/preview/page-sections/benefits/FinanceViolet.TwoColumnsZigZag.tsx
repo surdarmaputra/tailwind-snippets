@@ -1,6 +1,6 @@
 import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';
 
-interface Service {
+interface Benefit {
   imageUrl: string;
   title: string;
   description: string;
@@ -8,7 +8,7 @@ interface Service {
   actionText?: string;
 }
 
-const services: Service[] = [
+const benefits: Benefit[] = [
   {
     imageUrl: '/illustrations/undraw_security_on_re_e491.svg',
     title: 'Trusted and secured',
@@ -36,7 +36,7 @@ const services: Service[] = [
 export default function TwoColumnsZigZag() {
   return (
     <>
-      {services.map(
+      {benefits.map(
         ({ imageUrl, title, description, href, actionText }, index) => (
           <section
             className={`container mx-auto flex flex-col items-center px-12 py-28 ${
