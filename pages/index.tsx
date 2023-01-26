@@ -26,17 +26,14 @@ const Home: NextPage = () => {
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
 
       <section className="container mx-auto py-16 px-6 text-center sm:py-40">
-        <h1 className="mx-auto w-3/4 pb-10 text-4xl sm:text-5xl">
-          Tailwind Snippets for React Applications
+        <h1 className="mx-auto w-3/4 pb-10 text-4xl sm:text-6xl xl:w-1/2">
+          Tailwind UI Templates for React Applications
         </h1>
-        <p>
-          Collection of UI patterns built using Tailwind CSS for React
-          applications.
-        </p>
-        <ul className="mx-auto mb-12 flex w-fit flex-col items-center sm:mb-24 sm:flex-row sm:space-x-4">
+        <p>Collection of UI templates to speed up your UI development.</p>
+        <ul className="mx-auto mb-12 flex w-fit flex-col items-center text-dark-600 sm:mb-24 sm:flex-row sm:space-x-4">
           {features.map((feature, index) => (
             <li className="flex items-end" key={index}>
-              <CheckIcon className="mr-2 text-success-500" />
+              <CheckIcon className="mr-2 text-success-300" />
               {feature}
             </li>
           ))}

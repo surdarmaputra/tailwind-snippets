@@ -8,6 +8,7 @@ body {
 
 .app {
   @apply text-dark-800 dark:bg-dark-900 dark:text-dark-300;
+  font-family: 'Poppins', 'sans-serif';
 }
 
 .react-select {
@@ -17,7 +18,7 @@ body {
   }
 
   &__control {
-    @apply border-slate-300 dark:border-slate-600 !important;
+    @apply rounded-full border-slate-300 px-4 dark:border-slate-600 !important;
 
     &:hover,
     &--is-focused,
@@ -44,7 +45,7 @@ body {
   }
 
   &__multi-value {
-    @apply bg-slate-100 dark:bg-slate-800 !important;
+    @apply rounded-full bg-slate-100 px-2 dark:bg-slate-800 !important;
   }
 
   &__multi-value__label,

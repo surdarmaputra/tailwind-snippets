@@ -104,7 +104,7 @@ export default function SnippetPreview({
 
   const renderedTitle = title || 'Snippet Preview';
   const wrapperClassName = `${classNames({
-    'w-full rounded shadow bg-white flex flex-col border border-dark-100 dark:bg-dark-900 dark:border-dark-800':
+    'w-full rounded-xl shadow-2xl shadow-dark-200 bg-white flex flex-col border border-dark-100 dark:bg-dark-900 dark:border-dark-800':
       true,
     'fixed top-0 left-0 h-full z-50': maximized,
   })} ${className}`;

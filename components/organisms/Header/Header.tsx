@@ -53,7 +53,7 @@ export default function Header({ fixed, navigationHidden }: HeaderProps) {
           </nav>
         )}
         <ColorModeToggle
-          className="ml-4"
+          className="ml-6"
           dark={dark}
           onChange={toggleColorMode}
         />

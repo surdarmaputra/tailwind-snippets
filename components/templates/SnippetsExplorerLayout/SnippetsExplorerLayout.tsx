@@ -93,7 +93,7 @@ export default function SnippetsExplorerLayout({
       <div className="mx-auto w-full px-6 pt-40 lg:container">
         {!!themeOptions?.length && (
           <Select
-            className="react-select-container"
+            className="react-select-container mx-auto mt-6 mb-10 w-5/6"
             classNamePrefix="react-select"
             closeMenuOnSelect={false}
             id="themesFilter"
@@ -128,7 +128,9 @@ export default function SnippetsExplorerLayout({
           navItems={navigationItems}
           snippets={snippets}
         />{' '}
-        <div className={`w-full px-4 sm:w-4/5 ${className}`}>{children}</div>
+        <div className={`w-full pr-4 pl-12 sm:w-4/5 ${className}`}>
+          {children}
+        </div>
       </div>
       <Footer />
     </>

@@ -13,7 +13,7 @@ export default function HorizontalNavigation({
   currentPath,
 }: HorizontalNavigationProps) {
   return (
-    <nav className={`flex space-x-2 ${className}`}>
+    <nav className={`flex space-x-3 ${className}`}>
       {items.map((navItem) => (
         <NavItem
           currentPath={currentPath}
