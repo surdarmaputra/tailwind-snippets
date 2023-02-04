@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import NavItem from 'components/atoms/NavItem';
 import { NavItem as NavItemInterface, SnippetCategory } from 'core/type';
 
@@ -29,9 +31,11 @@ export default function VerticalNavigation({
       </div>
       {snippets.map((category) => (
         <div className="mb-6 flex flex-col text-sm" key={category.slug}>
-          <div className="my-2 px-3 font-bold uppercase text-dark-900 dark:text-dark-50">
-            {category.title}
-          </div>
+          <Link href={category.href || '/'}>
+            <a className="my-2 px-3 font-bold uppercase text-dark-900 dark:text-dark-50">
+              {category.title}
+            </a>
+          </Link>
           {category.subCategories.map((subCategory) => (
             <NavItem
               className="mb-2"

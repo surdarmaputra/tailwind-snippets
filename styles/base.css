@@ -61,3 +61,25 @@ body {
     @apply bg-slate-200 dark:bg-slate-600 !important;
   }
 }
+
+.vertical-slider {
+  animation-name: sliding-vertically;
+  animation-duration: 5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  &--delayed {
+    animation-delay: 1s;
+  }
+}
+
+@keyframes sliding-vertically {
+  from {
+    transform: translateY(-5%);
+  }
+
+  to {
+    transform: translateY(5%);
+  }
+}

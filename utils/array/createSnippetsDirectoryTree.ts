@@ -20,6 +20,7 @@ export default function createSnippetsDirectoryTree(
       tree.push({
         slug: category,
         title: startCase(category),
+        href: `/snippets/${category}`,
         subCategories: [],
       });
     }

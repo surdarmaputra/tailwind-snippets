@@ -1,5 +1,4 @@
 .app {
-  h1,
   h2,
   h3,
   h4,
@@ -9,7 +8,7 @@
   }
 
   h1 {
-    @apply text-5xl;
+    @apply mb-4 text-5xl font-extrabold leading-[60px] text-dark-900 dark:text-dark-100;
   }
 
   h2 {

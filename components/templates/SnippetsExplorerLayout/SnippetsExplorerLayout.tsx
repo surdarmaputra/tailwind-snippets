@@ -132,7 +132,7 @@ export default function SnippetsExplorerLayout({
           {children}
         </div>
       </div>
-      <Footer />
+      <Footer snippets={snippets} />
     </>
   );
 }

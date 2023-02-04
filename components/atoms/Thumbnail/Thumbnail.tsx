@@ -17,8 +17,10 @@ export enum ThumbnailName {
 }
 
 export interface ThumbnailProps extends React.HTMLProps<HTMLDivElement> {
+  hoverable?: boolean;
   name: string;
-  title: string;
+  thumbnailClassName?: string;
+  title?: string;
 }
 
 const thumbnailComponents: Record<string, ReactNode> = {
@@ -30,18 +32,36 @@ const thumbnailComponents: Record<string, ReactNode> = {
   testimony: <TestimonyThumbnail />,
 };
 
-export default function Thumbnail({ className, name, title }: ThumbnailProps) {
+export default function Thumbnail({
+  className,
+  hoverable = true,
+  name,
+  title,
+  thumbnailClassName = '',
+}: ThumbnailProps) {
   if (name in thumbnailComponents) {
     return (
       <div
-        className={`cursor-pointer transition hover:brightness-95 dark:hover:brightness-125 ease-in-out${className}`}
+        className={`
+          brightness-105 transition ease-in-out
+          ${
+            hoverable
+              ? 'cursor-pointer hover:brightness-100 dark:hover:brightness-125'
+              : ''
+          }
+          ${className}
+        `}
       >
-        <div className="h-32 rounded-lg border border-dark-100 px-4 py-8 shadow-lg shadow-dark-200 transition ease-in-out dark:border-dark-500">
+        <div
+          className={`h-32 rounded-lg border border-dark-100 bg-white px-4 py-8 shadow-lg shadow-dark-200 transition ease-in-out dark:border-dark-500 ${thumbnailClassName}`}
+        >
           {thumbnailComponents[name]}
         </div>
-        <div className="mt-3 ml-0.5 font-semibold text-dark-400 dark:text-dark-400">
-          {title}
-        </div>
+        {title && (
+          <div className="mt-3 ml-0.5 font-semibold text-dark-400 dark:text-dark-400">
+            {title}
+          </div>
+        )}
       </div>
     );
   }
