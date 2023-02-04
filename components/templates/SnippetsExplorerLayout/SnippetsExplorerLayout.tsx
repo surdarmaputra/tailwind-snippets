@@ -39,7 +39,7 @@ export default function SnippetsExplorerLayout({
   }));
 
   const navigationClassName = classNames({
-    'transition-all fixed overflow-y-auto top-0 bottom-0 w-3/4 bg-white py-6 pr-4 pl-4 sm:relative sm:w-1/5 sm:py-0 sm:pl-1 dark:bg-dark-900':
+    'transition-all fixed overflow-y-auto top-0 bottom-0 w-3/4 py-6 pr-4 pl-4 sm:relative sm:w-1/5 sm:py-0 sm:pl-1 dark:bg-dark-900':
       true,
     '-left-3/4 sm:left-0': !mobileNavigationOpened,
     'left-0 z-50': mobileNavigationOpened,

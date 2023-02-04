@@ -14,7 +14,7 @@ module.exports = {
     extend: {
       colors: {
         dark: colors.slate,
-        primary: colors.cyan,
+        primary: colors.indigo,
         success: colors.emerald,
         danger: colors.rose,
         warning: colors.amber,

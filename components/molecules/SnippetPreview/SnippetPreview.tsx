@@ -12,6 +12,7 @@ import CodeIcon from '~icons/tabler/code.tsx';
 import DeviceDesktopIcon from '~icons/tabler/device-desktop.tsx';
 import DeviceMobileIcon from '~icons/tabler/device-mobile.tsx';
 import DeviceTabletIcon from '~icons/tabler/device-tablet.tsx';
+import EyeIcon from '~icons/tabler/eye';
 
 import CodeSnippet from './CodeSnippet';
 import IFrame from './IFrame';
@@ -104,7 +105,7 @@ export default function SnippetPreview({
 
   const renderedTitle = title || 'Snippet Preview';
   const wrapperClassName = `${classNames({
-    'w-full rounded-xl shadow-2xl shadow-dark-200 bg-white flex flex-col border border-dark-100 dark:bg-dark-900 dark:border-dark-800':
+    'w-full rounded-xl shadow-xl shadow-dark-200 bg-white flex flex-col border border-dark-50 dark:bg-dark-900 dark:border-dark-800':
       true,
     'fixed top-0 left-0 h-full z-50': maximized,
   })} ${className}`;
@@ -164,7 +165,7 @@ export default function SnippetPreview({
               size="small"
               variation={activeTab === Tab.preview ? 'dark' : 'light'}
             >
-              View
+              <EyeIcon />
             </Button>
           </div>
           <Button
@@ -196,7 +197,7 @@ export default function SnippetPreview({
         </div>
       </div>
 
-      <div className="overflow-auto">
+      <div className="overflow-auto rounded-b-xl">
         <div
           className={
             activeTab === Tab.preview

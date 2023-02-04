@@ -7,7 +7,7 @@ body {
 }
 
 .app {
-  @apply text-dark-800 dark:bg-dark-900 dark:text-dark-300;
+  @apply bg-dark-50 text-dark-800 dark:bg-dark-900 dark:text-dark-300;
   font-family: 'Poppins', 'sans-serif';
 }
 
@@ -17,13 +17,17 @@ body {
     @apply h-12 dark:border-slate-800 dark:bg-slate-900;
   }
 
+  &__input-container {
+    @apply border-slate-50 !important;
+  }
+
   &__control {
-    @apply rounded-full border-slate-300 px-4 dark:border-slate-600 !important;
+    @apply rounded-full border-slate-50 px-4 shadow-lg shadow-slate-100 hover:border-slate-50 dark:border-slate-600 !important;
 
     &:hover,
     &--is-focused,
     &--menu-is-open {
-      @apply border-slate-300 shadow-none dark:border-slate-600 !important;
+      @apply border-slate-50 shadow-2xl shadow-slate-200 dark:border-slate-600 !important;
     }
   }
 
@@ -32,7 +36,7 @@ body {
   }
 
   &__menu-list {
-    @apply border border-slate-200 dark:border-slate-600 dark:bg-slate-800;
+    @apply dark:border-slate-600 dark:bg-slate-800;
   }
 
   &__option {
