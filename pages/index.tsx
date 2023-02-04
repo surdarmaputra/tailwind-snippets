@@ -82,46 +82,54 @@ export default function Home({
         <div className="absolute bottom-0 z-0 h-1/2 w-full bg-primary-500"></div>
       </section>
 
-      <section className="mx-auto flex flex-col items-center bg-primary-500 px-6 py-24 sm:flex-row-reverse lg:container">
-        <div className="mb-8 flex w-full sm:mb-0 sm:w-1/2 sm:pl-8 md:pl-20">
-          <div className="w-1/2 pr-1">
-            <div className="vertical-slider flex flex-col space-y-2">
-              <Thumbnail
-                hoverable={false}
-                name="header"
-                thumbnailClassName="!shadow-primary-600"
-              />
-              <Thumbnail
-                hoverable={false}
-                name="footer"
-                thumbnailClassName="!shadow-primary-600"
-              />
+      <section className="bg-primary-500">
+        <div className="mx-auto flex flex-col items-center px-6 py-24 sm:flex-row-reverse lg:container">
+          <div className="mb-8 flex w-full sm:mb-0 sm:w-1/2 sm:pl-8 md:pl-20">
+            <div className="w-1/2 pr-1">
+              <div className="vertical-slider flex flex-col space-y-2">
+                <Thumbnail
+                  hoverable={false}
+                  name="header"
+                  thumbnailClassName="!shadow-primary-600"
+                />
+                <Thumbnail
+                  hoverable={false}
+                  name="footer"
+                  thumbnailClassName="!shadow-primary-600"
+                />
+              </div>
+            </div>
+            <div className="w-1/2 pl-1 pt-8">
+              <div className="vertical-slider vertical-slider--delayed flex flex-col space-y-2">
+                <Thumbnail
+                  hoverable={false}
+                  name="benefits"
+                  thumbnailClassName="!shadow-primary-600"
+                />
+                <Thumbnail
+                  hoverable={false}
+                  name="testimony"
+                  thumbnailClassName="!shadow-primary-600"
+                />
+              </div>
             </div>
           </div>
-          <div className="w-1/2 pl-1 pt-8">
-            <div className="vertical-slider vertical-slider--delayed flex flex-col space-y-2">
-              <Thumbnail
-                hoverable={false}
-                name="benefits"
-                thumbnailClassName="!shadow-primary-600"
-              />
-              <Thumbnail
-                hoverable={false}
-                name="testimony"
-                thumbnailClassName="!shadow-primary-600"
-              />
-            </div>
+          <div className="w-full text-center sm:w-1/2 sm:text-left">
+            <h2 className="pb-3 !text-white">We have a bunch of UI sections</h2>
+            <p className="pb-8 text-primary-200">
+              Need a header, hero section, footer or anything else? You can
+              explore a bunch of UI sections with various styles.
+            </p>
+            <Button
+              href="/snippets"
+              link
+              rounded
+              size="small"
+              variation="light"
+            >
+              Explore templates <ArrowNarrowRightIcon className="ml-2" />
+            </Button>
           </div>
-        </div>
-        <div className="w-full text-center sm:w-1/2 sm:text-left">
-          <h2 className="pb-3 !text-white">We have a bunch of UI sections</h2>
-          <p className="pb-8 text-primary-200">
-            Need a header, hero section, footer or anything else? You can
-            explore a bunch of UI sections with various styles.
-          </p>
-          <Button href="/snippets" link rounded size="small" variation="light">
-            Explore templates <ArrowNarrowRightIcon className="ml-2" />
-          </Button>
         </div>
       </section>
 
