@@ -1,15 +1,14 @@
 .app {
-  h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply mb-4 font-bold text-dark-900 dark:text-dark-100;
+    @apply mb-4 font-extrabold leading-loose text-dark-900 dark:text-dark-100;
   }
 
   h1 {
-    @apply text-4xl;
+    @apply mb-4 text-5xl font-extrabold leading-[60px] text-dark-900 dark:text-dark-100;
   }
 
   h2 {

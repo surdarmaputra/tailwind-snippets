@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import NavItem from 'components/atoms/NavItem';
 import { NavItem as NavItemInterface, SnippetCategory } from 'core/type';
 
@@ -9,9 +11,10 @@ export interface VerticalNavigationProps extends React.HTMLProps<HTMLElement> {
 
 export default function VerticalNavigation({
   className,
-  navItems,
-  snippets,
   currentPath,
+  navItems,
+  onClick,
+  snippets,
 }: VerticalNavigationProps) {
   return (
     <nav className={className}>
@@ -22,6 +25,7 @@ export default function VerticalNavigation({
             currentPath={currentPath}
             href={navItem.href}
             key={navItem.href}
+            onClick={onClick}
           >
             {navItem.title}
           </NavItem>
@@ -29,15 +33,18 @@ export default function VerticalNavigation({
       </div>
       {snippets.map((category) => (
         <div className="mb-6 flex flex-col text-sm" key={category.slug}>
-          <div className="my-2 px-3 font-bold uppercase text-dark-900 dark:text-dark-50">
-            {category.title}
-          </div>
+          <Link href={category.href || '/'}>
+            <a className="mt-2 mb-4 px-3 font-bold uppercase text-dark-900 dark:text-dark-50">
+              {category.title}
+            </a>
+          </Link>
           {category.subCategories.map((subCategory) => (
             <NavItem
               className="mb-2"
               currentPath={currentPath}
               href={subCategory.href}
               key={subCategory.slug}
+              onClick={onClick}
             >
               {subCategory.title}
             </NavItem>

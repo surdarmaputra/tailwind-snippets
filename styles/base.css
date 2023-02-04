@@ -7,22 +7,35 @@ body {
 }
 
 .app {
-  @apply text-dark-800 dark:bg-dark-900 dark:text-dark-300;
+  @apply min-h-screen bg-dark-50 text-dark-800 dark:bg-dark-900 dark:text-dark-300;
+  font-family: 'Poppins', 'sans-serif';
 }
 
 .react-select {
   &__value-container,
   &__indicators {
-    @apply h-12 dark:border-slate-800 dark:bg-slate-900;
+    @apply h-12 dark:border-dark-800 dark:bg-dark-900;
+
+    svg {
+      @apply text-dark-300 dark:text-dark-700;
+    }
+  }
+
+  &__indicator-separator {
+    @apply bg-dark-100 dark:bg-dark-800 !important;
+  }
+
+  &__input-container {
+    @apply border-dark-50 dark:border-dark-800 !important;
   }
 
   &__control {
-    @apply border-slate-300 dark:border-slate-600 !important;
+    @apply rounded-full border-dark-50 px-4 shadow-lg shadow-dark-100 hover:border-dark-50 dark:border-dark-800 dark:bg-dark-900 dark:shadow-dark-900 !important;
 
     &:hover,
     &--is-focused,
     &--menu-is-open {
-      @apply border-slate-300 shadow-none dark:border-slate-600 !important;
+      @apply border-dark-50 shadow-2xl shadow-dark-200 dark:border-dark-800 dark:shadow-dark-800 !important;
     }
   }
 
@@ -31,7 +44,7 @@ body {
   }
 
   &__menu-list {
-    @apply border border-slate-200 dark:border-slate-600 dark:bg-slate-800;
+    @apply border-dark-100 dark:border-dark-600 dark:bg-dark-800 !important;
   }
 
   &__option {
@@ -39,20 +52,42 @@ body {
     &:focus,
     &--is-focused,
     &--is-selected {
-      @apply bg-slate-100 dark:bg-slate-900 !important;
+      @apply bg-dark-100 dark:bg-dark-900 !important;
     }
   }
 
   &__multi-value {
-    @apply bg-slate-100 dark:bg-slate-800 !important;
+    @apply rounded-full bg-dark-100 px-2 dark:bg-dark-800 !important;
   }
 
   &__multi-value__label,
   &__multi-value__remove {
-    @apply text-slate-600 dark:text-slate-300 !important;
+    @apply text-dark-600 dark:text-dark-300 !important;
   }
 
   &__multi-value__remove:hover {
-    @apply bg-slate-200 dark:bg-slate-600 !important;
+    @apply bg-dark-200 dark:bg-dark-600 !important;
+  }
+}
+
+.vertical-slider {
+  animation-name: sliding-vertically;
+  animation-duration: 5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  &--delayed {
+    animation-delay: 1s;
+  }
+}
+
+@keyframes sliding-vertically {
+  from {
+    transform: translateY(-5%);
+  }
+
+  to {
+    transform: translateY(5%);
   }
 }

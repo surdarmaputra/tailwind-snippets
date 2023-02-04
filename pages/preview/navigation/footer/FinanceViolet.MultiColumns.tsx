@@ -77,7 +77,7 @@ export default function MultiColumns() {
             {companyLinks.map(({ title, href }, index) => (
               <li className="pt-3" key={index}>
                 <a
-                  className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-900"
+                  className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-700"
                   href={href}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -94,7 +94,7 @@ export default function MultiColumns() {
             {solutionLinks.map(({ title, href }, index) => (
               <li className="pt-3" key={index}>
                 <a
-                  className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-900"
+                  className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-700"
                   href={href}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -113,7 +113,7 @@ export default function MultiColumns() {
             {partnershipLinks.map(({ title, href }, index) => (
               <li className="pt-3" key={index}>
                 <a
-                  className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-900"
+                  className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-700"
                   href={href}
                   rel="noopener noreferrer"
                   target="_blank"

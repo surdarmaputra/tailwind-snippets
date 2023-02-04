@@ -60,7 +60,7 @@ export default function TwoColumnsZigZag() {
               </p>
               {href && (
                 <a
-                  className="group relative mx-auto mt-8 inline-block font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-8 transition hover:decoration-slate-900 dark:text-slate-200 dark:hover:decoration-slate-200 sm:mx-0"
+                  className="group relative mx-auto mt-8 inline-block font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-8 transition hover:decoration-slate-700 dark:text-slate-200 dark:hover:decoration-slate-200 sm:mx-0"
                   href={href}
                 >
                   {actionText}{' '}

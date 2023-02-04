@@ -24,6 +24,7 @@ export interface SnippetSubCategory {
 export interface SnippetCategory {
   slug: string;
   title: string;
+  href?: string;
   subCategories: SnippetSubCategory[];
 }
 

@@ -1,17 +1,24 @@
+import { InferGetStaticPropsType } from 'next';
+
+import { merge } from 'lodash-es';
+
 import Button from 'components/atoms/Button';
 import HeadContent from 'components/molecules/HeadContent';
 import Footer from 'components/organisms/Footer/Footer';
 import Header from 'components/organisms/Header';
+import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
 import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';
 import CheckIcon from '~icons/tabler/check.tsx';
 
 export async function getStaticProps() {
-  return setAsMainApp();
+  return merge(await getSnippets(), await setAsMainApp());
 }
 
-export default function Credits() {
+export default function Credits({
+  snippets,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <HeadContent />
@@ -67,16 +74,22 @@ export default function Credits() {
         </ul>
 
         <div className="flex flex-col justify-center space-y-4 space-x-0 sm:flex-row sm:space-x-4 sm:space-y-0">
-          <Button href="/snippets" link size="large" variation="dark">
+          <Button
+            href="/snippets"
+            link
+            rounded
+            size="large"
+            variation="primary"
+          >
             Explore snippets <ArrowNarrowRightIcon className="ml-2" />
           </Button>
-          <Button href="/" link outline size="large" variation="dark">
+          <Button href="/" link outline rounded size="large" variation="light">
             Home <ArrowNarrowRightIcon className="ml-2" />
           </Button>
         </div>
       </section>
 
-      <Footer />
+      <Footer snippets={snippets} />
     </>
   );
 }
