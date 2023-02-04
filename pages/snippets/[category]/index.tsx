@@ -38,7 +38,7 @@ export default function Snippets({
           .map((category) => (
             <div className="mb-20" key={category.slug}>
               <h5>{category.title}</h5>
-              <div className="mt-6 grid grid-cols-3 gap-6">
+              <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-3">
                 {category.subCategories.map((subCategory) => (
                   <Link
                     href={subCategory.href || '/snippets'}

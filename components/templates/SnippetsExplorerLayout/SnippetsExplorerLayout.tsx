@@ -42,7 +42,7 @@ export default function SnippetsExplorerLayout({
     'transition-all fixed overflow-y-auto top-0 bottom-0 w-3/4 py-6 pr-4 pl-4 sm:relative sm:w-1/5 sm:py-0 sm:pl-1 dark:bg-dark-900':
       true,
     '-left-3/4 sm:left-0': !mobileNavigationOpened,
-    'left-0 z-50': mobileNavigationOpened,
+    'left-0 z-50 bg-white': mobileNavigationOpened,
   });
 
   const backdropClassName = classNames({
@@ -61,6 +61,9 @@ export default function SnippetsExplorerLayout({
     [themesFilter, themeOptions],
   );
 
+  const toggleMobileNavigation = () =>
+    setMobileNavigationOpened(!mobileNavigationOpened);
+
   const handleThemeChange = (selectedThemes: MultiValue<SelectOption>) => {
     const selectedValues = selectedThemes
       .map(({ value }) => value)
@@ -74,8 +77,9 @@ export default function SnippetsExplorerLayout({
     });
   };
 
-  const toggleMobileNavigation = () =>
-    setMobileNavigationOpened(!mobileNavigationOpened);
+  const handleNavItemClick = () => {
+    if (mobileNavigationOpened) setMobileNavigationOpened(false);
+  };
 
   useEffect(() => {
     if (router.isReady) {
@@ -93,7 +97,7 @@ export default function SnippetsExplorerLayout({
       <div className="mx-auto w-full px-6 pt-40 lg:container">
         {!!themeOptions?.length && (
           <Select
-            className="react-select-container mx-auto mt-6 mb-10 w-5/6"
+            className="react-select-container mx-auto mt-6 mb-10 w-full sm:w-5/6"
             classNamePrefix="react-select"
             closeMenuOnSelect={false}
             id="themesFilter"
@@ -126,9 +130,10 @@ export default function SnippetsExplorerLayout({
           className={navigationClassName}
           currentPath={currentPath}
           navItems={navigationItems}
+          onClick={handleNavItemClick}
           snippets={snippets}
         />{' '}
-        <div className={`w-full pr-4 pl-12 sm:w-4/5 ${className}`}>
+        <div className={`w-full pr-4 pl-4 sm:w-4/5 sm:pl-12 ${className}`}>
           {children}
         </div>
       </div>

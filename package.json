@@ -15,6 +15,7 @@
     "storybook:build": "build-storybook"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.2.2",
     "classnames": "^2.3.1",
     "lodash-es": "^4.17.21",
     "next": "12.2.2",

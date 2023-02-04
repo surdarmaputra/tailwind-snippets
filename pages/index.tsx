@@ -33,7 +33,7 @@ export default function Home({
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
 
       <section className="mx-auto flex flex-col items-center px-6 py-36 sm:flex-row-reverse lg:container">
-        <div className="mb-8 flex w-full flex-wrap justify-start space-x-4 sm:mb-0 sm:w-1/2 sm:pl-8 md:pl-20">
+        <div className="mb-20 flex w-full flex-wrap justify-center space-x-4 sm:mb-0 sm:w-1/2 sm:pl-8 md:pl-20">
           <Thumbnail className="w-2/5" hoverable={false} name="hero" />
           <Thumbnail className="mt-3 w-2/5" hoverable={false} name="products" />
           <Thumbnail
@@ -42,13 +42,13 @@ export default function Home({
             name="testimony"
           />
         </div>
-        <div className="mr-2 w-full text-center sm:w-1/2 sm:text-left">
+        <div className="w-full text-center sm:mr-2 sm:w-1/2 sm:text-left">
           <h1 className="pb-4">UI Templates for React Projects</h1>
           <p>
             A collection of UI templates to speed up your UI development using
             React and Tailwind CSS.
           </p>
-          <ul className="mb-12 flex w-fit flex-col text-xs text-dark-600 sm:mb-20 sm:flex-row sm:space-x-4">
+          <ul className="mx-auto mb-12 flex w-fit flex-row space-x-4 text-xs text-dark-600 sm:mx-0 sm:mb-20">
             {features.map((feature, index) => (
               <li className="flex items-end" key={index}>
                 <CheckIcon className="mr-1 text-primary-400" />
@@ -83,8 +83,8 @@ export default function Home({
       </section>
 
       <section className="bg-primary-500">
-        <div className="mx-auto flex flex-col items-center px-6 py-24 sm:flex-row-reverse lg:container">
-          <div className="mb-8 flex w-full sm:mb-0 sm:w-1/2 sm:pl-8 md:pl-20">
+        <div className="mx-auto flex flex-col items-center px-6 py-28 sm:flex-row-reverse lg:container">
+          <div className="mb-20 flex w-full sm:mb-0 sm:w-1/2 sm:pl-8 md:pl-20">
             <div className="w-1/2 pr-1">
               <div className="vertical-slider flex flex-col space-y-2">
                 <Thumbnail
@@ -133,8 +133,8 @@ export default function Home({
         </div>
       </section>
 
-      <section className="mx-auto flex flex-col items-center px-6 pt-28 pb-12 sm:flex-row lg:container">
-        <div className="mb-8 flex flex-wrap justify-start space-x-4 sm:mb-0 sm:pr-10">
+      <section className="mx-auto flex flex-col items-center px-6 pt-32 pb-12 sm:flex-row lg:container">
+        <div className="mb-16 flex flex-wrap justify-start space-x-4 sm:mb-0 sm:pr-10">
           <div className="h-[300px] w-[300px] overflow-hidden rounded-xl shadow-xl shadow-dark-200">
             <Image
               alt="Breakpoints preview"
@@ -153,8 +153,8 @@ export default function Home({
         </div>
       </section>
 
-      <section className="mx-auto flex flex-col items-center px-6 pb-28 pt-12 sm:flex-row lg:container">
-        <div className="mb-8 flex flex-wrap justify-start space-x-4 sm:mb-0 sm:pr-10">
+      <section className="mx-auto flex flex-col items-center px-6 pb-32 pt-12 sm:flex-row lg:container">
+        <div className="mb-16 flex flex-wrap justify-start space-x-4 sm:mb-0 sm:pr-10">
           <div className="h-[300px] w-[300px] overflow-hidden rounded-xl shadow-xl shadow-dark-200">
             <Image
               alt="Breakpoints preview"

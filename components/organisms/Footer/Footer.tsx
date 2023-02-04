@@ -43,7 +43,7 @@ export interface FooterProps {
 export default function Footer({ snippets }: FooterProps) {
   return (
     <footer className="mt-10 bg-slate-100 dark:bg-black">
-      <div className="mx-auto p-6 pt-8 lg:container">
+      <div className="mx-auto p-6 pt-10 lg:container">
         <div className="flex flex-col items-start space-y-12 pb-8 md:flex-row md:space-y-0 md:space-x-12">
           <div className="flex w-full flex-col space-y-4 text-center md:w-2/5 md:text-left">
             <Logo />

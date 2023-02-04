@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export interface NavItemProps extends React.HTMLProps<HTMLLinkElement> {
+export interface NavItemProps extends React.HTMLProps<HTMLAnchorElement> {
   currentPath?: string;
 }
 
@@ -9,6 +9,7 @@ export default function NavItem({
   className,
   currentPath,
   href,
+  onClick,
 }: NavItemProps) {
   return (
     <Link href={href || '/'}>
@@ -18,6 +19,7 @@ export default function NavItem({
         ${currentPath === href ? 'bg-dark-100 dark:bg-dark-800' : ''}
         ${className}
       `}
+        onClick={onClick}
       >
         {children}
       </a>

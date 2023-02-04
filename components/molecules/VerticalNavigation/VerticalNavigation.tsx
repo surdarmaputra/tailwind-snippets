@@ -11,9 +11,10 @@ export interface VerticalNavigationProps extends React.HTMLProps<HTMLElement> {
 
 export default function VerticalNavigation({
   className,
-  navItems,
-  snippets,
   currentPath,
+  navItems,
+  onClick,
+  snippets,
 }: VerticalNavigationProps) {
   return (
     <nav className={className}>
@@ -24,6 +25,7 @@ export default function VerticalNavigation({
             currentPath={currentPath}
             href={navItem.href}
             key={navItem.href}
+            onClick={onClick}
           >
             {navItem.title}
           </NavItem>
@@ -42,6 +44,7 @@ export default function VerticalNavigation({
               currentPath={currentPath}
               href={subCategory.href}
               key={subCategory.slug}
+              onClick={onClick}
             >
               {subCategory.title}
             </NavItem>
