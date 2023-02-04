@@ -57,7 +57,7 @@ export default function Footer({ snippets }: FooterProps) {
             <ul className="text-sm">
               <li className="pt-3">
                 <Link href="/snippets">
-                  <a className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-900">
+                  <a className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-700">
                     All templates
                   </a>
                 </Link>
@@ -65,7 +65,7 @@ export default function Footer({ snippets }: FooterProps) {
               {snippets.map(({ title, href }, index) => (
                 <li className="pt-3" key={index}>
                   <Link href={href || '/'}>
-                    <a className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-900">
+                    <a className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-700">
                       {title}
                     </a>
                   </Link>
@@ -82,7 +82,7 @@ export default function Footer({ snippets }: FooterProps) {
               {referencesLinks.map(({ title, href }, index) => (
                 <li className="pt-3" key={index}>
                   <a
-                    className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-900"
+                    className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-700"
                     href={href}
                     rel="noopener noreferrer"
                     target="_blank"
@@ -100,7 +100,7 @@ export default function Footer({ snippets }: FooterProps) {
               {supportsLinks.map(({ title, href }, index) => (
                 <li className="pt-3" key={index}>
                   <a
-                    className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-900"
+                    className="underline decoration-transparent underline-offset-4 transition hover:decoration-slate-700"
                     href={href}
                     rel="noopener noreferrer"
                     target="_blank"

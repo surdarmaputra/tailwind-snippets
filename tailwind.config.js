@@ -20,5 +20,10 @@ module.exports = {
         warning: colors.amber,
       },
     },
+    container: {
+      screens: {
+        lg: '1080px',
+      },
+    },
   },
 };

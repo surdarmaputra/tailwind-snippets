@@ -53,7 +53,7 @@ export default function Thumbnail({
         `}
       >
         <div
-          className={`h-32 rounded-lg border border-dark-100 bg-white px-4 py-8 shadow-lg shadow-dark-200 transition ease-in-out dark:border-dark-500 ${thumbnailClassName}`}
+          className={`h-32 rounded-lg border border-dark-100 bg-white px-4 py-8 shadow-lg shadow-dark-200 transition ease-in-out dark:border-dark-800 dark:bg-dark-800 dark:shadow-dark-900 ${thumbnailClassName}`}
         >
           {thumbnailComponents[name]}
         </div>

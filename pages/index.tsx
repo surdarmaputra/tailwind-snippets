@@ -48,7 +48,7 @@ export default function Home({
             A collection of UI templates to speed up your UI development using
             React and Tailwind CSS.
           </p>
-          <ul className="mx-auto mb-12 flex w-fit flex-row space-x-4 text-xs text-dark-600 sm:mx-0 sm:mb-20">
+          <ul className="mx-auto mb-12 flex w-fit flex-row space-x-4 text-xs text-dark-600 dark:text-dark-400 sm:mx-0 sm:mb-20">
             {features.map((feature, index) => (
               <li className="flex items-end" key={index}>
                 <CheckIcon className="mr-1 text-primary-400" />
@@ -135,7 +135,7 @@ export default function Home({
 
       <section className="mx-auto flex flex-col items-center px-6 pt-32 pb-12 sm:flex-row lg:container">
         <div className="mb-16 flex flex-wrap justify-start space-x-4 sm:mb-0 sm:pr-10">
-          <div className="h-[300px] w-[300px] overflow-hidden rounded-xl shadow-xl shadow-dark-200">
+          <div className="h-[300px] w-[300px] overflow-hidden rounded-xl shadow-xl shadow-dark-200 dark:shadow-dark-800">
             <Image
               alt="Breakpoints preview"
               height={300}
@@ -155,7 +155,7 @@ export default function Home({
 
       <section className="mx-auto flex flex-col items-center px-6 pb-32 pt-12 sm:flex-row lg:container">
         <div className="mb-16 flex flex-wrap justify-start space-x-4 sm:mb-0 sm:pr-10">
-          <div className="h-[300px] w-[300px] overflow-hidden rounded-xl shadow-xl shadow-dark-200">
+          <div className="h-[300px] w-[300px] overflow-hidden rounded-xl shadow-xl shadow-dark-200 dark:shadow-dark-800">
             <Image
               alt="Breakpoints preview"
               height={300}

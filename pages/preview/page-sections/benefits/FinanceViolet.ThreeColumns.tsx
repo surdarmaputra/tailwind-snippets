@@ -47,7 +47,7 @@ export default function ThreeColumns() {
             <div className="w-full text-center">
               <img
                 alt={title}
-                className="mx-auto mb-4 h-16 dark:contrast-200 dark:invert sm:mx-0"
+                className="mx-auto mb-4 h-16 dark:contrast-200 dark:invert"
                 src={imageUrl}
               />
               <h2 className="mb-2 text-xl font-bold leading-tight dark:text-slate-50 md:text-xl">
@@ -60,7 +60,7 @@ export default function ThreeColumns() {
             {href && (
               <div className="text-center">
                 <a
-                  className="group relative mx-auto inline-block text-sm font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-8 transition hover:decoration-slate-900 dark:text-slate-200 dark:hover:decoration-slate-200 sm:m-0"
+                  className="group relative mx-auto inline-block text-sm font-semibold text-slate-900 underline decoration-violet-300 decoration-2 underline-offset-8 transition hover:decoration-slate-700 dark:text-slate-200 dark:hover:decoration-slate-200 sm:m-0"
                   href={href}
                 >
                   Read more{' '}

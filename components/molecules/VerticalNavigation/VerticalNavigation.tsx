@@ -34,7 +34,7 @@ export default function VerticalNavigation({
       {snippets.map((category) => (
         <div className="mb-6 flex flex-col text-sm" key={category.slug}>
           <Link href={category.href || '/'}>
-            <a className="my-2 px-3 font-bold uppercase text-dark-900 dark:text-dark-50">
+            <a className="mt-2 mb-4 px-3 font-bold uppercase text-dark-900 dark:text-dark-50">
               {category.title}
             </a>
           </Link>

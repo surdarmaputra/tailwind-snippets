@@ -105,7 +105,7 @@ export default function SnippetPreview({
 
   const renderedTitle = title || 'Snippet Preview';
   const wrapperClassName = `${classNames({
-    'w-full rounded-xl shadow-xl shadow-dark-200 bg-white flex flex-col border border-dark-50 dark:bg-dark-900 dark:border-dark-800':
+    'w-full rounded-xl shadow-xl shadow-dark-200 dark:shadow-slate-800 bg-white flex flex-col border border-dark-50 dark:bg-dark-900 dark:border-dark-800':
       true,
     'fixed top-0 left-0 h-full z-50': maximized,
   })} ${className}`;
@@ -201,7 +201,7 @@ export default function SnippetPreview({
         <div
           className={
             activeTab === Tab.preview
-              ? 'block h-full bg-dark-800'
+              ? 'block h-full bg-dark-800 dark:bg-black'
               : 'h-0 overflow-hidden'
           }
         >
