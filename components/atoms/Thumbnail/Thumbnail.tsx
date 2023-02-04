@@ -34,12 +34,12 @@ export default function Thumbnail({ className, name, title }: ThumbnailProps) {
   if (name in thumbnailComponents) {
     return (
       <div
-        className={`cursor-pointer transition hover:brightness-90 dark:hover:brightness-125 ease-in-out${className}`}
+        className={`cursor-pointer transition hover:brightness-95 dark:hover:brightness-125 ease-in-out${className}`}
       >
-        <div className="h-32 rounded-lg border border-slate-400 px-4 py-8 transition ease-in-out dark:border-slate-500">
+        <div className="h-32 rounded-lg border border-dark-100 px-4 py-8 shadow-lg shadow-dark-200 transition ease-in-out dark:border-dark-500">
           {thumbnailComponents[name]}
         </div>
-        <div className="mt-1.5 font-semibold text-slate-500 dark:text-slate-400">
+        <div className="mt-3 ml-0.5 font-semibold text-dark-400 dark:text-dark-400">
           {title}
         </div>
       </div>

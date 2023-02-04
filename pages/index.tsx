@@ -30,19 +30,32 @@ const Home: NextPage = () => {
           Tailwind UI Templates for React Applications
         </h1>
         <p>Collection of UI templates to speed up your UI development.</p>
-        <ul className="mx-auto mb-12 flex w-fit flex-col items-center text-dark-600 sm:mb-24 sm:flex-row sm:space-x-4">
+        <ul className="mx-auto mb-12 flex w-fit flex-col items-center text-xs text-dark-600 sm:mb-24 sm:flex-row sm:space-x-4">
           {features.map((feature, index) => (
             <li className="flex items-end" key={index}>
-              <CheckIcon className="mr-2 text-success-300" />
+              <CheckIcon className="mr-1 text-primary-400" />
               {feature}
             </li>
           ))}
         </ul>
         <div className="flex flex-col justify-center space-y-4 space-x-0 sm:flex-row sm:space-x-4 sm:space-y-0">
-          <Button href="/snippets" link size="large" variation="dark">
+          <Button
+            href="/snippets"
+            link
+            rounded
+            size="large"
+            variation="primary"
+          >
             Explore snippets <ArrowNarrowRightIcon className="ml-2" />
           </Button>
-          <Button href="/credits" link outline size="large" variation="dark">
+          <Button
+            href="/credits"
+            link
+            outline
+            rounded
+            size="large"
+            variation="light"
+          >
             Credits <ArrowNarrowRightIcon className="ml-2" />
           </Button>
         </div>

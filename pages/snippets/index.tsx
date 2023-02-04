@@ -23,9 +23,9 @@ export default function Snippets({
 
       <SnippetsExplorerLayout snippets={snippets} themes={themes}>
         {snippets.map((category) => (
-          <div className="mb-12" key={category.slug}>
+          <div className="mb-20" key={category.slug}>
             <h5>{category.title}</h5>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="mt-6 grid grid-cols-3 gap-6">
               {category.subCategories.map((subCategory) => (
                 <Link
                   href={subCategory.href || '/snippets'}

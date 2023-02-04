@@ -7,7 +7,7 @@ body {
 }
 
 .app {
-  @apply bg-dark-50 text-dark-800 dark:bg-dark-900 dark:text-dark-300;
+  @apply min-h-screen bg-dark-50 text-dark-800 dark:bg-dark-900 dark:text-dark-300;
   font-family: 'Poppins', 'sans-serif';
 }
 
