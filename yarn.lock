@@ -1590,10 +1590,10 @@
   resolved "https://registry.yarnpkg.com/@hutson/parse-repository-url/-/parse-repository-url-3.0.2.tgz#98c23c950a3d9b6c8f0daed06da6c3af06981340"
   integrity sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==
 
-"@iconify-json/tabler@^1.1.26":
-  version "1.1.26"
-  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.1.26.tgz#e101ad7961ab97d7e3b0f5773cdceea1a6c9aeee"
-  integrity sha512-R9CB7Kp1KMhh8xbEz/y/KHFpZ0tyzzskl10H/ZgrEhvWyl+byEoeFBiIqjgWcUMvXBBAVUperElpzxJu3Elawg==
+"@iconify-json/tabler@^1.1.57":
+  version "1.1.57"
+  resolved "https://registry.yarnpkg.com/@iconify-json/tabler/-/tabler-1.1.57.tgz#f958d6329077ed1c54653aaa1f20d7d5e364b371"
+  integrity sha512-g/OI1RgivTAXYCBjETrRBYkms9BhcPLWlfOuztiQNzws+aQyJpz6vG+jB7WzaSuOkJuhpULyDHOXm+WpZJDOLg==
   dependencies:
     "@iconify/types" "*"
 
@@ -3252,6 +3252,11 @@
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@types/parse5/-/parse5-5.0.3.tgz#e7b5aebbac150f8b5fdd4a46e7f0bd8e65e19109"
   integrity sha512-kUNnecmtkunAoQ3CnjmMkzNU/gtxG8guhi+Fk2U/kOpIKjIMKnXGp4IJCgQJrXSgMsWYimYG4TGjz/UzbGEBTw==
+
+"@types/prettier@^2.7.2":
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.7.2.tgz#6c2324641cc4ba050a8c710b2b251b377581fbf0"
+  integrity sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==
 
 "@types/pretty-hrtime@^1.0.0":
   version "1.0.1"
