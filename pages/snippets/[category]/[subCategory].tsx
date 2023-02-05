@@ -3,6 +3,7 @@ import * as ReactDOMServer from 'react-dom/server';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import fs from 'fs/promises';
+import prettier from 'prettier';
 
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetPreview from 'components/molecules/SnippetPreview';
@@ -41,7 +42,10 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
         .replace(`${process.cwd()}/pages/preview/`, '')
         .replace('.tsx', '');
       const Element = await import(`pages/preview/${modulePath}`);
-      const HTMLString = ReactDOMServer.renderToString(<Element.default />);
+      const HTMLString = prettier.format(
+        ReactDOMServer.renderToString(<Element.default />),
+        { parser: 'html', htmlWhitespaceSensitivity: 'ignore' },
+      );
       return {
         ...variant,
         code,

@@ -9,7 +9,8 @@ import { CodeByType } from 'core/type';
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right.tsx';
 import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize.tsx';
 import ArrowsMinimizeIcon from '~icons/tabler/arrows-minimize.tsx';
-import CodeIcon from '~icons/tabler/code.tsx';
+import BrandHTML5Icon from '~icons/tabler/brand-html5.tsx';
+import BrandTypeScriptIcon from '~icons/tabler/brand-typescript.tsx';
 import DeviceDesktopIcon from '~icons/tabler/device-desktop.tsx';
 import DeviceMobileIcon from '~icons/tabler/device-mobile.tsx';
 import DeviceTabletIcon from '~icons/tabler/device-tablet.tsx';
@@ -19,7 +20,8 @@ import CodeSnippet from './CodeSnippet';
 import IFrame from './IFrame';
 
 enum Tab {
-  code,
+  codeTsx,
+  codeHtml,
   preview,
 }
 
@@ -113,6 +115,12 @@ export default function SnippetPreview({
     'fixed top-0 left-0 h-full z-50': maximized,
   })} ${className}`;
 
+  const isCodeTabActive = [Tab.codeTsx, Tab.codeHtml].includes(activeTab);
+
+  const getCode = () => {
+    return activeTab === Tab.codeTsx ? codeByType?.tsx : codeByType?.html;
+  };
+
   const toggleMaximize = () => {
     const newValue = !maximized;
     setMaximized(newValue);
@@ -171,13 +179,31 @@ export default function SnippetPreview({
               <EyeIcon />
             </Button>
           </div>
-          <Button
-            onClick={() => setActiveTab(Tab.code)}
-            size="small"
-            variation={activeTab === Tab.code ? 'dark' : 'light'}
-          >
-            <CodeIcon />
-          </Button>
+          <div className="group relative transition delay-100 ease-in-out">
+            <Button size="small" variation={isCodeTabActive ? 'dark' : 'light'}>
+              {activeTab === Tab.codeHtml ? (
+                <BrandHTML5Icon />
+              ) : (
+                <BrandTypeScriptIcon />
+              )}
+            </Button>
+            <ul className="invisible absolute top-full z-30 mt-0 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
+              <button
+                className="flex w-full items-center p-2 text-dark-500 hover:text-dark-900"
+                onClick={() => setActiveTab(Tab.codeTsx)}
+              >
+                <BrandTypeScriptIcon className="mr-1" />
+                <span>TypeScript</span>
+              </button>
+              <button
+                className="flex w-full items-center p-2 text-dark-500 hover:text-dark-900"
+                onClick={() => setActiveTab(Tab.codeHtml)}
+              >
+                <BrandHTML5Icon className="mr-1" />
+                <span>HTML</span>
+              </button>
+            </ul>
+          </div>
           <Button
             onClick={toggleMaximize}
             size="small"
@@ -249,11 +275,9 @@ export default function SnippetPreview({
           )}
         </div>
         <div
-          className={
-            activeTab === Tab.code ? 'block h-fit' : 'h-0 overflow-hidden'
-          }
+          className={isCodeTabActive ? 'block h-fit' : 'h-0 overflow-hidden'}
         >
-          <CodeSnippet code={codeByType?.html} />
+          <CodeSnippet code={getCode()} />
         </div>
       </div>
     </div>
