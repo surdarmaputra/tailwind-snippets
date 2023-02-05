@@ -1,5 +1,6 @@
 import type { InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { merge } from 'lodash-es';
 
@@ -13,8 +14,13 @@ import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
 import ArrowNarrowRightIcon from '~icons/tabler/arrow-narrow-right.tsx';
 import CheckIcon from '~icons/tabler/check.tsx';
+import HandFingerIcon from '~icons/tabler/hand-finger.tsx';
 
 const features = ['Live preview', 'Code snippet', 'Written in TypeScript'];
+const categoryThumbnail: Record<string, string> = {
+  navigation: 'header',
+  'page-sections': 'hero',
+};
 
 export async function getStaticProps() {
   return merge(await getSnippets(), await setAsMainApp());
@@ -32,8 +38,8 @@ export default function Home({
       <div className="absolute left-0 top-64 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>
 
-      <section className="mx-auto flex flex-col items-center px-6 py-36 sm:flex-row-reverse lg:container">
-        <div className="mb-20 flex w-full flex-wrap justify-center space-x-4 sm:mb-0 sm:w-1/2 sm:pl-8 md:pl-20">
+      <section className="mx-auto flex flex-col items-center px-6 pt-12 pb-36 sm:flex-row-reverse sm:pt-36 lg:container">
+        <div className="mb-14 flex w-full scale-75 flex-wrap justify-center space-x-4 sm:mb-0 sm:w-1/2 sm:scale-100 sm:pl-8 md:pl-20">
           <Thumbnail className="w-2/5" hoverable={false} name="hero" />
           <Thumbnail className="mt-3 w-2/5" hoverable={false} name="products" />
           <Thumbnail
@@ -48,7 +54,7 @@ export default function Home({
             A collection of UI templates to speed up your UI development using
             React and Tailwind CSS.
           </p>
-          <ul className="mx-auto mb-12 flex w-fit flex-row space-x-4 text-xs text-dark-600 dark:text-dark-400 sm:mx-0 sm:mb-20">
+          <ul className="mx-auto mb-12 flex w-fit flex-col items-center space-y-4 text-xs text-dark-600 dark:text-dark-400 sm:mx-0 sm:mb-20 sm:items-start md:flex-row md:space-x-4 md:space-y-0">
             {features.map((feature, index) => (
               <li className="flex items-end" key={index}>
                 <CheckIcon className="mr-1 text-primary-400" />
@@ -153,7 +159,7 @@ export default function Home({
         </div>
       </section>
 
-      <section className="mx-auto flex flex-col items-center px-6 pb-32 pt-12 sm:flex-row lg:container">
+      <section className="mx-auto flex flex-col items-center px-6 pb-28 pt-12 sm:flex-row lg:container">
         <div className="mb-16 flex flex-wrap justify-start space-x-4 sm:mb-0 sm:pr-10">
           <div className="h-[300px] w-[300px] overflow-hidden rounded-xl shadow-xl shadow-dark-200 dark:shadow-dark-800">
             <Image
@@ -169,6 +175,34 @@ export default function Home({
           <p className="pb-8">
             Like the design? Copy the code snippet into your project right away.
           </p>
+        </div>
+      </section>
+
+      <section className="mx-auto flex flex-col items-center justify-center px-6 pt-20 pb-36 lg:container">
+        <h2 className="pb-3 text-center">
+          <span>Explore A Bunch of Our Collection </span>
+          <HandFingerIcon className="ml-2 mt-1 inline rotate-180" />
+        </h2>
+
+        <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-3">
+          <Link href="/snippets">
+            <a>
+              <Thumbnail name="products" title="All Templates" />
+            </a>
+          </Link>
+          {snippets.map((category) => (
+            <Link href={category.href || '/snippets'} key={category.slug}>
+              <a>
+                <Thumbnail
+                  name={
+                    categoryThumbnail[category.slug] ||
+                    category.subCategories[0].slug
+                  }
+                  title={category.title}
+                />
+              </a>
+            </Link>
+          ))}
         </div>
       </section>
 
