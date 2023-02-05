@@ -7,10 +7,16 @@ export interface Theme {
   theme: string | null;
   themeTitle: string | null;
 }
+
+export interface CodeByType {
+  tsx?: string;
+  html?: string;
+}
 export interface Variant extends Theme {
   title: string;
   path: string;
   code?: string;
+  codeByType?: CodeByType;
   previewUrl?: string;
 }
 

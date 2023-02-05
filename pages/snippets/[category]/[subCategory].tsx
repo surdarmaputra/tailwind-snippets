@@ -1,4 +1,5 @@
 import { useContext, useMemo, useState } from 'react';
+import * as ReactDOMServer from 'react-dom/server';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 
 import fs from 'fs/promises';
@@ -36,9 +37,18 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
   const variants: Variant[] = await Promise.all<Variant>(
     selectedSubCategory?.variants.map(async (variant) => {
       const code = await fs.readFile(variant.path, 'utf8');
+      const modulePath = variant.path
+        .replace(`${process.cwd()}/pages/preview/`, '')
+        .replace('.tsx', '');
+      const Element = await import(`pages/preview/${modulePath}`);
+      const HTMLString = ReactDOMServer.renderToString(<Element.default />);
       return {
         ...variant,
         code,
+        codeByType: {
+          tsx: code,
+          html: HTMLString,
+        },
       };
     }) || [],
   );
@@ -95,6 +105,7 @@ export default function SubCategory({
         {viewedVariants.map((snippet) => (
           <SnippetPreview
             code={snippet.code}
+            codeByType={snippet.codeByType}
             isDevelopment={isDevelopment}
             key={snippet.previewUrl}
             onMaximized={handleMaximized}

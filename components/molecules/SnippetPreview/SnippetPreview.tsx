@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { identity } from 'lodash-es';
 
 import Button from 'components/atoms/Button';
+import { CodeByType } from 'core/type';
 
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right.tsx';
 import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize.tsx';
@@ -12,7 +13,7 @@ import CodeIcon from '~icons/tabler/code.tsx';
 import DeviceDesktopIcon from '~icons/tabler/device-desktop.tsx';
 import DeviceMobileIcon from '~icons/tabler/device-mobile.tsx';
 import DeviceTabletIcon from '~icons/tabler/device-tablet.tsx';
-import EyeIcon from '~icons/tabler/eye';
+import EyeIcon from '~icons/tabler/eye.tsx';
 
 import CodeSnippet from './CodeSnippet';
 import IFrame from './IFrame';
@@ -83,6 +84,7 @@ function ScreenIcon({ width, className }: ScreenIconProps) {
 export interface SnippetPreviewProps
   extends React.HTMLProps<HTMLIFrameElement> {
   code?: string;
+  codeByType?: CodeByType;
   isDevelopment?: boolean;
   onMaximized?: (maximized: boolean) => void;
   secondaryTitle?: string | null;
@@ -91,7 +93,8 @@ export interface SnippetPreviewProps
 
 export default function SnippetPreview({
   className = '',
-  code,
+  // code,
+  codeByType,
   isDevelopment,
   onMaximized = identity,
   secondaryTitle,
@@ -250,7 +253,7 @@ export default function SnippetPreview({
             activeTab === Tab.code ? 'block h-fit' : 'h-0 overflow-hidden'
           }
         >
-          <CodeSnippet code={code} />
+          <CodeSnippet code={codeByType?.html} />
         </div>
       </div>
     </div>
