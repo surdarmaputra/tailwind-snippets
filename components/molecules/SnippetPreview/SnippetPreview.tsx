@@ -1,24 +1,27 @@
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 import { identity } from 'lodash-es';
 
 import Button from 'components/atoms/Button';
+import { CodeLanguage, Variant } from 'core/type';
 
 import ArrowUpRightIcon from '~icons/tabler/arrow-up-right.tsx';
 import ArrowsMaximizeIcon from '~icons/tabler/arrows-maximize.tsx';
 import ArrowsMinimizeIcon from '~icons/tabler/arrows-minimize.tsx';
-import CodeIcon from '~icons/tabler/code.tsx';
+import BrandHTML5Icon from '~icons/tabler/brand-html5.tsx';
+import BrandTypeScriptIcon from '~icons/tabler/brand-typescript.tsx';
 import DeviceDesktopIcon from '~icons/tabler/device-desktop.tsx';
 import DeviceMobileIcon from '~icons/tabler/device-mobile.tsx';
 import DeviceTabletIcon from '~icons/tabler/device-tablet.tsx';
-import EyeIcon from '~icons/tabler/eye';
 
 import CodeSnippet from './CodeSnippet';
 import IFrame from './IFrame';
 
 enum Tab {
   code,
+  codeTsx,
+  codeHtml,
   preview,
 }
 
@@ -54,6 +57,11 @@ const tableScreens = [
   ScreenWidth.tablet2,
 ];
 
+const activeCodeIcon: Record<CodeLanguage, ReactNode> = {
+  [CodeLanguage.tsx]: <BrandTypeScriptIcon />,
+  [CodeLanguage.html]: <BrandHTML5Icon />,
+};
+
 interface ScreenIconProps {
   width: ScreenWidth;
   className?: string;
@@ -82,7 +90,7 @@ function ScreenIcon({ width, className }: ScreenIconProps) {
 
 export interface SnippetPreviewProps
   extends React.HTMLProps<HTMLIFrameElement> {
-  code?: string;
+  codeByType?: Variant['codeByType'];
   isDevelopment?: boolean;
   onMaximized?: (maximized: boolean) => void;
   secondaryTitle?: string | null;
@@ -91,7 +99,7 @@ export interface SnippetPreviewProps
 
 export default function SnippetPreview({
   className = '',
-  code,
+  codeByType,
   isDevelopment,
   onMaximized = identity,
   secondaryTitle,
@@ -101,7 +109,10 @@ export default function SnippetPreview({
   const [activeTab, setActiveTab] = useState(Tab.preview);
   const [maximized, setMaximized] = useState(false);
   const [iframeShownInDev, setIframeShownInDev] = useState(false);
-  const [previewScreenWidth, setPreviewScreenWidth] = useState(ScreenWidth.fit);
+  const [activeScreenWidth, setActiveScreenWidth] = useState(ScreenWidth.fit);
+  const [activeCodeLanguage, setActiveCodeLanguage] = useState(
+    CodeLanguage.tsx,
+  );
 
   const renderedTitle = title || 'Snippet Preview';
   const wrapperClassName = `${classNames({
@@ -114,6 +125,16 @@ export default function SnippetPreview({
     const newValue = !maximized;
     setMaximized(newValue);
     onMaximized(newValue);
+  };
+
+  const togglePreviewTab = (screenWidth: ScreenWidth) => {
+    setActiveTab(Tab.preview);
+    setActiveScreenWidth(screenWidth);
+  };
+
+  const toggleCodeTab = (language: CodeLanguage) => {
+    setActiveTab(Tab.code);
+    setActiveCodeLanguage(language);
   };
 
   useEffect(() => {
@@ -134,47 +155,50 @@ export default function SnippetPreview({
           )}
         </div>
         <div className="flex w-full items-center justify-start space-x-1 sm:w-fit sm:justify-end">
-          <div className="flex items-center justify-start">
-            <div
-              className={`group relative transition delay-100 ease-in-out ${
-                activeTab === Tab.preview ? 'mr-1 w-fit' : 'w-0 overflow-hidden'
-              }`}
-            >
-              <Button size="small" variation="dark">
-                <ScreenIcon width={previewScreenWidth} />
-              </Button>
-              <ul className="invisible absolute top-full z-30 mt-0 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
-                {Object.entries(ScreenWidth).map(([key, width]) => (
-                  <button
-                    className={`flex w-full items-end p-2 text-dark-500 hover:text-dark-900 ${
-                      width === previewScreenWidth ? 'bg-dark-300' : ''
-                    }`}
-                    key={key}
-                    onClick={() => setPreviewScreenWidth(width)}
-                  >
-                    <ScreenIcon className="w-8 text-left" width={width} />
-                    <span>{`${width}${
-                      width !== ScreenWidth.fit ? 'px' : ''
-                    }`}</span>
-                  </button>
-                ))}
-              </ul>
-            </div>
+          <div className="group relative transition delay-100 ease-in-out">
             <Button
-              onClick={() => setActiveTab(Tab.preview)}
               size="small"
               variation={activeTab === Tab.preview ? 'dark' : 'light'}
             >
-              <EyeIcon />
+              <ScreenIcon width={activeScreenWidth} />
             </Button>
+            <ul className="invisible absolute top-full z-30 mt-0 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
+              {Object.entries(ScreenWidth).map(([key, width]) => (
+                <button
+                  className={`flex w-full items-end p-2 text-dark-500 hover:text-dark-900 ${
+                    width === activeScreenWidth ? 'bg-dark-300' : ''
+                  }`}
+                  key={key}
+                  onClick={() => togglePreviewTab(width)}
+                >
+                  <ScreenIcon className="w-8 text-left" width={width} />
+                  <span>{`${width}${
+                    width !== ScreenWidth.fit ? 'px' : ''
+                  }`}</span>
+                </button>
+              ))}
+            </ul>
           </div>
-          <Button
-            onClick={() => setActiveTab(Tab.code)}
-            size="small"
-            variation={activeTab === Tab.code ? 'dark' : 'light'}
-          >
-            <CodeIcon />
-          </Button>
+          <div className="group relative transition delay-100 ease-in-out">
+            <Button
+              size="small"
+              variation={activeTab === Tab.code ? 'dark' : 'light'}
+            >
+              {activeCodeIcon[activeCodeLanguage]}
+            </Button>
+            <ul className="invisible absolute top-full z-30 mt-0 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
+              {Object.values(CodeLanguage).map((language) => (
+                <button
+                  className="flex w-full items-center p-2 text-dark-500 hover:text-dark-900"
+                  key={language}
+                  onClick={() => toggleCodeTab(language as CodeLanguage)}
+                >
+                  {activeCodeIcon[language as CodeLanguage]}
+                  <span className="ml-1">{language}</span>
+                </button>
+              ))}
+            </ul>
+          </div>
           <Button
             onClick={toggleMaximize}
             size="small"
@@ -209,20 +233,20 @@ export default function SnippetPreview({
             <IFrame
               className={classNames({
                 'mx-auto': true,
-                'w-full': previewScreenWidth === ScreenWidth.fit,
-                'w-[360px]': previewScreenWidth === ScreenWidth.xs,
-                'w-[480px]': previewScreenWidth === ScreenWidth.phone1,
-                'w-[540px]': previewScreenWidth === ScreenWidth.phone2,
-                'w-[600px]': previewScreenWidth === ScreenWidth.phone3,
-                'w-[640px]': previewScreenWidth === ScreenWidth.sm,
-                'w-[720px]': previewScreenWidth === ScreenWidth.tablet1,
-                'w-[768px]': previewScreenWidth === ScreenWidth.md,
-                'w-[800px]': previewScreenWidth === ScreenWidth.tablet2,
-                'w-[1024px]': previewScreenWidth === ScreenWidth.lg,
-                'w-[1080px]': previewScreenWidth === ScreenWidth.desktop1,
-                'w-[1280px]': previewScreenWidth === ScreenWidth.xl,
-                'w-[1440px]': previewScreenWidth === ScreenWidth.desktop2,
-                'w-[1536px]': previewScreenWidth === ScreenWidth.desktop3,
+                'w-full': activeScreenWidth === ScreenWidth.fit,
+                'w-[360px]': activeScreenWidth === ScreenWidth.xs,
+                'w-[480px]': activeScreenWidth === ScreenWidth.phone1,
+                'w-[540px]': activeScreenWidth === ScreenWidth.phone2,
+                'w-[600px]': activeScreenWidth === ScreenWidth.phone3,
+                'w-[640px]': activeScreenWidth === ScreenWidth.sm,
+                'w-[720px]': activeScreenWidth === ScreenWidth.tablet1,
+                'w-[768px]': activeScreenWidth === ScreenWidth.md,
+                'w-[800px]': activeScreenWidth === ScreenWidth.tablet2,
+                'w-[1024px]': activeScreenWidth === ScreenWidth.lg,
+                'w-[1080px]': activeScreenWidth === ScreenWidth.desktop1,
+                'w-[1280px]': activeScreenWidth === ScreenWidth.xl,
+                'w-[1440px]': activeScreenWidth === ScreenWidth.desktop2,
+                'w-[1536px]': activeScreenWidth === ScreenWidth.desktop3,
               })}
               src={src}
             />
@@ -250,7 +274,7 @@ export default function SnippetPreview({
             activeTab === Tab.code ? 'block h-fit' : 'h-0 overflow-hidden'
           }
         >
-          <CodeSnippet code={code} />
+          <CodeSnippet code={codeByType?.[activeCodeLanguage]} />
         </div>
       </div>
     </div>
