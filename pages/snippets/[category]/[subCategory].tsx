@@ -8,7 +8,7 @@ import prettier from 'prettier';
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetPreview from 'components/molecules/SnippetPreview';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
-import { SnippetCategory, Theme, Variant } from 'core/type';
+import { CodeLanguage, SnippetCategory, Theme, Variant } from 'core/type';
 import useFilterStore from 'hooks/useFilterStore';
 import { ColorModeContext } from 'providers/ColorModeProvider';
 import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
@@ -48,10 +48,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
       );
       return {
         ...variant,
-        code,
         codeByType: {
-          tsx: code,
-          html: HTMLString,
+          [CodeLanguage.tsx]: code,
+          [CodeLanguage.html]: HTMLString,
         },
       };
     }) || [],
@@ -108,7 +107,6 @@ export default function SubCategory({
       >
         {viewedVariants.map((snippet) => (
           <SnippetPreview
-            code={snippet.code}
             codeByType={snippet.codeByType}
             isDevelopment={isDevelopment}
             key={snippet.previewUrl}

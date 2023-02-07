@@ -1,3 +1,7 @@
+export enum CodeLanguage {
+  tsx = 'TypeScript',
+  html = 'HTML',
+}
 export interface NavItem {
   title: string;
   href: string;
@@ -8,15 +12,10 @@ export interface Theme {
   themeTitle: string | null;
 }
 
-export interface CodeByType {
-  tsx?: string;
-  html?: string;
-}
 export interface Variant extends Theme {
   title: string;
   path: string;
-  code?: string;
-  codeByType?: CodeByType;
+  codeByType?: Record<CodeLanguage, string>;
   previewUrl?: string;
 }
 
