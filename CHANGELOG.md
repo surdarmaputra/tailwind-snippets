@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/surdarmaputra/tailwind-snippets/compare/v0.1.0...v0.2.0) (2023-02-07)
+
+
+### Features
+
+* add pages preview and more snippets ([#1](https://github.com/surdarmaputra/tailwind-snippets/issues/1)) ([fdef1f7](https://github.com/surdarmaputra/tailwind-snippets/commit/fdef1f7648f708246f78408d8b42e78f07c4fad6))
+* html code snippet ([#4](https://github.com/surdarmaputra/tailwind-snippets/issues/4)) ([a2f1764](https://github.com/surdarmaputra/tailwind-snippets/commit/a2f1764a7d9e7b127952743a72fa77fd9d326a92))
+* UI refresh ([#3](https://github.com/surdarmaputra/tailwind-snippets/issues/3)) ([2a7ace1](https://github.com/surdarmaputra/tailwind-snippets/commit/2a7ace1e09cac1d2e3d3ca61547b208c9f60687a))
+
+
+### Bug Fixes
+
+* missing thumbnails and unsorted navigations ([#2](https://github.com/surdarmaputra/tailwind-snippets/issues/2)) ([cd90cd0](https://github.com/surdarmaputra/tailwind-snippets/commit/cd90cd069ed5f7665ff9521e6a06c104f0cd12b5))
+* screen size ([e2664d4](https://github.com/surdarmaputra/tailwind-snippets/commit/e2664d4b77fbbac0273f6c7b267a052132f6a37a))
+
 ## 0.1.0 (2022-09-22)
 
 
