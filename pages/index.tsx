@@ -80,7 +80,7 @@ export default function Home({
         <div className="mx-auto px-6 lg:container">
           <video
             autoPlay
-            className="relative z-10 rounded-xl shadow-xl lg:container"
+            className="relative z-10 w-full rounded-xl shadow-xl lg:container"
             loop
             src="/videos/tailwind-snippets-preview.webm"
           ></video>
