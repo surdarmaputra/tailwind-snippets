@@ -21,40 +21,37 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return generateSnippetCategoryPaths(snippets);
 };
 
-export default function Snippets({
+export default function SnippetsCategory({
   snippets,
   themes,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
   const { category: currentCategorySlug } = router.query;
+  const category = snippets.find((item) => item.slug === currentCategorySlug);
 
   return (
     <>
-      <HeadContent />
+      <HeadContent title={`${category?.title} Snippets`} />
 
       <SnippetsExplorerLayout snippets={snippets} themes={themes}>
-        {snippets
-          .filter((category) => category.slug === currentCategorySlug)
-          .map((category) => (
-            <div className="mb-20" key={category.slug}>
-              <h5>{category.title}</h5>
-              <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-3">
-                {category.subCategories.map((subCategory) => (
-                  <Link
-                    href={subCategory.href || '/snippets'}
-                    key={subCategory.slug}
-                  >
-                    <a>
-                      <Thumbnail
-                        name={subCategory.slug}
-                        title={subCategory.title}
-                      />
-                    </a>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div className="mb-20" key={category?.slug}>
+          <h5>{category?.title}</h5>
+          <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-3">
+            {category?.subCategories.map((subCategory) => (
+              <Link
+                href={subCategory.href || '/snippets'}
+                key={subCategory.slug}
+              >
+                <a>
+                  <Thumbnail
+                    name={subCategory.slug}
+                    title={subCategory.title}
+                  />
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
       </SnippetsExplorerLayout>
     </>
   );

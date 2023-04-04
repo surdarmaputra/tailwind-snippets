@@ -31,7 +31,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <HeadContent />
+      <HeadContent title="Home" />
 
       <Header navigationHidden />
 

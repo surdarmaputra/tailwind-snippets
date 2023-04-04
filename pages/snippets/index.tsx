@@ -19,7 +19,7 @@ export default function Snippets({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <HeadContent />
+      <HeadContent title="Snippets" />
 
       <SnippetsExplorerLayout snippets={snippets} themes={themes}>
         {snippets.map((category) => (
