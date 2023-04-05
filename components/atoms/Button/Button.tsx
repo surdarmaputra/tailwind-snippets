@@ -20,7 +20,7 @@ export enum ButtonSize {
 }
 
 export interface ButtonProps
-  extends Omit<React.HTMLProps<HTMLButtonElement>, 'size'> {
+  extends Omit<React.HTMLProps<HTMLAnchorElement | HTMLButtonElement>, 'size'> {
   external?: boolean;
   href?: string;
   link?: boolean;
@@ -172,7 +172,13 @@ export default function Button({
 
   if (link && external) {
     return (
-      <a className={finalClassName} href={href} target={target} title={title}>
+      <a
+        className={finalClassName}
+        href={href}
+        onClick={onClick}
+        target={target}
+        title={title}
+      >
         {children}
       </a>
     );
@@ -180,7 +186,7 @@ export default function Button({
 
   return (
     <NextLink href={href || '/'}>
-      <a className={finalClassName} title={title}>
+      <a className={finalClassName} onClick={onClick} title={title}>
         {children}
       </a>
     </NextLink>
