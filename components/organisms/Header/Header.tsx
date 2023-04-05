@@ -1,6 +1,9 @@
 import { useContext } from 'react';
 import Link from 'next/link';
 
+import { trackEvent } from 'libs/analytics';
+import { ElementId } from 'libs/analytics/types';
+
 import ColorModeToggle from 'components/atoms/ColorModeToggle';
 import HorizontalNavigation from 'components/molecules/HorizontalNavigation';
 import { NavItem } from 'core/type';
@@ -35,7 +38,15 @@ export default function Header({ fixed, navigationHidden }: HeaderProps) {
     >
       <div className="w-fit text-lg font-bold">
         <Link href="/">
-          <a className="no-underline">
+          <a
+            className="no-underline"
+            onClick={() =>
+              trackEvent({
+                name: 'element_click',
+                element_id: ElementId.BtnHeaderLogo,
+              })
+            }
+          >
             <span className="text-primary-500">Tailwind</span>{' '}
             <span>Snippets</span>
           </a>

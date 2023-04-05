@@ -7,6 +7,7 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 
+import { trackEvent } from 'libs/analytics';
 import { identity } from 'lodash-es';
 
 export interface ColorModeContextValue {
@@ -40,6 +41,10 @@ export default function ColorModeProvider({
   const toggleColorMode = (becomeDark: boolean) => {
     setDark(becomeDark);
     setDarkClassName(becomeDark);
+    trackEvent({
+      name: 'color_mode_click',
+      selected_value: becomeDark ? 'dark' : 'light',
+    });
     global.localStorage.theme = becomeDark ? 'dark' : 'light';
   };
 

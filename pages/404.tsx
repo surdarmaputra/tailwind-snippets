@@ -13,7 +13,7 @@ export async function getStaticProps() {
 const NotFound: NextPage = () => {
   return (
     <>
-      <HeadContent title="404 | Sorry you got lost :(" />
+      <HeadContent title="Sorry you got lost (404)" />
 
       <div className="absolute left-0 top-24 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
       <div className="absolute right-0 top-4 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>

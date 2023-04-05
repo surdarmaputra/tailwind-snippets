@@ -13,7 +13,7 @@ export async function getStaticProps() {
 const ServerError: NextPage = () => {
   return (
     <>
-      <HeadContent title="500 | Sorry, we have a problem :(" />
+      <HeadContent title="Sorry, we have a problem (500)" />
 
       <div className="absolute left-0 top-24 -z-10 h-72 w-72 rounded-full bg-primary-500 opacity-10 blur-3xl"></div>
       <div className="absolute right-0 top-4 -z-10 h-72 w-72 rounded-full bg-danger-500 opacity-10 blur-3xl"></div>

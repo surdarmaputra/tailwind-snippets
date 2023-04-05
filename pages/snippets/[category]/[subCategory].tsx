@@ -8,7 +8,13 @@ import prettier from 'prettier';
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetPreview from 'components/molecules/SnippetPreview';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
-import { CodeLanguage, SnippetCategory, Theme, Variant } from 'core/type';
+import {
+  CodeLanguage,
+  SnippetCategory,
+  SnippetSubCategory,
+  Theme,
+  Variant,
+} from 'core/type';
 import useFilterStore from 'hooks/useFilterStore';
 import { ColorModeContext } from 'providers/ColorModeProvider';
 import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
@@ -19,6 +25,8 @@ import MoodConfuzedIcon from '~icons/tabler/mood-confuzed.tsx';
 
 interface StaticProps {
   isDevelopment: boolean;
+  selectedCategory: SnippetCategory | undefined;
+  selectedSubCategory: SnippetSubCategory | undefined;
   snippets: SnippetCategory[];
   themes: Theme[];
   variants: Variant[];
@@ -61,6 +69,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
       ...props,
       ...mainAppProps,
       isDevelopment: process.env.NODE_ENV === 'development',
+      selectedCategory,
+      selectedSubCategory,
       variants,
     },
   };
@@ -74,6 +84,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export default function SubCategory({
   isDevelopment,
+  selectedCategory,
+  selectedSubCategory,
   snippets,
   themes,
   variants,
@@ -98,7 +110,9 @@ export default function SubCategory({
 
   return (
     <>
-      <HeadContent />
+      <HeadContent
+        title={`${selectedCategory?.title} - ${selectedSubCategory?.title}`}
+      />
 
       <SnippetsExplorerLayout
         className={snippetPreviewMaximized ? '' : 'space-y-12'}

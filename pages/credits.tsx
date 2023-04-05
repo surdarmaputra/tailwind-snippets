@@ -21,7 +21,7 @@ export default function Credits({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <HeadContent />
+      <HeadContent title="Credits" />
 
       <Header navigationHidden />
 

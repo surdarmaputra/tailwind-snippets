@@ -2,6 +2,8 @@ import type { InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { trackEvent } from 'libs/analytics';
+import { ElementContainer, ElementId } from 'libs/analytics/types';
 import { merge } from 'lodash-es';
 
 import Button from 'components/atoms/Button';
@@ -31,7 +33,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <HeadContent />
+      <HeadContent title="Home" />
 
       <Header navigationHidden />
 
@@ -66,6 +68,13 @@ export default function Home({
             <Button
               href="/snippets"
               link
+              onClick={() =>
+                trackEvent({
+                  name: 'element_click',
+                  element_id: ElementId.CTAExploreTemplates,
+                  element_container: ElementContainer.LandingHeroSection,
+                })
+              }
               rounded
               size="large"
               variation="primary"
@@ -129,6 +138,14 @@ export default function Home({
             <Button
               href="/snippets"
               link
+              onClick={() =>
+                trackEvent({
+                  name: 'element_click',
+                  element_id: ElementId.CTAExploreTemplates,
+                  element_container:
+                    ElementContainer.LandingStyleCampaignSection,
+                })
+              }
               rounded
               size="small"
               variation="light"
@@ -186,13 +203,27 @@ export default function Home({
 
         <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-3">
           <Link href="/snippets">
-            <a>
+            <a
+              onClick={() =>
+                trackEvent({
+                  name: 'snippet_thumbnail_click',
+                  title: 'All Templates',
+                })
+              }
+            >
               <Thumbnail name="products" title="All Templates" />
             </a>
           </Link>
           {snippets.map((category) => (
             <Link href={category.href || '/snippets'} key={category.slug}>
-              <a>
+              <a
+                onClick={() =>
+                  trackEvent({
+                    name: 'snippet_thumbnail_click',
+                    title: category.title,
+                  })
+                }
+              >
                 <Thumbnail
                   name={
                     categoryThumbnail[category.slug] ||

@@ -42,6 +42,7 @@
     "@storybook/testing-library": "^0.0.13",
     "@svgr/core": "^6.3.1",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
+    "@types/gtag.js": "^0.0.12",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "18.0.5",
     "@types/prettier": "^2.7.2",
