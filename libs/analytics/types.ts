@@ -25,11 +25,18 @@ interface ElementClickEvent extends CustomEvent {
   element_id: ElementId;
 }
 
+interface FilterAppliedEvent extends CustomEvent {
+  name: 'filter_changed';
+  field_name: string;
+  selected_value: string;
+}
+
 /** Snippet preview events */
 export enum SnippetPreviewElementId {
   SelectScreenSize = 'SelectScreenSize',
   SelectCodeLanguage = 'SelectCodeLanguage',
   BtnMaximize = 'BtnMaximize',
+  BtnMinimize = 'BtnMinimize',
   BtnOpenFullPage = 'BtnOpenFullPage',
 }
 
@@ -49,5 +56,6 @@ interface SnippetPreviewClickEvent extends CustomEvent {
 export type EventType =
   | ColorModeClickEvent
   | ElementClickEvent
+  | FilterAppliedEvent
   | SnippetPreviewClickEvent
   | SnippetThumbnailClickEvent;

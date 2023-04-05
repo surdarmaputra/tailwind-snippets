@@ -1,6 +1,7 @@
 import { InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 
+import { trackEvent } from 'libs/analytics';
 import { merge } from 'lodash-es';
 
 import Thumbnail from 'components/atoms/Thumbnail';
@@ -31,7 +32,14 @@ export default function Snippets({
                   href={subCategory.href || '/snippets'}
                   key={subCategory.slug}
                 >
-                  <a>
+                  <a
+                    onClick={() =>
+                      trackEvent({
+                        name: 'snippet_thumbnail_click',
+                        title: subCategory.title,
+                      })
+                    }
+                  >
                     <Thumbnail
                       name={subCategory.slug}
                       title={subCategory.title}

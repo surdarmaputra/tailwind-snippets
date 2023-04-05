@@ -1,6 +1,8 @@
 import { ReactNode, useEffect, useState } from 'react';
 
 import classNames from 'classnames';
+import { trackEvent } from 'libs/analytics';
+import { SnippetPreviewElementId } from 'libs/analytics/types';
 import { identity } from 'lodash-es';
 
 import Button from 'components/atoms/Button';
@@ -125,16 +127,38 @@ export default function SnippetPreview({
     const newValue = !maximized;
     setMaximized(newValue);
     onMaximized(newValue);
+    trackEvent({
+      name: 'snippet_preview_click',
+      element_id: newValue
+        ? SnippetPreviewElementId.BtnMaximize
+        : SnippetPreviewElementId.BtnMinimize,
+      title: renderedTitle,
+      secondaryTitle: secondaryTitle || undefined,
+    });
   };
 
   const togglePreviewTab = (screenWidth: ScreenWidth) => {
     setActiveTab(Tab.preview);
     setActiveScreenWidth(screenWidth);
+    trackEvent({
+      name: 'snippet_preview_click',
+      element_id: SnippetPreviewElementId.SelectScreenSize,
+      title: renderedTitle,
+      secondaryTitle: secondaryTitle || undefined,
+      selected_value: screenWidth,
+    });
   };
 
   const toggleCodeTab = (language: CodeLanguage) => {
     setActiveTab(Tab.code);
     setActiveCodeLanguage(language);
+    trackEvent({
+      name: 'snippet_preview_click',
+      element_id: SnippetPreviewElementId.SelectCodeLanguage,
+      title: renderedTitle,
+      secondaryTitle: secondaryTitle || undefined,
+      selected_value: language,
+    });
   };
 
   useEffect(() => {
@@ -211,6 +235,14 @@ export default function SnippetPreview({
             external
             href={src}
             link
+            onClick={() =>
+              trackEvent({
+                name: 'snippet_preview_click',
+                element_id: SnippetPreviewElementId.BtnOpenFullPage,
+                title: renderedTitle,
+                secondaryTitle: secondaryTitle || undefined,
+              })
+            }
             size="small"
             target="_blank"
             title="Open full page"

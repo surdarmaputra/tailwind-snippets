@@ -3,6 +3,7 @@ import Select, { MultiValue } from 'react-select';
 import { useRouter } from 'next/router';
 
 import classNames from 'classnames';
+import { trackEvent } from 'libs/analytics';
 
 import Button from 'components/atoms/Button';
 import VerticalNavigation from 'components/molecules/VerticalNavigation';
@@ -69,6 +70,13 @@ export default function SnippetsExplorerLayout({
       .map(({ value }) => value)
       .filter(Boolean) as string[];
     setThemesFilter(selectedValues);
+    if (selectedValues?.length) {
+      trackEvent({
+        name: 'filter_changed',
+        field_name: 'theme',
+        selected_value: selectedValues.join('|'),
+      });
+    }
     router.push({
       query: {
         ...router.query,
