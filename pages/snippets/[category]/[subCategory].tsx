@@ -1,22 +1,13 @@
 import { useContext, useMemo, useState } from 'react';
-import * as ReactDOMServer from 'react-dom/server';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-
-import fs from 'fs/promises';
-import prettier from 'prettier';
 
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetPreview from 'components/molecules/SnippetPreview';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
-import {
-  CodeLanguage,
-  SnippetCategory,
-  SnippetSubCategory,
-  Theme,
-  Variant,
-} from 'core/type';
+import { SnippetCategory, SnippetSubCategory, Theme, Variant } from 'core/type';
 import useFilterStore from 'hooks/useFilterStore';
 import { ColorModeContext } from 'providers/ColorModeProvider';
+import generateCompleteVariant from 'utils/generator/generateCompleteVariant';
 import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
 import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
@@ -44,24 +35,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
     (subCategoryItem) => subCategoryItem.slug === context.params?.subCategory,
   );
   const variants: Variant[] = await Promise.all<Variant>(
-    selectedSubCategory?.variants.map(async (variant) => {
-      const code = await fs.readFile(variant.path, 'utf8');
-      const modulePath = variant.path
-        .replace(`${process.cwd()}/pages/preview/`, '')
-        .replace('.tsx', '');
-      const Element = await import(`pages/preview/${modulePath}`);
-      const HTMLString = prettier.format(
-        ReactDOMServer.renderToString(<Element.default />),
-        { parser: 'html', htmlWhitespaceSensitivity: 'ignore' },
-      );
-      return {
-        ...variant,
-        codeByType: {
-          [CodeLanguage.tsx]: code,
-          [CodeLanguage.html]: HTMLString,
-        },
-      };
-    }) || [],
+    selectedSubCategory?.variants.map(generateCompleteVariant) || [],
   );
 
   return {

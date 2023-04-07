@@ -145,6 +145,7 @@ export default function SnippetsExplorerLayout({
           {children}
         </div>
       </div>
+
       <Footer snippets={snippets} />
     </>
   );
