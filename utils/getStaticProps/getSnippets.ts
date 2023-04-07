@@ -14,8 +14,7 @@ export interface GetSnippetsResult {
 }
 
 export default async function getSnippets(): Promise<GetSnippetsResult> {
-  const rawPaths = await readDir(snippetsDirectory);
-  const snippetPaths = rawPaths.filter(path => !path.includes('preview/pages'));
+  const snippetPaths = await readDir(snippetsDirectory);
   const snippets = createSnippetsDirectoryTree(snippetPaths);
   const themes = getThemesFromSnippets(snippets);
 

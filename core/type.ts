@@ -33,6 +33,15 @@ export interface SnippetCategory {
   subCategories: SnippetSubCategory[];
 }
 
+export interface PageSnippet extends Theme {
+  slug: string;
+  title: string;
+  path: string;
+  codeByType?: Record<CodeLanguage, string>;
+  previewUrl?: string;
+  href?: string;
+}
+
 export interface SelectOption {
   label: string | null;
   value: string | null;
