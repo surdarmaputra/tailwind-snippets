@@ -29,6 +29,7 @@ export async function getStaticProps() {
 }
 
 export default function Home({
+  pageSnippets,
   snippets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
@@ -232,6 +233,23 @@ export default function Home({
                     category.subCategories[0].slug
                   }
                   title={category.title}
+                />
+              </a>
+            </Link>
+          ))}
+          {pageSnippets?.map((category) => (
+            <Link href={category.href || '/snippets/pages'} key={category.slug}>
+              <a
+                onClick={() =>
+                  trackEvent({
+                    name: 'snippet_thumbnail_click',
+                    title: `${category.title} Page`,
+                  })
+                }
+              >
+                <Thumbnail
+                  name={category.slug}
+                  title={`${category.title} Page`}
                 />
               </a>
             </Link>

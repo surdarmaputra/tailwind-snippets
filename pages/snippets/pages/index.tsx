@@ -40,11 +40,14 @@ export default function Pages({
                   onClick={() =>
                     trackEvent({
                       name: 'snippet_thumbnail_click',
-                      title: category.title,
+                      title: `${category.title} Page`,
                     })
                   }
                 >
-                  <Thumbnail name={category.slug} title={category.title} />
+                  <Thumbnail
+                    name={category.slug}
+                    title={`${category.title} Page`}
+                  />
                 </a>
               </Link>
             ))}

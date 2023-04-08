@@ -104,6 +104,7 @@ export default function PagesCategory({
             isDevelopment={isDevelopment}
             key={snippet.previewUrl}
             onMaximized={handleMaximized}
+            secondaryTitle={`${snippet.title} Page`}
             src={`${snippet.previewUrl}${dark ? '?theme=dark' : ''}`}
             title={snippet.themeTitle || snippet.title}
           />
