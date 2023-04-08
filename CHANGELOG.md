@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/surdarmaputra/tailwind-snippets/compare/v0.3.0...v0.3.1) (2023-04-08)
+
+
+### Bug Fixes
+
+* missing page thumbnails in snippets page ([009b78c](https://github.com/surdarmaputra/tailwind-snippets/commit/009b78cfe318865b8fe9c9971bfa09e3efbbb52a))
+
 ## [0.3.0](https://github.com/surdarmaputra/tailwind-snippets/compare/v0.2.0...v0.3.0) (2023-04-08)
 
 
