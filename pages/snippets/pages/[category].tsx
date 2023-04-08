@@ -4,17 +4,11 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetPreview from 'components/molecules/SnippetPreview';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
-import {
-  PageCategory,
-  SnippetCategory,
-  SnippetSubCategory,
-  Theme,
-  Variant,
-} from 'core/type';
+import { PageCategory, SnippetCategory, Theme, Variant } from 'core/type';
 import useFilterStore from 'hooks/useFilterStore';
 import { ColorModeContext } from 'providers/ColorModeProvider';
 import generateCompleteVariant from 'utils/generator/generateCompleteVariant';
-import generateSnippetPaths from 'utils/getStaticPaths/generateSnippetPaths';
+import generatePageCategoryPaths from 'utils/getStaticPaths/generatePageCategoryPaths';
 import getSnippets from 'utils/getStaticProps/getSnippets';
 import setAsMainApp from 'utils/getStaticProps/setAsMainApp';
 
@@ -22,8 +16,7 @@ import MoodConfuzedIcon from '~icons/tabler/mood-confuzed.tsx';
 
 interface StaticProps {
   isDevelopment: boolean;
-  selectedCategory: SnippetCategory | undefined;
-  selectedSubCategory: SnippetSubCategory | undefined;
+  selectedCategory: PageCategory | undefined;
   snippets: SnippetCategory[];
   pageSnippets: PageCategory[];
   themes: Theme[];
@@ -33,16 +26,13 @@ interface StaticProps {
 export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
   const { props } = await getSnippets();
   const { props: mainAppProps } = await setAsMainApp();
-  const { snippets } = props;
+  const { pageSnippets } = props;
 
-  const selectedCategory = snippets.find(
+  const selectedCategory = pageSnippets.find(
     (categoryItem) => categoryItem.slug === context.params?.category,
   );
-  const selectedSubCategory = selectedCategory?.subCategories.find(
-    (subCategoryItem) => subCategoryItem.slug === context.params?.subCategory,
-  );
   const variants: Variant[] = await Promise.all<Variant>(
-    selectedSubCategory?.variants.map(generateCompleteVariant) || [],
+    selectedCategory?.variants.map(generateCompleteVariant) || [],
   );
 
   return {
@@ -51,7 +41,6 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
       ...mainAppProps,
       isDevelopment: process.env.NODE_ENV === 'development',
       selectedCategory,
-      selectedSubCategory,
       variants,
     },
   };
@@ -59,15 +48,14 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { props } = await getSnippets();
-  const { snippets } = props;
-  return generateSnippetPaths(snippets);
+  const { pageSnippets } = props;
+  return generatePageCategoryPaths(pageSnippets);
 };
 
-export default function SubCategory({
+export default function PagesCategory({
   isDevelopment,
   pageSnippets,
   selectedCategory,
-  selectedSubCategory,
   snippets,
   themes,
   variants,
@@ -92,9 +80,7 @@ export default function SubCategory({
 
   return (
     <>
-      <HeadContent
-        title={`${selectedCategory?.title} - ${selectedSubCategory?.title}`}
-      />
+      <HeadContent title={`Page - ${selectedCategory?.title}`} />
 
       <SnippetsExplorerLayout
         className={snippetPreviewMaximized ? '' : 'space-y-12'}
@@ -108,9 +94,8 @@ export default function SubCategory({
             isDevelopment={isDevelopment}
             key={snippet.previewUrl}
             onMaximized={handleMaximized}
-            secondaryTitle={snippet.themeTitle}
             src={`${snippet.previewUrl}${dark ? '?theme=dark' : ''}`}
-            title={snippet.title}
+            title={snippet.themeTitle || snippet.title}
           />
         ))}
         {!viewedVariants?.length ? (

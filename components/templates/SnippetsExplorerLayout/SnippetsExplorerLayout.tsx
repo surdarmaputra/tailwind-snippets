@@ -10,7 +10,7 @@ import VerticalNavigation from 'components/molecules/VerticalNavigation';
 import Footer from 'components/organisms/Footer/Footer';
 import Header from 'components/organisms/Header';
 import { navigationItems } from 'components/organisms/Header/Header';
-import { SelectOption, SnippetCategory, Theme } from 'core/type';
+import { PageCategory, SelectOption, SnippetCategory, Theme } from 'core/type';
 import useCurrentPath from 'hooks/useCurrentPath';
 import useFilterStore from 'hooks/useFilterStore';
 
@@ -19,6 +19,7 @@ import MenuIcon from '~icons/tabler/menu-2.tsx';
 export interface SnippetsExplorerLayoutProps
   extends React.HTMLProps<HTMLDivElement> {
   snippets: SnippetCategory[];
+  pageSnippets: PageCategory[];
   themes?: Theme[];
 }
 
@@ -26,6 +27,7 @@ export default function SnippetsExplorerLayout({
   children,
   className = '',
   snippets,
+  pageSnippets,
   themes = [],
 }: SnippetsExplorerLayoutProps) {
   const router = useRouter();
@@ -139,6 +141,7 @@ export default function SnippetsExplorerLayout({
           currentPath={currentPath}
           navItems={navigationItems}
           onClick={handleNavItemClick}
+          pageSnippets={pageSnippets}
           snippets={snippets}
         />{' '}
         <div className={`w-full pr-4 pl-4 sm:w-4/5 sm:pl-12 ${className}`}>

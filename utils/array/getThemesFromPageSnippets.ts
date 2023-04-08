@@ -1,6 +1,6 @@
 import { flattenDeep, flow, uniqBy } from 'lodash-es';
 
-import { PageSnippet, Theme } from 'core/type';
+import { PageCategory, Theme } from 'core/type';
 
 const generateTheme = flow([
   flattenDeep,
@@ -8,11 +8,13 @@ const generateTheme = flow([
   (themes) => themes?.filter((item: Theme) => Boolean(item.theme)),
 ]);
 
-export default function getThemesFromPageSnippets(snippets: PageSnippet[]) {
+export default function getThemesFromPageSnippets(snippets: PageCategory[]) {
   return generateTheme(
-    snippets.map(({ theme, themeTitle }) => ({
-      theme,
-      themeTitle,
-    })),
+    snippets.map((category) =>
+      category.variants.map(({ theme, themeTitle }) => ({
+        theme,
+        themeTitle,
+      })),
+    ),
   );
 }

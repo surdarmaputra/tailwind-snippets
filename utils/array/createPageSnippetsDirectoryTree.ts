@@ -1,34 +1,44 @@
-import { sortBy, startCase } from 'lodash-es';
+import { findIndex, sortBy, startCase } from 'lodash-es';
 import path from 'path';
 
-import { PageSnippet } from 'core/type';
+import { PageCategory } from 'core/type';
 
-export const snippetsDirectory = path.join(
+export const pageSnippetsDirectory = path.join(
   process.cwd(),
   'pages/preview/pages',
 );
 
 export default function createPageSnippetsDirectoryTree(
   snippetPaths: string[],
-): PageSnippet[] {
-  let tree: PageSnippet[] = snippetPaths
-    .filter((snippetPath) => snippetPath.includes('preview/pages'))
-    .map((filePath) => {
-      const [theme, variant] = filePath
-        .replace(`${snippetsDirectory}/`, '')
-        .split('.')[0]
-        .split('/');
-      const slug = `${theme}/${variant}`;
+): PageCategory[] {
+  let tree: PageCategory[] = [];
 
-      return {
-        slug,
-        theme: theme || null,
-        themeTitle: theme ? startCase(theme) : null,
-        title: startCase(variant),
-        path: filePath,
-        previewUrl: `/preview/pages/${slug}`,
-      };
-    });
+  snippetPaths.forEach((filePath) => {
+    const [theme, category] = filePath
+      .replace(`${pageSnippetsDirectory}/`, '')
+      .split('.')[0]
+      .split('/');
+    const slug = `${theme}/${category}`;
+    const variant = {
+      theme: theme || null,
+      themeTitle: theme ? startCase(theme) : null,
+      title: category,
+      path: filePath,
+      previewUrl: `/preview/pages/${slug}`,
+    };
+
+    const categoryIndex = findIndex(tree, ['slug', category]);
+    if (categoryIndex === -1) {
+      tree.push({
+        slug: category,
+        title: category,
+        href: `/snippets/pages/${category}`,
+        variants: [variant],
+      });
+    } else {
+      tree[categoryIndex].variants.push(variant);
+    }
+  });
 
   tree = sortBy(tree, ['title']);
 

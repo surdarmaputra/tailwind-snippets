@@ -33,12 +33,10 @@ export interface SnippetCategory {
   subCategories: SnippetSubCategory[];
 }
 
-export interface PageSnippet extends Theme {
+export interface PageCategory {
   slug: string;
   title: string;
-  path: string;
-  codeByType?: Record<CodeLanguage, string>;
-  previewUrl?: string;
+  variants: Variant[];
   href?: string;
 }
 

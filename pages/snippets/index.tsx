@@ -15,6 +15,7 @@ export async function getStaticProps() {
 }
 
 export default function Snippets({
+  pageSnippets,
   snippets,
   themes,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -22,7 +23,11 @@ export default function Snippets({
     <>
       <HeadContent title="Snippets" />
 
-      <SnippetsExplorerLayout snippets={snippets} themes={themes}>
+      <SnippetsExplorerLayout
+        pageSnippets={pageSnippets}
+        snippets={snippets}
+        themes={themes}
+      >
         {snippets.map((category) => (
           <div className="mb-20" key={category.slug}>
             <h5>{category.title}</h5>
