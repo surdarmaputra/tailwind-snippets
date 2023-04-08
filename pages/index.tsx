@@ -91,6 +91,8 @@ export default function Home({
             autoPlay
             className="relative z-10 w-full rounded-xl shadow-xl lg:container"
             loop
+            muted
+            playsInline
             src="/videos/tailwind-snippets-preview.webm"
           ></video>
         </div>

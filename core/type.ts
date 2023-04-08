@@ -33,6 +33,13 @@ export interface SnippetCategory {
   subCategories: SnippetSubCategory[];
 }
 
+export interface PageCategory {
+  slug: string;
+  title: string;
+  variants: Variant[];
+  href?: string;
+}
+
 export interface SelectOption {
   label: string | null;
   value: string | null;

@@ -24,12 +24,16 @@ export interface ThumbnailProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const thumbnailComponents: Record<string, ReactNode> = {
+  // Page sections
   header: <HeaderThumbnail />,
   footer: <FooterThumbnail />,
   hero: <HeroThumbnail />,
   benefits: <ServicesThumbnail />,
   products: <ProductsThumbnail />,
   testimony: <TestimonyThumbnail />,
+
+  // Pages
+  Landing: <HeroThumbnail />,
 };
 
 export default function Thumbnail({
