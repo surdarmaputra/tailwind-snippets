@@ -4,7 +4,13 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import HeadContent from 'components/molecules/HeadContent';
 import SnippetPreview from 'components/molecules/SnippetPreview';
 import SnippetsExplorerLayout from 'components/templates/SnippetsExplorerLayout';
-import { PageCategory, SnippetCategory, Theme, Variant } from 'core/type';
+import {
+  CodeLanguage,
+  PageCategory,
+  SnippetCategory,
+  Theme,
+  Variant,
+} from 'core/type';
 import useFilterStore from 'hooks/useFilterStore';
 import { ColorModeContext } from 'providers/ColorModeProvider';
 import generateCompleteVariant from 'utils/generator/generateCompleteVariant';
@@ -32,7 +38,11 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
     (categoryItem) => categoryItem.slug === context.params?.category,
   );
   const variants: Variant[] = await Promise.all<Variant>(
-    selectedCategory?.variants.map(generateCompleteVariant) || [],
+    selectedCategory?.variants.map((variant) =>
+      generateCompleteVariant(variant, {
+        excludedCodeLanguage: [CodeLanguage.tsx],
+      }),
+    ) || [],
   );
 
   return {

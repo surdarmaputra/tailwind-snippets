@@ -42,7 +42,9 @@ export const getStaticProps: GetStaticProps<StaticProps> = async (context) => {
     (subCategoryItem) => subCategoryItem.slug === context.params?.subCategory,
   );
   const variants: Variant[] = await Promise.all<Variant>(
-    selectedSubCategory?.variants.map(generateCompleteVariant) || [],
+    selectedSubCategory?.variants.map((variant) =>
+      generateCompleteVariant(variant),
+    ) || [],
   );
 
   return {

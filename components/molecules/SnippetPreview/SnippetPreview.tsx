@@ -161,6 +161,8 @@ export default function SnippetPreview({
     });
   };
 
+  const availableCodeByType = codeByType ? Object.keys(codeByType) : [];
+
   useEffect(() => {
     document.body.className = maximized
       ? `${document.body.className} overflow-hidden`
@@ -211,7 +213,7 @@ export default function SnippetPreview({
               {activeCodeIcon[activeCodeLanguage]}
             </Button>
             <ul className="invisible absolute top-full z-30 mt-0 rounded-lg border border-dark-50 bg-white opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 dark:bg-dark-100 dark:text-dark-900">
-              {Object.values(CodeLanguage).map((language) => (
+              {availableCodeByType.map((language) => (
                 <button
                   className="flex w-full items-center p-2 text-dark-500 hover:text-dark-900"
                   key={language}
