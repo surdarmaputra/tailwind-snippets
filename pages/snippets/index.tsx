@@ -55,6 +55,29 @@ export default function Snippets({
             </div>
           </div>
         ))}
+
+        <div className="mb-20">
+          <h5>Page</h5>
+          <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-3">
+            {pageSnippets?.map((category) => (
+              <Link
+                href={category.href || '/snippets/pages'}
+                key={category.slug}
+              >
+                <a
+                  onClick={() =>
+                    trackEvent({
+                      name: 'snippet_thumbnail_click',
+                      title: category.title,
+                    })
+                  }
+                >
+                  <Thumbnail name={category.slug} title={category.title} />
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
       </SnippetsExplorerLayout>
     </>
   );
