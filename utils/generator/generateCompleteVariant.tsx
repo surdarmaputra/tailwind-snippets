@@ -13,10 +13,12 @@ export default async function generateCompleteVariant(
     .replace(`${process.cwd()}/pages/preview/`, '')
     .replace('.tsx', '');
   const Element = await import(`pages/preview/${modulePath}`);
-  const HTMLString = prettier.format(
-    ReactDOMServer.renderToString(<Element.default />),
-    { parser: 'html', htmlWhitespaceSensitivity: 'ignore' },
-  );
+  const HTMLString = prettier
+    .format(ReactDOMServer.renderToString(<Element.default />), {
+      parser: 'html',
+      htmlWhitespaceSensitivity: 'ignore',
+    })
+    .replaceAll('<!-- -->', '');
   return {
     ...variant,
     codeByType: {
