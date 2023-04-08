@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/surdarmaputra/tailwind-snippets/compare/v0.2.0...v0.3.0) (2023-04-08)
+
+
+### Features
+
+* event trackers ([#6](https://github.com/surdarmaputra/tailwind-snippets/issues/6)) ([8d45bde](https://github.com/surdarmaputra/tailwind-snippets/commit/8d45bdefe783e5fc88df918f7e9eb2bc520d11c0))
+* page preview ([#7](https://github.com/surdarmaputra/tailwind-snippets/issues/7)) ([ce467e6](https://github.com/surdarmaputra/tailwind-snippets/commit/ce467e60607f9886883946ce47d8c626b649aeb7))
+
 ## [0.2.0](https://github.com/surdarmaputra/tailwind-snippets/compare/v0.1.0...v0.2.0) (2023-02-07)
 
 
